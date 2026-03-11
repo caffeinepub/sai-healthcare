@@ -25,6 +25,7 @@ import {
   Zap,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import React from "react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useSubmitInquiry } from "./hooks/useQueries";
@@ -41,66 +42,86 @@ const SERVICES = [
     name: "Complete Blood Count (CBC)",
     description:
       "Comprehensive analysis of red cells, white cells, and platelets to assess overall health.",
+    marathiDescription:
+      "लाल पेशी, पांढऱ्या पेशी आणि प्लेटलेट्सचे सविस्तर विश्लेषण करून एकूण आरोग्याचे मूल्यांकन.",
   },
   {
     icon: Activity,
     name: "Blood Sugar Testing",
     description:
       "Fasting, post-prandial, and random glucose tests for diabetes monitoring and screening.",
+    marathiDescription:
+      "मधुमेहाच्या तपासणीसाठी उपवास, जेवणानंतर आणि कोणत्याही वेळी रक्तातील साखरेची चाचणी.",
   },
   {
     icon: FlaskConical,
     name: "Lipid Profile",
     description:
       "Cholesterol and triglyceride panel to evaluate cardiovascular risk and heart health.",
+    marathiDescription:
+      "हृदयविकाराचा धोका ओळखण्यासाठी कोलेस्टेरॉल व ट्रायग्लिसेराइडची तपासणी.",
   },
   {
     icon: FlaskConical,
     name: "Liver Function Test (LFT)",
     description:
       "Enzyme and protein levels to assess liver health, function, and detect disease.",
+    marathiDescription:
+      "यकृताचे आरोग्य, कार्य आणि आजार शोधण्यासाठी एन्झाइम व प्रथिनांची पातळी तपासणे.",
   },
   {
     icon: Microscope,
     name: "Kidney Function Test (KFT)",
     description:
       "Creatinine, urea, and uric acid levels to monitor kidney performance and health.",
+    marathiDescription:
+      "मूत्रपिंडाच्या कार्यक्षमतेसाठी क्रिएटिनिन, युरिया आणि यूरिक अॅसिडची पातळी तपासणे.",
   },
   {
     icon: Activity,
     name: "Thyroid Profile",
     description:
       "T3, T4, and TSH measurement for complete thyroid function evaluation and monitoring.",
+    marathiDescription: "थायरॉइडच्या संपूर्ण मूल्यांकनासाठी T3, T4 आणि TSH मोजमाप.",
   },
   {
     icon: TestTube,
     name: "Urine Routine & Microscopy",
     description:
       "Complete urine examination including physical, chemical, and microscopic analysis.",
+    marathiDescription: "लघवीची शारीरिक, रासायनिक आणि सूक्ष्मदर्शी तपासणी.",
   },
   {
     icon: Droplet,
     name: "HbA1c",
     description:
       "3-month average blood sugar measurement, essential for long-term diabetes management.",
+    marathiDescription:
+      "दीर्घकालीन मधुमेह व्यवस्थापनासाठी ३ महिन्यांची सरासरी रक्तातील साखर मोजमाप.",
   },
   {
     icon: Shield,
     name: "Serology Tests",
     description:
       "HIV, HBsAg, and VDRL screening for infectious disease detection and monitoring.",
+    marathiDescription:
+      "एचआयव्ही, एचबीएसएजी आणि व्हीडीआरएल तपासणी संसर्गजन्य आजारांसाठी.",
   },
   {
     icon: Home,
     name: "Home Sample Collection",
     description:
       "Convenient doorstep sample collection by trained phlebotomists at your schedule.",
+    marathiDescription: "प्रशिक्षित कर्मचाऱ्यांद्वारे आपल्या घरी सोयीस्करपणे नमुना संकलन.",
   },
 ];
 
 const HEALTH_PACKAGES = [
   {
     name: "Advance Health Checkup",
+    marathiName: "अॅडव्हान्स आरोग्य तपासणी",
+    marathiDesc:
+      "संपूर्ण आरोग्य तपासणीसाठी १० महत्त्वाच्या चाचण्या एकत्र — लोह, यकृत, लिपिड, थायरॉइड, किडनी, सीबीसी, एचबीए१सी, व्हिटॅमिन D, B12 आणि इलेक्ट्रोलाइट.",
     mrp: "5000",
     offer: "1499",
     color: "oklch(0.35 0.09 210)",
@@ -117,9 +138,24 @@ const HEALTH_PACKAGES = [
       "Vitamin B12",
       "Serum Electrolyte Profile",
     ],
+    marathiTests: [
+      "आयर्न स्टडीज (लोह तपासणी)",
+      "एलएफटी (यकृत कार्य चाचणी)",
+      "लिपिड प्रोफाइल",
+      "थायरॉइड प्रोफाइल",
+      "किडनी प्रोफाइल",
+      "सीबीसी-(२८)",
+      "एचबीए१सी",
+      "२५ ओएच व्हिटॅमिन डी",
+      "व्हिटॅमिन बी१२",
+      "सीरम इलेक्ट्रोलाइट प्रोफाइल",
+    ],
   },
   {
     name: "Basic Health Checkup",
+    marathiName: "बेसिक आरोग्य तपासणी",
+    marathiDesc:
+      "दैनंदिन आरोग्य देखरेखीसाठी ६ आवश्यक चाचण्या — TSH, सीबीसी, साखर, किडनी, लिपिड आणि यकृत.",
     mrp: "3000",
     offer: "999",
     color: "oklch(0.45 0.13 150)",
@@ -132,16 +168,49 @@ const HEALTH_PACKAGES = [
       "Lipid Profile",
       "LFT (Liver Function Test)",
     ],
+    marathiTests: [
+      "टीएसएच",
+      "सीबीसी-(२८)",
+      "साखर (उपाशी)",
+      "किडनी प्रोफाइल",
+      "लिपिड प्रोफाइल",
+      "एलएफटी (यकृत कार्य चाचणी)",
+    ],
   },
 ];
 
 const ESSENTIALS_TESTS = [
-  { name: "CBC-(28)", mrp: "200", offer: "169" },
-  { name: "Lipid Profile", mrp: "799", offer: "299" },
-  { name: "Thyroid Profile", mrp: "500", offer: "299" },
-  { name: "LFT (Liver Function Test)", mrp: "1045", offer: "399" },
-  { name: "Kidney Profile", mrp: "800", offer: "399" },
-  { name: "HbA1c (Whole Blood)", mrp: "500", offer: "299" },
+  { name: "CBC-(28)", mrp: "200", offer: "169", marathiName: "सीबीसी-(२८)" },
+  {
+    name: "Lipid Profile",
+    mrp: "799",
+    offer: "299",
+    marathiName: "लिपिड प्रोफाइल",
+  },
+  {
+    name: "Thyroid Profile",
+    mrp: "500",
+    offer: "299",
+    marathiName: "थायरॉइड प्रोफाइल",
+  },
+  {
+    name: "LFT (Liver Function Test)",
+    mrp: "1045",
+    offer: "399",
+    marathiName: "एलएफटी (यकृत कार्य चाचणी)",
+  },
+  {
+    name: "Kidney Profile",
+    mrp: "800",
+    offer: "399",
+    marathiName: "किडनी प्रोफाइल",
+  },
+  {
+    name: "HbA1c (Whole Blood)",
+    mrp: "500",
+    offer: "299",
+    marathiName: "एचबीए१सी (संपूर्ण रक्त)",
+  },
   { name: "Vitamin B12", mrp: "1200", offer: "499" },
   { name: "25 OH Vitamin D", mrp: "1400", offer: "699" },
   { name: "Serum Creatinine", mrp: "220", offer: "99" },
@@ -184,6 +253,7 @@ const NAV_LINKS = [
   { label: "Packages", href: "#packages" },
   { label: "Offers", href: "#offers" },
   { label: "Why Us", href: "#why-us" },
+  { label: "Book Home", href: "#home-collection" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -199,6 +269,200 @@ function WhatsAppIcon({ className }: { className?: string }) {
     >
       <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.668 4.61 1.832 6.504L4 29l7.724-1.809A12.94 12.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 2c5.523 0 10 4.477 10 10S21.523 25 16 25c-1.91 0-3.696-.535-5.217-1.463l-.373-.23-4.585 1.073 1.104-4.46-.245-.386A9.953 9.953 0 0 1 6 15c0-5.523 4.477-10 10-10zm-3.3 5.5c-.2 0-.52.075-.795.375-.274.3-1.045 1.02-1.045 2.488s1.07 2.887 1.22 3.087c.15.2 2.07 3.263 5.08 4.45 2.51.99 3.012.793 3.554.743.542-.05 1.747-.713 1.993-1.403.246-.69.246-1.28.172-1.403-.075-.124-.274-.2-.574-.35-.3-.15-1.747-.863-2.02-.963-.272-.1-.47-.15-.67.15-.198.3-.772.963-.946 1.163-.174.2-.348.225-.648.075-.3-.15-1.265-.466-2.41-1.485-.891-.793-1.493-1.773-1.668-2.073-.174-.3-.018-.463.131-.612.134-.134.3-.35.45-.524.15-.175.2-.3.3-.5.1-.2.05-.374-.025-.524-.075-.15-.66-1.618-.91-2.213-.24-.578-.487-.5-.67-.51-.174-.008-.374-.01-.574-.01z" />
     </svg>
+  );
+}
+
+const TIME_SLOTS = [
+  "Morning 7AM–10AM",
+  "Afternoon 11AM–2PM",
+  "Evening 3PM–6PM",
+  "Night 7PM–10PM",
+];
+
+const TEST_OPTIONS = [
+  "CBC - Complete Blood Count",
+  "Lipid Profile",
+  "Blood Sugar (Fasting)",
+  "HbA1c",
+  "Thyroid Profile (T3/T4/TSH)",
+  "Vitamin D",
+  "Vitamin B12",
+  "Liver Function Test",
+  "Kidney Function Test",
+  "Basic Health Package ₹999",
+  "Advance Health Package ₹1499",
+  "Other",
+];
+
+function HomeCollectionForm() {
+  const [name, setName] = React.useState("");
+  const [phone, setPhone] = React.useState("");
+  const [address, setAddress] = React.useState("");
+  const [date, setDate] = React.useState("");
+  const [timeSlot, setTimeSlot] = React.useState("");
+  const [test, setTest] = React.useState("");
+  const [submitted, setSubmitted] = React.useState(false);
+
+  const today = new Date().toISOString().split("T")[0];
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const msg = encodeURIComponent(
+      `*Home Collection Booking Request*\n\nPatient Name: ${name}\nPhone: ${phone}\nAddress: ${address}\nPreferred Date: ${date}\nTime Slot: ${timeSlot}\nTest/Service: ${test}`,
+    );
+    window.open(`https://wa.me/919359817040?text=${msg}`, "_blank");
+    setSubmitted(true);
+  }
+
+  if (submitted) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        data-ocid="home-collection.success_state"
+        className="rounded-2xl border border-primary/20 bg-primary/5 p-10 text-center"
+      >
+        <div className="text-5xl mb-4">✅</div>
+        <h3 className="text-2xl font-display font-bold text-foreground mb-2">
+          Booking Sent!
+        </h3>
+        <p className="text-muted-foreground mb-6">
+          Your booking details have been sent via WhatsApp. We will confirm your
+          slot shortly.
+        </p>
+        <Button
+          variant="outline"
+          onClick={() => setSubmitted(false)}
+          data-ocid="home-collection.secondary_button"
+        >
+          Book Another
+        </Button>
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.form
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      onSubmit={handleSubmit}
+      className="rounded-2xl border border-border bg-card p-6 md:p-10 shadow-sm space-y-6"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <Label htmlFor="hc-name">
+            Patient Name <span className="text-destructive">*</span>
+          </Label>
+          <Input
+            id="hc-name"
+            data-ocid="home-collection.input"
+            placeholder="Enter full name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="hc-phone">
+            Phone Number <span className="text-destructive">*</span>
+          </Label>
+          <Input
+            id="hc-phone"
+            type="tel"
+            data-ocid="home-collection.input"
+            placeholder="10-digit mobile number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            required
+            pattern="[0-9]{10}"
+            title="Enter a valid 10-digit phone number"
+          />
+        </div>
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="hc-address">
+          Address <span className="text-destructive">*</span>
+        </Label>
+        <Textarea
+          id="hc-address"
+          data-ocid="home-collection.textarea"
+          placeholder="Full address for home collection"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          required
+          rows={3}
+        />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <Label htmlFor="hc-date">
+            Preferred Date <span className="text-destructive">*</span>
+          </Label>
+          <Input
+            id="hc-date"
+            type="date"
+            data-ocid="home-collection.input"
+            min={today}
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="hc-time">
+            Preferred Time Slot <span className="text-destructive">*</span>
+          </Label>
+          <select
+            id="hc-time"
+            data-ocid="home-collection.select"
+            value={timeSlot}
+            onChange={(e) => setTimeSlot(e.target.value)}
+            required
+            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <option value="">Select a time slot</option>
+            {TIME_SLOTS.map((slot) => (
+              <option key={slot} value={slot}>
+                {slot}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="hc-test">
+          Test / Service <span className="text-destructive">*</span>
+        </Label>
+        <select
+          id="hc-test"
+          data-ocid="home-collection.select"
+          value={test}
+          onChange={(e) => setTest(e.target.value)}
+          required
+          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <option value="">Select a test or service</option>
+          {TEST_OPTIONS.map((opt) => (
+            <option key={opt} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </select>
+      </div>
+      <Button
+        type="submit"
+        size="lg"
+        className="w-full"
+        data-ocid="home-collection.submit_button"
+      >
+        📲 Send Booking via WhatsApp
+      </Button>
+      <p className="text-xs text-muted-foreground text-center">
+        Your details will be sent to our team on WhatsApp. We'll confirm your
+        appointment shortly.
+      </p>
+    </motion.form>
   );
 }
 
@@ -604,6 +868,11 @@ export default function App() {
                     <p className="text-xs text-muted-foreground leading-relaxed">
                       {service.description}
                     </p>
+                    {service.marathiDescription && (
+                      <p className="text-xs text-muted-foreground italic mt-1 leading-relaxed">
+                        {service.marathiDescription}
+                      </p>
+                    )}
                   </motion.div>
                 );
               })}
@@ -658,6 +927,11 @@ export default function App() {
                         <h3 className="font-display font-bold text-xl text-white">
                           {pkg.name}
                         </h3>
+                        {pkg.marathiName && (
+                          <p className="text-white/80 text-sm font-medium mt-0.5">
+                            {pkg.marathiName}
+                          </p>
+                        )}
                         <p className="text-white/70 text-xs mt-1">
                           {pkg.tests.length} tests included
                         </p>
@@ -683,17 +957,29 @@ export default function App() {
 
                   {/* Tests List */}
                   <div className="px-6 py-5">
+                    {pkg.marathiDesc && (
+                      <p className="text-xs text-muted-foreground italic mb-4 leading-relaxed">
+                        {pkg.marathiDesc}
+                      </p>
+                    )}
                     <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">
                       Tests Included
                     </p>
                     <ul className="space-y-2 mb-6">
-                      {pkg.tests.map((test) => (
+                      {pkg.tests.map((test, ti) => (
                         <li
                           key={test}
                           className="flex items-center gap-2 text-sm text-foreground"
                         >
                           <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                          {test}
+                          <span>
+                            {test}
+                            {pkg.marathiTests?.[ti] && (
+                              <span className="block text-xs text-muted-foreground italic">
+                                {pkg.marathiTests[ti]}
+                              </span>
+                            )}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -785,6 +1071,11 @@ export default function App() {
                     <span className="font-medium text-sm text-foreground">
                       {test.name}
                     </span>
+                    {test.marathiName && (
+                      <span className="block text-xs text-muted-foreground">
+                        {test.marathiName}
+                      </span>
+                    )}
                   </div>
                   <div className="text-right flex-shrink-0 ml-3">
                     <div className="text-muted-foreground text-xs line-through">
@@ -869,6 +1160,30 @@ export default function App() {
                 );
               })}
             </div>
+          </div>
+        </section>
+
+        {/* Home Collection */}
+        <section id="home-collection" className="py-20 bg-background">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-10"
+            >
+              <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest mb-4">
+                Home Collection
+              </div>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+                Book a Home Sample Collection
+              </h2>
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                Our trained phlebotomists will visit your home at your preferred
+                time slot to collect samples — fast, safe, and convenient.
+              </p>
+            </motion.div>
+            <HomeCollectionForm />
           </div>
         </section>
 
@@ -1121,6 +1436,49 @@ export default function App() {
                   </form>
                 </div>
               </motion.div>
+            </div>
+
+            {/* Google Map */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mt-10 rounded-2xl overflow-hidden shadow-teal-md border border-border"
+              data-ocid="contact.map_marker"
+            >
+              <iframe
+                title="Sai Healthcare Location"
+                src="https://maps.google.com/maps?q=20.021471,73.847043&z=17&output=embed"
+                width="100%"
+                height="380"
+                style={{ border: 0, display: "block" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </motion.div>
+            <div className="mt-4 text-center">
+              <a
+                href="https://maps.app.goo.gl/uQ8MajFENCPZtdBz6"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-ocid="contact.primary_button"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white shadow-md"
+                style={{ background: "oklch(0.55 0.18 208)" }}
+              >
+                Get Directions
+              </a>
+            </div>
+            <div className="mt-3 text-center text-sm text-gray-600 flex items-center justify-center gap-1">
+              <span>📍</span>
+              <span>
+                Shop No.1, Rutik Arcade, Konark Nagar, Nashik — 422 003
+              </span>
+              <br />
+              <span className="text-xs text-gray-500">
+                शॉप नं.१, रुतिक आर्केड, कोणार्क नगर, नाशिक — ४२२ ००३
+              </span>
             </div>
           </div>
         </section>
