@@ -19,7 +19,6 @@ import {
   Microscope,
   Phone,
   Shield,
-  Stethoscope,
   Tag,
   TestTube,
   X,
@@ -29,6 +28,12 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useSubmitInquiry } from "./hooks/useQueries";
+
+const WHATSAPP_NUMBER = "919356710760";
+const WHATSAPP_MESSAGE = encodeURIComponent(
+  "Hello Sai Healthcare! I would like to enquire about your services.",
+);
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
 const SERVICES = [
   {
@@ -182,6 +187,21 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
+// WhatsApp SVG icon
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 32 32"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.668 4.61 1.832 6.504L4 29l7.724-1.809A12.94 12.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 2c5.523 0 10 4.477 10 10S21.523 25 16 25c-1.91 0-3.696-.535-5.217-1.463l-.373-.23-4.585 1.073 1.104-4.46-.245-.386A9.953 9.953 0 0 1 6 15c0-5.523 4.477-10 10-10zm-3.3 5.5c-.2 0-.52.075-.795.375-.274.3-1.045 1.02-1.045 2.488s1.07 2.887 1.22 3.087c.15.2 2.07 3.263 5.08 4.45 2.51.99 3.012.793 3.554.743.542-.05 1.747-.713 1.993-1.403.246-.69.246-1.28.172-1.403-.075-.124-.274-.2-.574-.35-.3-.15-1.747-.863-2.02-.963-.272-.1-.47-.15-.67.15-.198.3-.772.963-.946 1.163-.174.2-.348.225-.648.075-.3-.15-1.265-.466-2.41-1.485-.891-.793-1.493-1.773-1.668-2.073-.174-.3-.018-.463.131-.612.134-.134.3-.35.45-.524.15-.175.2-.3.3-.5.1-.2.05-.374-.025-.524-.075-.15-.66-1.618-.91-2.213-.24-.578-.487-.5-.67-.51-.174-.008-.374-.01-.574-.01z" />
+    </svg>
+  );
+}
+
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -218,6 +238,25 @@ export default function App() {
   return (
     <div className="min-h-screen bg-background font-body">
       <Toaster position="top-right" />
+
+      {/* WhatsApp Floating Button */}
+      <motion.a
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-ocid="whatsapp.primary_button"
+        aria-label="Chat on WhatsApp"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 1.2, type: "spring", stiffness: 200 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20bc5a] text-white rounded-full shadow-lg px-4 py-3 font-semibold text-sm transition-colors"
+        style={{ boxShadow: "0 4px 20px rgba(37,211,102,0.45)" }}
+      >
+        <WhatsAppIcon className="w-5 h-5 flex-shrink-0" />
+        <span className="hidden sm:inline">Chat with us</span>
+      </motion.a>
 
       {/* Sticky Nav */}
       <header
@@ -927,6 +966,26 @@ export default function App() {
                         </a>
                       </div>
                     </div>
+
+                    {/* WhatsApp contact row */}
+                    <div className="flex gap-4 items-center">
+                      <div className="w-10 h-10 rounded-lg bg-[#25D366]/10 flex items-center justify-center flex-shrink-0">
+                        <WhatsAppIcon className="w-5 h-5 text-[#25D366]" />
+                      </div>
+                      <div>
+                        <div className="font-semibold text-foreground text-sm mb-1">
+                          WhatsApp
+                        </div>
+                        <a
+                          href={WHATSAPP_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#25D366] hover:text-[#20bc5a] text-sm font-medium transition-colors"
+                        >
+                          +91 93567 10760
+                        </a>
+                      </div>
+                    </div>
                   </div>
 
                   <div
@@ -1148,6 +1207,17 @@ export default function App() {
                     className="hover:text-white transition-colors break-all"
                   >
                     saihealthcare62021@gmail.com
+                  </a>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <WhatsAppIcon className="w-4 h-4 flex-shrink-0 text-[#25D366]" />
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    WhatsApp Us
                   </a>
                 </div>
               </div>
