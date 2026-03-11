@@ -237,9 +237,9 @@ export default function App() {
             >
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary flex-shrink-0">
                 <img
-                  src="/assets/uploads/IMG-20251117-WA0006-1.jpg"
+                  src="/assets/uploads/Creat-a-Profile-for-Sai-Healthcare-1.jpg"
                   alt="Sai Healthcare Logo"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-contain bg-white"
                 />
               </div>
               <div>
@@ -503,9 +503,9 @@ export default function App() {
                 >
                   <div className="p-8">
                     <img
-                      src="/assets/uploads/IMG-20251117-WA0006-1.jpg"
-                      alt="Sai Healthcare Letterhead"
-                      className="w-full rounded-xl shadow-lg"
+                      src="/assets/uploads/Creat-a-Profile-for-Sai-Healthcare-1.jpg"
+                      alt="Sai Healthcare Profile"
+                      className="w-full rounded-xl shadow-lg object-contain"
                     />
                   </div>
                 </div>
@@ -1081,9 +1081,9 @@ export default function App() {
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/20">
                   <img
-                    src="/assets/uploads/IMG-20251117-WA0006-1.jpg"
+                    src="/assets/uploads/Creat-a-Profile-for-Sai-Healthcare-1.jpg"
                     alt="Sai Healthcare"
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-contain bg-white"
                   />
                 </div>
                 <div>
