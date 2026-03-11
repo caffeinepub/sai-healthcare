@@ -20,8 +20,10 @@ import {
   Phone,
   Shield,
   Stethoscope,
+  Tag,
   TestTube,
   X,
+  Zap,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
@@ -91,6 +93,58 @@ const SERVICES = [
   },
 ];
 
+const HEALTH_PACKAGES = [
+  {
+    name: "Advance Health Checkup",
+    mrp: "5000",
+    offer: "1499",
+    color: "oklch(0.35 0.09 210)",
+    badge: "Best Value",
+    tests: [
+      "Iron Studies",
+      "LFT (Liver Function Test)",
+      "Lipid Profile",
+      "Thyroid Profile",
+      "Kidney Profile",
+      "CBC-(28)",
+      "HbA1c",
+      "25 OH Vitamin D",
+      "Vitamin B12",
+      "Serum Electrolyte Profile",
+    ],
+  },
+  {
+    name: "Basic Health Checkup",
+    mrp: "3000",
+    offer: "999",
+    color: "oklch(0.45 0.13 150)",
+    badge: "Popular",
+    tests: [
+      "TSH",
+      "CBC-(28)",
+      "Sugar Fasting",
+      "Kidney Profile",
+      "Lipid Profile",
+      "LFT (Liver Function Test)",
+    ],
+  },
+];
+
+const ESSENTIALS_TESTS = [
+  { name: "CBC-(28)", mrp: "200", offer: "169" },
+  { name: "Lipid Profile", mrp: "799", offer: "299" },
+  { name: "Thyroid Profile", mrp: "500", offer: "299" },
+  { name: "LFT (Liver Function Test)", mrp: "1045", offer: "399" },
+  { name: "Kidney Profile", mrp: "800", offer: "399" },
+  { name: "HbA1c (Whole Blood)", mrp: "500", offer: "299" },
+  { name: "Vitamin B12", mrp: "1200", offer: "499" },
+  { name: "25 OH Vitamin D", mrp: "1400", offer: "699" },
+  { name: "Serum Creatinine", mrp: "220", offer: "99" },
+  { name: "Calcium", mrp: "160", offer: "99" },
+  { name: "Uric Acid", mrp: "220", offer: "99" },
+  { name: "Urea", mrp: "165", offer: "99" },
+];
+
 const WHY_US = [
   {
     icon: BadgeCheck,
@@ -122,6 +176,8 @@ const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
+  { label: "Packages", href: "#packages" },
+  { label: "Offers", href: "#offers" },
   { label: "Why Us", href: "#why-us" },
   { label: "Contact", href: "#contact" },
 ];
@@ -203,7 +259,7 @@ export default function App() {
                   key={link.href}
                   href={link.href}
                   data-ocid="nav.link"
-                  className="px-4 py-2 text-sm font-medium text-foreground/70 hover:text-primary transition-colors rounded-md hover:bg-secondary"
+                  className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-primary transition-colors rounded-md hover:bg-secondary"
                 >
                   {link.label}
                 </a>
@@ -282,7 +338,6 @@ export default function App() {
               "linear-gradient(135deg, oklch(0.25 0.08 210) 0%, oklch(0.35 0.1 205) 40%, oklch(0.48 0.12 198) 100%)",
           }}
         >
-          {/* Background image overlay */}
           <div
             className="absolute inset-0 opacity-20"
             style={{
@@ -292,7 +347,6 @@ export default function App() {
               backgroundPosition: "center",
             }}
           />
-          {/* Decorative pattern */}
           <div
             className="absolute inset-0 opacity-5"
             style={{
@@ -301,8 +355,6 @@ export default function App() {
               backgroundSize: "32px 32px",
             }}
           />
-
-          {/* Red accent top border */}
           <div className="absolute top-0 left-0 right-0 h-1 bg-accent" />
 
           <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
@@ -318,10 +370,7 @@ export default function App() {
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-[1.05] mb-6">
                 Accurate Diagnostics,
                 <br />
-                <span
-                  className="text-teal-200"
-                  style={{ color: "oklch(0.88 0.08 185)" }}
-                >
+                <span style={{ color: "oklch(0.88 0.08 185)" }}>
                   Trusted Results
                 </span>
               </h1>
@@ -342,19 +391,18 @@ export default function App() {
                     Book a Test <ChevronRight className="w-4 h-4" />
                   </Button>
                 </a>
-                <a href="tel:+919356710760" data-ocid="hero.secondary_button">
+                <a href="#packages" data-ocid="hero.secondary_button">
                   <Button
                     size="lg"
                     variant="outline"
                     className="border-white/30 text-white hover:bg-white/10 font-semibold px-8 py-6 text-base gap-2 bg-transparent"
                   >
-                    <Phone className="w-4 h-4" /> Call Us Now
+                    <Tag className="w-4 h-4" /> View Packages
                   </Button>
                 </a>
               </div>
             </motion.div>
 
-            {/* Stats bar */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -376,7 +424,6 @@ export default function App() {
             </motion.div>
           </div>
 
-          {/* Wave bottom */}
           <div className="absolute bottom-0 left-0 right-0">
             <svg
               viewBox="0 0 1440 60"
@@ -525,6 +572,212 @@ export default function App() {
           </div>
         </section>
 
+        {/* Health Packages */}
+        <section id="packages" className="py-20 bg-background">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <div className="inline-block px-3 py-1 rounded-full bg-secondary text-primary font-semibold text-xs uppercase tracking-widest mb-4">
+                Health Packages
+              </div>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+                Complete Health Checkup Packages
+              </h2>
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                Affordable bundled health packages designed to give you a
+                complete picture of your health — at unbeatable prices.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {HEALTH_PACKAGES.map((pkg, i) => (
+                <motion.div
+                  key={pkg.name}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.15 }}
+                  data-ocid={`packages.item.${i + 1}`}
+                  className="relative bg-white rounded-2xl shadow-teal-md border border-border overflow-hidden"
+                >
+                  {/* Header */}
+                  <div
+                    className="px-6 py-5 text-white"
+                    style={{
+                      background: `linear-gradient(135deg, ${pkg.color}, oklch(0.55 0.14 195))`,
+                    }}
+                  >
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <span className="inline-block px-2 py-0.5 rounded-full bg-white/20 text-white text-[10px] font-semibold uppercase tracking-widest mb-2">
+                          {pkg.badge}
+                        </span>
+                        <h3 className="font-display font-bold text-xl text-white">
+                          {pkg.name}
+                        </h3>
+                        <p className="text-white/70 text-xs mt-1">
+                          {pkg.tests.length} tests included
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-white/60 text-xs line-through">
+                          MRP ₹{pkg.mrp}/-
+                        </div>
+                        <div className="text-3xl font-display font-bold text-white">
+                          ₹{pkg.offer}/-
+                        </div>
+                        <div className="text-yellow-300 text-xs font-semibold">
+                          Save ₹
+                          {(
+                            Number.parseInt(pkg.mrp) -
+                            Number.parseInt(pkg.offer)
+                          ).toLocaleString()}
+                          /-
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Tests List */}
+                  <div className="px-6 py-5">
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">
+                      Tests Included
+                    </p>
+                    <ul className="space-y-2 mb-6">
+                      {pkg.tests.map((test) => (
+                        <li
+                          key={test}
+                          className="flex items-center gap-2 text-sm text-foreground"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                          {test}
+                        </li>
+                      ))}
+                    </ul>
+                    <a href="#contact">
+                      <Button
+                        className="w-full bg-primary hover:bg-primary-dark text-white font-semibold gap-2"
+                        data-ocid={`packages.primary_button.${i + 1}`}
+                      >
+                        Book This Package <ChevronRight className="w-4 h-4" />
+                      </Button>
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Essentials Blood Test Offers */}
+        <section
+          id="offers"
+          className="py-20"
+          style={{ background: "oklch(0.96 0.01 200)" }}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent font-semibold text-xs uppercase tracking-widest mb-4">
+                <Zap className="w-3.5 h-3.5" /> Special Offers
+              </div>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+                Essentials Blood Test — Offer Prices
+              </h2>
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                Limited-time offer prices on the most commonly requested blood
+                tests. Free home collection available.
+              </p>
+            </motion.div>
+
+            {/* Offer Banner */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.97 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="mb-8 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3"
+              style={{
+                background:
+                  "linear-gradient(135deg, oklch(0.25 0.08 210), oklch(0.40 0.12 200))",
+              }}
+            >
+              <div className="text-white text-center sm:text-left">
+                <div className="font-display font-bold text-lg">
+                  Free Home Collection
+                </div>
+                <div className="text-white/70 text-sm">
+                  Any Enquiry — Call:{" "}
+                  <span className="text-yellow-300 font-bold">9356710760</span>
+                </div>
+              </div>
+              <div className="text-white/80 text-sm text-center">
+                All Types of Blood · Urine · Sputum Tests Available
+              </div>
+              <a href="tel:+919356710760">
+                <Button className="bg-accent hover:bg-accent/90 text-white font-bold gap-2 flex-shrink-0">
+                  <Phone className="w-4 h-4" /> Call Now
+                </Button>
+              </a>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {ESSENTIALS_TESTS.map((test, i) => (
+                <motion.div
+                  key={test.name}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: i * 0.04 }}
+                  data-ocid={`offers.item.${i + 1}`}
+                  className="bg-white rounded-xl border border-border shadow-teal-sm hover:shadow-teal-md transition-all flex items-center justify-between px-5 py-4 group hover:border-accent/30"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors">
+                      <TestTube className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
+                    </div>
+                    <span className="font-medium text-sm text-foreground">
+                      {test.name}
+                    </span>
+                  </div>
+                  <div className="text-right flex-shrink-0 ml-3">
+                    <div className="text-muted-foreground text-xs line-through">
+                      ₹{test.mrp}/-
+                    </div>
+                    <div className="text-accent font-display font-bold text-base">
+                      ₹{test.offer}/-
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-center mt-8"
+            >
+              <a href="#contact">
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary-dark text-white font-bold px-8 gap-2"
+                  data-ocid="offers.primary_button"
+                >
+                  Book an Offer Test <ChevronRight className="w-4 h-4" />
+                </Button>
+              </a>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Why Us */}
         <section id="why-us" className="py-20 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -559,7 +812,7 @@ export default function App() {
                     className="relative bg-white rounded-2xl p-6 shadow-teal-sm border border-border text-center group hover:shadow-teal-md transition-all"
                   >
                     <div
-                      className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 transition-colors group-hover:scale-110 transition-transform"
+                      className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform"
                       style={{
                         background:
                           "linear-gradient(135deg, oklch(0.35 0.09 210), oklch(0.51 0.12 200))",
@@ -609,7 +862,6 @@ export default function App() {
             </motion.div>
 
             <div className="grid md:grid-cols-2 gap-10 items-start">
-              {/* Contact Info */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -691,7 +943,6 @@ export default function App() {
                 </div>
               </motion.div>
 
-              {/* Contact Form */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -826,7 +1077,6 @@ export default function App() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 mb-10">
-            {/* Brand */}
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/20">
@@ -854,7 +1104,6 @@ export default function App() {
               </p>
             </div>
 
-            {/* Quick Links */}
             <div>
               <h4 className="font-display font-semibold text-white mb-4">
                 Quick Links
@@ -872,7 +1121,6 @@ export default function App() {
               </div>
             </div>
 
-            {/* Contact */}
             <div>
               <h4 className="font-display font-semibold text-white mb-4">
                 Contact
