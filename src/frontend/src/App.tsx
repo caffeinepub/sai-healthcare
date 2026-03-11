@@ -310,7 +310,7 @@ function HomeCollectionForm() {
     const msg = encodeURIComponent(
       `*Home Collection Booking Request*\n\nPatient Name: ${name}\nPhone: ${phone}\nAddress: ${address}\nPreferred Date: ${date}\nTime Slot: ${timeSlot}\nTest/Service: ${test}`,
     );
-    window.open(`https://wa.me/919359817040?text=${msg}`, "_blank");
+    window.open(`https://wa.me/919356710760?text=${msg}`, "_blank");
     setSubmitted(true);
   }
 
@@ -320,7 +320,7 @@ function HomeCollectionForm() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         data-ocid="home-collection.success_state"
-        className="rounded-2xl border border-primary/20 bg-primary/5 p-10 text-center"
+        className="rounded-2xl border border-primary/20 bg-primary/5 p-8 sm:p-10 text-center"
       >
         <div className="text-5xl mb-4">✅</div>
         <h3 className="text-2xl font-display font-bold text-foreground mb-2">
@@ -334,6 +334,7 @@ function HomeCollectionForm() {
           variant="outline"
           onClick={() => setSubmitted(false)}
           data-ocid="home-collection.secondary_button"
+          className="min-h-[44px] px-6"
         >
           Book Another
         </Button>
@@ -347,9 +348,9 @@ function HomeCollectionForm() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-border bg-card p-6 md:p-10 shadow-sm space-y-6"
+      className="rounded-2xl border border-border bg-card p-5 sm:p-8 md:p-10 shadow-sm space-y-5"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div className="space-y-2">
           <Label htmlFor="hc-name">
             Patient Name <span className="text-destructive">*</span>
@@ -361,6 +362,7 @@ function HomeCollectionForm() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            className="min-h-[44px]"
           />
         </div>
         <div className="space-y-2">
@@ -377,6 +379,7 @@ function HomeCollectionForm() {
             required
             pattern="[0-9]{10}"
             title="Enter a valid 10-digit phone number"
+            className="min-h-[44px]"
           />
         </div>
       </div>
@@ -394,7 +397,7 @@ function HomeCollectionForm() {
           rows={3}
         />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div className="space-y-2">
           <Label htmlFor="hc-date">
             Preferred Date <span className="text-destructive">*</span>
@@ -407,6 +410,7 @@ function HomeCollectionForm() {
             value={date}
             onChange={(e) => setDate(e.target.value)}
             required
+            className="min-h-[44px]"
           />
         </div>
         <div className="space-y-2">
@@ -419,7 +423,7 @@ function HomeCollectionForm() {
             value={timeSlot}
             onChange={(e) => setTimeSlot(e.target.value)}
             required
-            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex h-11 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           >
             <option value="">Select a time slot</option>
             {TIME_SLOTS.map((slot) => (
@@ -440,7 +444,7 @@ function HomeCollectionForm() {
           value={test}
           onChange={(e) => setTest(e.target.value)}
           required
-          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex h-11 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
         >
           <option value="">Select a test or service</option>
           {TEST_OPTIONS.map((opt) => (
@@ -453,7 +457,7 @@ function HomeCollectionForm() {
       <Button
         type="submit"
         size="lg"
-        className="w-full"
+        className="w-full min-h-[48px] text-base"
         data-ocid="home-collection.submit_button"
       >
         📲 Send Booking via WhatsApp
@@ -481,6 +485,15 @@ export default function App() {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) setMobileMenuOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -515,7 +528,7 @@ export default function App() {
         transition={{ delay: 1.2, type: "spring", stiffness: 200 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20bc5a] text-white rounded-full shadow-lg px-4 py-3 font-semibold text-sm transition-colors"
+        className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20bc5a] text-white rounded-full shadow-lg px-4 py-3 font-semibold text-sm transition-colors min-h-[48px]"
         style={{ boxShadow: "0 4px 20px rgba(37,211,102,0.45)" }}
       >
         <WhatsAppIcon className="w-5 h-5 flex-shrink-0" />
@@ -535,10 +548,10 @@ export default function App() {
             {/* Logo */}
             <a
               href="#home"
-              className="flex items-center gap-3 group"
+              className="flex items-center gap-2.5 sm:gap-3 group"
               data-ocid="nav.link"
             >
-              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary flex-shrink-0">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-primary flex-shrink-0">
                 <img
                   src="/assets/uploads/Creat-a-Profile-for-Sai-Healthcare-1.jpg"
                   alt="Sai Healthcare Logo"
@@ -546,10 +559,10 @@ export default function App() {
                 />
               </div>
               <div>
-                <div className="text-base font-display font-700 text-primary-dark leading-tight">
+                <div className="text-sm sm:text-base font-display font-700 text-primary-dark leading-tight">
                   Sai Healthcare
                 </div>
-                <div className="text-[10px] text-muted-foreground tracking-wide uppercase">
+                <div className="text-[9px] sm:text-[10px] text-muted-foreground tracking-wide uppercase">
                   Pathology Lab · Nashik
                 </div>
               </div>
@@ -580,9 +593,10 @@ export default function App() {
             {/* Mobile Menu Toggle */}
             <button
               type="button"
-              className="md:hidden p-2 rounded-md text-foreground hover:bg-secondary"
+              className="md:hidden p-2.5 rounded-md text-foreground hover:bg-secondary min-w-[44px] min-h-[44px] flex items-center justify-center"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? (
                 <X className="w-5 h-5" />
@@ -600,22 +614,22 @@ export default function App() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-t border-border overflow-hidden"
+              className="md:hidden bg-white border-t border-border overflow-hidden shadow-lg"
             >
-              <div className="px-4 py-4 flex flex-col gap-1">
+              <div className="px-4 py-3 flex flex-col gap-1">
                 {NAV_LINKS.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
                     data-ocid="nav.link"
-                    className="px-4 py-3 text-sm font-medium text-foreground/70 hover:text-primary rounded-md hover:bg-secondary"
+                    className="px-4 py-3.5 text-sm font-medium text-foreground/70 hover:text-primary rounded-md hover:bg-secondary active:bg-secondary/80 min-h-[44px] flex items-center"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.label}
                   </a>
                 ))}
                 <Button
-                  className="w-full mt-2 bg-primary hover:bg-primary-dark text-white font-semibold"
+                  className="w-full mt-2 mb-1 bg-primary hover:bg-primary-dark text-white font-semibold min-h-[48px]"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     document
@@ -660,45 +674,53 @@ export default function App() {
           />
           <div className="absolute top-0 left-0 right-0 h-1 bg-accent" />
 
-          <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
+          <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 sm:pt-20 pb-16">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/80 text-sm font-medium mb-6">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/80 text-xs sm:text-sm font-medium mb-5 sm:mb-6">
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
                 Trusted Pathology Lab in Nashik
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-[1.05] mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white leading-[1.08] mb-5 sm:mb-6">
                 Accurate Diagnostics,
                 <br />
                 <span style={{ color: "oklch(0.88 0.08 185)" }}>
                   Trusted Results
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-white/70 mb-4 font-light tracking-wide">
+              <p className="text-base sm:text-lg md:text-xl text-white/70 mb-3 sm:mb-4 font-light tracking-wide">
                 Service &nbsp;|&nbsp; Quality &nbsp;|&nbsp; Integrity
               </p>
-              <p className="text-base text-white/55 max-w-2xl mx-auto mb-10">
+              <p className="text-sm sm:text-base text-white/55 max-w-2xl mx-auto mb-8 sm:mb-10">
                 Comprehensive pathology testing with precision instruments,
                 compassionate care, and reports you can trust — available at our
                 lab or at your doorstep.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#contact" data-ocid="hero.primary_button">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center">
+                <a
+                  href="#contact"
+                  data-ocid="hero.primary_button"
+                  className="block sm:inline-block"
+                >
                   <Button
                     size="lg"
-                    className="bg-accent hover:bg-accent/90 text-white font-bold px-8 py-6 text-base shadow-lg shadow-accent/30 gap-2"
+                    className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-white font-bold px-6 sm:px-8 py-6 text-base shadow-lg shadow-accent/30 gap-2 min-h-[52px]"
                   >
                     Book a Test <ChevronRight className="w-4 h-4" />
                   </Button>
                 </a>
-                <a href="#packages" data-ocid="hero.secondary_button">
+                <a
+                  href="#packages"
+                  data-ocid="hero.secondary_button"
+                  className="block sm:inline-block"
+                >
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-white/30 text-white hover:bg-white/10 font-semibold px-8 py-6 text-base gap-2 bg-transparent"
+                    className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 font-semibold px-6 sm:px-8 py-6 text-base gap-2 bg-transparent min-h-[52px]"
                   >
                     <Tag className="w-4 h-4" /> View Packages
                   </Button>
@@ -710,7 +732,7 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="mt-16 grid grid-cols-3 gap-4 max-w-2xl mx-auto"
+              className="mt-12 sm:mt-16 grid grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto"
             >
               {[
                 ["50+", "Tests Available"],
@@ -718,10 +740,12 @@ export default function App() {
                 ["100%", "Trusted Results"],
               ].map(([val, label]) => (
                 <div key={label} className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-white font-display">
+                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white font-display">
                     {val}
                   </div>
-                  <div className="text-xs text-white/55 mt-1">{label}</div>
+                  <div className="text-[10px] sm:text-xs text-white/55 mt-1">
+                    {label}
+                  </div>
                 </div>
               ))}
             </motion.div>
@@ -744,9 +768,9 @@ export default function App() {
         </section>
 
         {/* About */}
-        <section id="about" className="py-20 bg-background">
+        <section id="about" className="py-12 sm:py-16 md:py-20 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -756,7 +780,7 @@ export default function App() {
                 <div className="inline-block px-3 py-1 rounded-full bg-secondary text-primary font-semibold text-xs uppercase tracking-widest mb-4">
                   About Us
                 </div>
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6 leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground mb-5 sm:mb-6 leading-tight">
                   Nashik's Trusted Pathology Laboratory
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
@@ -773,7 +797,7 @@ export default function App() {
                   receive is reliable, clear, and delivered with the care your
                   health deserves.
                 </p>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2 sm:gap-3">
                   {[
                     "NABL Quality Standards",
                     "Certified Lab Technicians",
@@ -795,7 +819,7 @@ export default function App() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="relative"
+                className="relative mt-6 md:mt-0"
               >
                 <div
                   className="rounded-2xl overflow-hidden shadow-teal-lg relative"
@@ -804,7 +828,7 @@ export default function App() {
                       "linear-gradient(135deg, oklch(0.35 0.09 210), oklch(0.51 0.12 200))",
                   }}
                 >
-                  <div className="p-8">
+                  <div className="p-6 sm:p-8">
                     <img
                       src="/assets/uploads/Creat-a-Profile-for-Sai-Healthcare-1.jpg"
                       alt="Sai Healthcare Profile"
@@ -812,8 +836,10 @@ export default function App() {
                     />
                   </div>
                 </div>
-                <div className="absolute -bottom-4 -right-4 bg-accent text-white rounded-xl px-5 py-3 shadow-lg">
-                  <div className="text-2xl font-bold font-display">Since</div>
+                <div className="absolute -bottom-4 -right-2 sm:-right-4 bg-accent text-white rounded-xl px-4 sm:px-5 py-2.5 sm:py-3 shadow-lg">
+                  <div className="text-xl sm:text-2xl font-bold font-display">
+                    Since
+                  </div>
                   <div className="text-sm font-medium">2021</div>
                 </div>
               </motion.div>
@@ -824,7 +850,7 @@ export default function App() {
         {/* Services */}
         <section
           id="services"
-          className="py-20"
+          className="py-12 sm:py-16 md:py-20"
           style={{ background: "oklch(0.96 0.01 200)" }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -832,21 +858,21 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-10 sm:mb-12"
             >
               <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest mb-4">
                 Our Services
               </div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
                 Comprehensive Diagnostic Tests
               </h2>
-              <p className="text-muted-foreground max-w-xl mx-auto">
+              <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
                 From routine blood work to specialized panels — we offer a full
                 range of pathology and diagnostic services under one roof.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
               {SERVICES.map((service, i) => {
                 const Icon = service.icon;
                 return (
@@ -857,9 +883,9 @@ export default function App() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: i * 0.05 }}
                     data-ocid={`services.item.${i + 1}`}
-                    className="bg-white rounded-xl p-5 shadow-teal-sm hover:shadow-teal-md transition-all duration-300 group border border-border hover:border-primary/30 cursor-default"
+                    className="bg-white rounded-xl p-4 sm:p-5 shadow-teal-sm hover:shadow-teal-md transition-all duration-300 group border border-border hover:border-primary/30 cursor-default"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
                       <Icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                     </div>
                     <h3 className="font-display font-semibold text-foreground text-sm mb-2 leading-snug">
@@ -881,27 +907,30 @@ export default function App() {
         </section>
 
         {/* Health Packages */}
-        <section id="packages" className="py-20 bg-background">
+        <section
+          id="packages"
+          className="py-12 sm:py-16 md:py-20 bg-background"
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-10 sm:mb-12"
             >
               <div className="inline-block px-3 py-1 rounded-full bg-secondary text-primary font-semibold text-xs uppercase tracking-widest mb-4">
                 Health Packages
               </div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
                 Complete Health Checkup Packages
               </h2>
-              <p className="text-muted-foreground max-w-xl mx-auto">
+              <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
                 Affordable bundled health packages designed to give you a
                 complete picture of your health — at unbeatable prices.
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
               {HEALTH_PACKAGES.map((pkg, i) => (
                 <motion.div
                   key={pkg.name}
@@ -914,17 +943,17 @@ export default function App() {
                 >
                   {/* Header */}
                   <div
-                    className="px-6 py-5 text-white"
+                    className="px-5 sm:px-6 py-4 sm:py-5 text-white"
                     style={{
                       background: `linear-gradient(135deg, ${pkg.color}, oklch(0.55 0.14 195))`,
                     }}
                   >
-                    <div className="flex items-start justify-between">
-                      <div>
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0 flex-1">
                         <span className="inline-block px-2 py-0.5 rounded-full bg-white/20 text-white text-[10px] font-semibold uppercase tracking-widest mb-2">
                           {pkg.badge}
                         </span>
-                        <h3 className="font-display font-bold text-xl text-white">
+                        <h3 className="font-display font-bold text-lg sm:text-xl text-white leading-tight">
                           {pkg.name}
                         </h3>
                         {pkg.marathiName && (
@@ -936,11 +965,11 @@ export default function App() {
                           {pkg.tests.length} tests included
                         </p>
                       </div>
-                      <div className="text-right">
+                      <div className="text-right flex-shrink-0">
                         <div className="text-white/60 text-xs line-through">
                           MRP ₹{pkg.mrp}/-
                         </div>
-                        <div className="text-3xl font-display font-bold text-white">
+                        <div className="text-2xl sm:text-3xl font-display font-bold text-white">
                           ₹{pkg.offer}/-
                         </div>
                         <div className="text-yellow-300 text-xs font-semibold">
@@ -956,7 +985,7 @@ export default function App() {
                   </div>
 
                   {/* Tests List */}
-                  <div className="px-6 py-5">
+                  <div className="px-5 sm:px-6 py-4 sm:py-5">
                     {pkg.marathiDesc && (
                       <p className="text-xs text-muted-foreground italic mb-4 leading-relaxed">
                         {pkg.marathiDesc}
@@ -965,15 +994,15 @@ export default function App() {
                     <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">
                       Tests Included
                     </p>
-                    <ul className="space-y-2 mb-6">
-                      {pkg.tests.map((test, ti) => (
+                    <ul className="space-y-2 mb-5 sm:mb-6">
+                      {pkg.tests.map((testItem, ti) => (
                         <li
-                          key={test}
-                          className="flex items-center gap-2 text-sm text-foreground"
+                          key={testItem}
+                          className="flex items-start gap-2 text-sm text-foreground"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-1.5" />
                           <span>
-                            {test}
+                            {testItem}
                             {pkg.marathiTests?.[ti] && (
                               <span className="block text-xs text-muted-foreground italic">
                                 {pkg.marathiTests[ti]}
@@ -985,7 +1014,7 @@ export default function App() {
                     </ul>
                     <a href="#contact">
                       <Button
-                        className="w-full bg-primary hover:bg-primary-dark text-white font-semibold gap-2"
+                        className="w-full bg-primary hover:bg-primary-dark text-white font-semibold gap-2 min-h-[48px]"
                         data-ocid={`packages.primary_button.${i + 1}`}
                       >
                         Book This Package <ChevronRight className="w-4 h-4" />
@@ -1001,7 +1030,7 @@ export default function App() {
         {/* Essentials Blood Test Offers */}
         <section
           id="offers"
-          className="py-20"
+          className="py-12 sm:py-16 md:py-20"
           style={{ background: "oklch(0.96 0.01 200)" }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1009,15 +1038,15 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-10 sm:mb-12"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent font-semibold text-xs uppercase tracking-widest mb-4">
                 <Zap className="w-3.5 h-3.5" /> Special Offers
               </div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
                 Essentials Blood Test — Offer Prices
               </h2>
-              <p className="text-muted-foreground max-w-xl mx-auto">
+              <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
                 Limited-time offer prices on the most commonly requested blood
                 tests. Free home collection available.
               </p>
@@ -1028,7 +1057,7 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.97 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="mb-8 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3"
+              className="mb-6 sm:mb-8 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4"
               style={{
                 background:
                   "linear-gradient(135deg, oklch(0.25 0.08 210), oklch(0.40 0.12 200))",
@@ -1046,43 +1075,45 @@ export default function App() {
               <div className="text-white/80 text-sm text-center">
                 All Types of Blood · Urine · Sputum Tests Available
               </div>
-              <a href="tel:+919356710760">
-                <Button className="bg-accent hover:bg-accent/90 text-white font-bold gap-2 flex-shrink-0">
+              <a href="tel:+919356710760" className="w-full sm:w-auto">
+                <Button className="bg-accent hover:bg-accent/90 text-white font-bold gap-2 flex-shrink-0 w-full sm:w-auto min-h-[44px]">
                   <Phone className="w-4 h-4" /> Call Now
                 </Button>
               </a>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {ESSENTIALS_TESTS.map((test, i) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+              {ESSENTIALS_TESTS.map((essentialTest, i) => (
                 <motion.div
-                  key={test.name}
+                  key={essentialTest.name}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: i * 0.04 }}
                   data-ocid={`offers.item.${i + 1}`}
-                  className="bg-white rounded-xl border border-border shadow-teal-sm hover:shadow-teal-md transition-all flex items-center justify-between px-5 py-4 group hover:border-accent/30"
+                  className="bg-white rounded-xl border border-border shadow-teal-sm hover:shadow-teal-md transition-all flex items-center justify-between px-4 sm:px-5 py-3 sm:py-4 gap-3 group hover:border-accent/30 min-h-[64px]"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors">
+                  <div className="flex items-center gap-3 min-w-0 flex-1">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors">
                       <TestTube className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
                     </div>
-                    <span className="font-medium text-sm text-foreground">
-                      {test.name}
-                    </span>
-                    {test.marathiName && (
-                      <span className="block text-xs text-muted-foreground">
-                        {test.marathiName}
-                      </span>
-                    )}
+                    <div className="min-w-0">
+                      <div className="font-medium text-sm text-foreground leading-snug">
+                        {essentialTest.name}
+                      </div>
+                      {essentialTest.marathiName && (
+                        <div className="text-xs text-muted-foreground mt-0.5 leading-tight">
+                          {essentialTest.marathiName}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <div className="text-right flex-shrink-0 ml-3">
+                  <div className="text-right flex-shrink-0">
                     <div className="text-muted-foreground text-xs line-through">
-                      ₹{test.mrp}/-
+                      ₹{essentialTest.mrp}/-
                     </div>
                     <div className="text-accent font-display font-bold text-base">
-                      ₹{test.offer}/-
+                      ₹{essentialTest.offer}/-
                     </div>
                   </div>
                 </motion.div>
@@ -1093,12 +1124,12 @@ export default function App() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-center mt-8"
+              className="text-center mt-6 sm:mt-8"
             >
-              <a href="#contact">
+              <a href="#contact" className="block sm:inline-block">
                 <Button
                   size="lg"
-                  className="bg-primary hover:bg-primary-dark text-white font-bold px-8 gap-2"
+                  className="w-full sm:w-auto bg-primary hover:bg-primary-dark text-white font-bold px-8 gap-2 min-h-[48px]"
                   data-ocid="offers.primary_button"
                 >
                   Book an Offer Test <ChevronRight className="w-4 h-4" />
@@ -1109,27 +1140,27 @@ export default function App() {
         </section>
 
         {/* Why Us */}
-        <section id="why-us" className="py-20 bg-background">
+        <section id="why-us" className="py-12 sm:py-16 md:py-20 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-10 sm:mb-12"
             >
               <div className="inline-block px-3 py-1 rounded-full bg-secondary text-primary font-semibold text-xs uppercase tracking-widest mb-4">
                 Why Choose Us
               </div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
                 Quality You Can Count On
               </h2>
-              <p className="text-muted-foreground max-w-xl mx-auto">
+              <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
                 At Sai Healthcare, we don't just run tests — we deliver peace of
                 mind.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {WHY_US.map((item, i) => {
                 const Icon = item.icon;
                 return (
@@ -1139,18 +1170,18 @@ export default function App() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className="relative bg-white rounded-2xl p-6 shadow-teal-sm border border-border text-center group hover:shadow-teal-md transition-all"
+                    className="relative bg-white rounded-2xl p-5 sm:p-6 shadow-teal-sm border border-border text-center group hover:shadow-teal-md transition-all"
                   >
                     <div
-                      className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform"
+                      className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform"
                       style={{
                         background:
                           "linear-gradient(135deg, oklch(0.35 0.09 210), oklch(0.51 0.12 200))",
                       }}
                     >
-                      <Icon className="w-6 h-6 text-white" />
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <h3 className="font-display font-bold text-foreground mb-3">
+                    <h3 className="font-display font-bold text-foreground mb-2 sm:mb-3">
                       {item.title}
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">
@@ -1164,21 +1195,24 @@ export default function App() {
         </section>
 
         {/* Home Collection */}
-        <section id="home-collection" className="py-20 bg-background">
+        <section
+          id="home-collection"
+          className="py-12 sm:py-16 md:py-20 bg-background"
+        >
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-10"
+              className="text-center mb-8 sm:mb-10"
             >
               <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest mb-4">
                 Home Collection
               </div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
                 Book a Home Sample Collection
               </h2>
-              <p className="text-muted-foreground max-w-xl mx-auto">
+              <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
                 Our trained phlebotomists will visit your home at your preferred
                 time slot to collect samples — fast, safe, and convenient.
               </p>
@@ -1190,7 +1224,7 @@ export default function App() {
         {/* Contact */}
         <section
           id="contact"
-          className="py-20"
+          className="py-12 sm:py-16 md:py-20"
           style={{
             background:
               "linear-gradient(180deg, oklch(0.96 0.01 200) 0%, oklch(0.93 0.015 200) 100%)",
@@ -1201,34 +1235,34 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-10 sm:mb-12"
             >
               <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs uppercase tracking-widest mb-4">
                 Contact Us
               </div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
                 Get in Touch
               </h2>
-              <p className="text-muted-foreground max-w-xl mx-auto">
+              <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
                 Book a test, ask about a service, or request a home sample
                 collection. We're here to help.
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-10 items-start">
+            <div className="grid md:grid-cols-2 gap-6 sm:gap-10 items-start">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="bg-white rounded-2xl shadow-teal-md p-8 border border-border">
-                  <h3 className="font-display font-bold text-xl text-foreground mb-6">
+                <div className="bg-white rounded-2xl shadow-teal-md p-5 sm:p-8 border border-border">
+                  <h3 className="font-display font-bold text-xl text-foreground mb-5 sm:mb-6">
                     Our Location & Contact
                   </h3>
 
-                  <div className="space-y-5">
-                    <div className="flex gap-4">
+                  <div className="space-y-4 sm:space-y-5">
+                    <div className="flex gap-3 sm:gap-4">
                       <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                         <MapPin className="w-5 h-5 text-primary" />
                       </div>
@@ -1248,7 +1282,7 @@ export default function App() {
                       </div>
                     </div>
 
-                    <div className="flex gap-4 items-center">
+                    <div className="flex gap-3 sm:gap-4 items-center">
                       <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                         <Phone className="w-5 h-5 text-primary" />
                       </div>
@@ -1265,7 +1299,7 @@ export default function App() {
                       </div>
                     </div>
 
-                    <div className="flex gap-4 items-center">
+                    <div className="flex gap-3 sm:gap-4 items-center">
                       <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                         <Mail className="w-5 h-5 text-primary" />
                       </div>
@@ -1283,7 +1317,7 @@ export default function App() {
                     </div>
 
                     {/* WhatsApp contact row */}
-                    <div className="flex gap-4 items-center">
+                    <div className="flex gap-3 sm:gap-4 items-center">
                       <div className="w-10 h-10 rounded-lg bg-[#25D366]/10 flex items-center justify-center flex-shrink-0">
                         <WhatsAppIcon className="w-5 h-5 text-[#25D366]" />
                       </div>
@@ -1304,7 +1338,7 @@ export default function App() {
                   </div>
 
                   <div
-                    className="mt-8 p-4 rounded-xl"
+                    className="mt-6 sm:mt-8 p-3 sm:p-4 rounded-xl"
                     style={{
                       background:
                         "linear-gradient(135deg, oklch(0.35 0.09 210), oklch(0.51 0.12 200))",
@@ -1323,13 +1357,13 @@ export default function App() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="bg-white rounded-2xl shadow-teal-md p-8 border border-border">
-                  <h3 className="font-display font-bold text-xl text-foreground mb-6">
+                <div className="bg-white rounded-2xl shadow-teal-md p-5 sm:p-8 border border-border">
+                  <h3 className="font-display font-bold text-xl text-foreground mb-5 sm:mb-6">
                     Send an Inquiry
                   </h3>
 
                   <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
                         <Label htmlFor="name" className="text-sm font-medium">
                           Full Name *
@@ -1343,7 +1377,7 @@ export default function App() {
                           }
                           required
                           data-ocid="contact.input"
-                          className="border-input focus:border-primary"
+                          className="border-input focus:border-primary min-h-[44px]"
                         />
                       </div>
                       <div className="space-y-1.5">
@@ -1360,7 +1394,7 @@ export default function App() {
                           }
                           required
                           data-ocid="contact.input"
-                          className="border-input focus:border-primary"
+                          className="border-input focus:border-primary min-h-[44px]"
                         />
                       </div>
                     </div>
@@ -1378,24 +1412,25 @@ export default function App() {
                           setForm((p) => ({ ...p, email: e.target.value }))
                         }
                         data-ocid="contact.input"
-                        className="border-input focus:border-primary"
+                        className="border-input focus:border-primary min-h-[44px]"
                       />
                     </div>
 
                     <div className="space-y-1.5">
                       <Label htmlFor="message" className="text-sm font-medium">
-                        Message / Tests Required
+                        Message *
                       </Label>
                       <Textarea
                         id="message"
-                        placeholder="Describe the tests you need or any questions..."
+                        placeholder="How can we help you?"
                         value={form.message}
                         onChange={(e) =>
                           setForm((p) => ({ ...p, message: e.target.value }))
                         }
+                        required
                         rows={4}
                         data-ocid="contact.textarea"
-                        className="border-input focus:border-primary resize-none"
+                        className="border-input focus:border-primary"
                       />
                     </div>
 
@@ -1403,7 +1438,7 @@ export default function App() {
                       type="submit"
                       disabled={submitInquiry.isPending}
                       data-ocid="contact.submit_button"
-                      className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-5 text-base gap-2"
+                      className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-5 text-base gap-2 min-h-[52px]"
                     >
                       {submitInquiry.isPending ? (
                         <>
@@ -1444,18 +1479,19 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-10 rounded-2xl overflow-hidden shadow-teal-md border border-border"
+              className="mt-8 sm:mt-10 rounded-2xl overflow-hidden shadow-teal-md border border-border"
               data-ocid="contact.map_marker"
             >
               <iframe
                 title="Sai Healthcare Location"
                 src="https://maps.google.com/maps?q=20.021471,73.847043&z=17&output=embed"
                 width="100%"
-                height="380"
+                height="300"
                 style={{ border: 0, display: "block" }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-[240px] sm:h-[320px] md:h-[380px]"
               />
             </motion.div>
             <div className="mt-4 text-center">
@@ -1464,21 +1500,21 @@ export default function App() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-ocid="contact.primary_button"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white shadow-md min-h-[48px] text-sm sm:text-base"
                 style={{ background: "oklch(0.55 0.18 208)" }}
               >
-                Get Directions
+                <MapPin className="w-4 h-4" /> Get Directions
               </a>
             </div>
-            <div className="mt-3 text-center text-sm text-gray-600 flex items-center justify-center gap-1">
-              <span>📍</span>
-              <span>
-                Shop No.1, Rutik Arcade, Konark Nagar, Nashik — 422 003
-              </span>
-              <br />
-              <span className="text-xs text-gray-500">
+            <div className="mt-3 text-center">
+              <p className="text-sm text-gray-600 flex flex-col sm:flex-row items-center justify-center gap-1">
+                <span>
+                  📍 Shop No.1, Rutik Arcade, Konark Nagar, Nashik — 422 003
+                </span>
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
                 शॉप नं.१, रुतिक आर्केड, कोणार्क नगर, नाशिक — ४२२ ००३
-              </span>
+              </p>
             </div>
           </div>
         </section>
@@ -1486,14 +1522,14 @@ export default function App() {
 
       {/* Footer */}
       <footer
-        className="text-white py-12"
+        className="text-white py-10 sm:py-12"
         style={{
           background:
             "linear-gradient(135deg, oklch(0.22 0.07 215), oklch(0.30 0.09 208))",
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8 mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8 sm:mb-10">
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/20">
@@ -1525,12 +1561,12 @@ export default function App() {
               <h4 className="font-display font-semibold text-white mb-4">
                 Quick Links
               </h4>
-              <div className="space-y-2">
+              <div className="grid grid-cols-2 sm:grid-cols-1 gap-1 sm:gap-2">
                 {NAV_LINKS.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
-                    className="block text-sm text-white/60 hover:text-white transition-colors"
+                    className="block text-sm text-white/60 hover:text-white transition-colors py-1"
                   >
                     {link.label}
                   </a>
@@ -1538,7 +1574,7 @@ export default function App() {
               </div>
             </div>
 
-            <div>
+            <div className="sm:col-span-2 md:col-span-1">
               <h4 className="font-display font-semibold text-white mb-4">
                 Contact
               </h4>
@@ -1582,11 +1618,11 @@ export default function App() {
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
-            <p className="text-white/40 text-xs">
+          <div className="border-t border-white/10 pt-5 sm:pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <p className="text-white/40 text-xs text-center sm:text-left">
               © {new Date().getFullYear()} Sai Healthcare. All rights reserved.
             </p>
-            <p className="text-white/30 text-xs">
+            <p className="text-white/30 text-xs text-center">
               Built with ❤️ using{" "}
               <a
                 href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(typeof window !== "undefined" ? window.location.hostname : "")}`}
