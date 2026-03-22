@@ -505,6 +505,9 @@ export default function App() {
         email: form.email,
         message: form.message,
       });
+      const whatsappMessage = `*New Inquiry - Sai Healthcare*\nName: ${form.name}\nPhone: ${form.phone}\nEmail: ${form.email}\nMessage: ${form.message}`;
+      const whatsappUrl = `https://wa.me/919356710760?text=${encodeURIComponent(whatsappMessage)}`;
+      window.open(whatsappUrl, "_blank");
       toast.success("Inquiry submitted! We'll contact you shortly.");
       setForm({ name: "", phone: "", email: "", message: "" });
     } catch {
