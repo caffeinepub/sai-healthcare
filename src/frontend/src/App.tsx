@@ -496,23 +496,21 @@ export default function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      await submitInquiry.mutateAsync({
+    const whatsappMessage = `*New Inquiry - Sai Healthcare*\nName: ${form.name}\nPhone: ${form.phone}\nEmail: ${form.email}\nMessage: ${form.message}`;
+    const whatsappUrl = `https://wa.me/919356710760?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, "_blank");
+    toast.success("Opening WhatsApp to send your inquiry!");
+    setForm({ name: "", phone: "", email: "", message: "" });
+    submitInquiry
+      .mutateAsync({
         name: form.name,
         phoneNumber: form.phone,
         email: form.email,
         message: form.message,
-      });
-      const whatsappMessage = `*New Inquiry - Sai Healthcare*\nName: ${form.name}\nPhone: ${form.phone}\nEmail: ${form.email}\nMessage: ${form.message}`;
-      const whatsappUrl = `https://wa.me/919356710760?text=${encodeURIComponent(whatsappMessage)}`;
-      window.open(whatsappUrl, "_blank");
-      toast.success("Inquiry submitted! We'll contact you shortly.");
-      setForm({ name: "", phone: "", email: "", message: "" });
-    } catch {
-      toast.error("Failed to submit. Please call us directly.");
-    }
+      })
+      .catch(() => {});
   };
 
   return (
