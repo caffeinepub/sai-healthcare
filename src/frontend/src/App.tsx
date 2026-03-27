@@ -1323,10 +1323,12 @@ export default function App() {
         style={{ backgroundColor: "#00984A" }}
       >
         <div className="flex flex-col">
-          <span className="text-white font-bold text-base leading-tight">
+          <span className="text-white/80 text-xs leading-tight">
             घरी येऊन टेस्ट करा!
           </span>
-          <span className="text-white/80 text-xs">Book a Home Visit Now</span>
+          <span className="text-white font-bold text-base">
+            Book a Home Visit Now
+          </span>
         </div>
         <button
           type="button"
