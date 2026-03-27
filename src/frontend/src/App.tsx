@@ -132,7 +132,7 @@ export default function App() {
           {/* Brand */}
           <a href="#home" className="flex items-center gap-3 flex-shrink-0">
             <img
-              src="/assets/uploads/IMG-20251117-WA0006-1.jpg"
+              src="/assets/uploads/img-20251117-wa0006-019d2faf-9e01-772c-8183-c74a0b1099a0-1.jpg"
               alt="Sai Healthcare"
               className="h-12 w-auto object-contain rounded"
             />
@@ -304,7 +304,7 @@ export default function App() {
               }}
             >
               <img
-                src="/assets/uploads/IMG-20251117-WA0006-1.jpg"
+                src="/assets/uploads/img-20251117-wa0006-019d2faf-9e01-772c-8183-c74a0b1099a0-1.jpg"
                 alt="Sai Healthcare Logo"
                 className="w-full h-auto object-contain rounded-xl"
               />
@@ -936,7 +936,7 @@ export default function App() {
           {/* Brand */}
           <div>
             <img
-              src="/assets/uploads/IMG-20251117-WA0006-1.jpg"
+              src="/assets/uploads/img-20251117-wa0006-019d2faf-9e01-772c-8183-c74a0b1099a0-1.jpg"
               alt="Sai Healthcare"
               className="h-14 w-auto object-contain rounded mb-3 bg-white/10 p-1"
             />
