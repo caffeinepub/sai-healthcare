@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ["Bricolage Grotesque", "sans-serif"],
+        display: ["Playfair Display", "serif"],
         body: ["Plus Jakarta Sans", "sans-serif"],
       },
       colors: {
@@ -50,9 +50,9 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        "teal-sm": "0 1px 3px 0 oklch(0.35 0.09 210 / 0.15), 0 1px 2px -1px oklch(0.35 0.09 210 / 0.1)",
-        "teal-md": "0 4px 16px -2px oklch(0.35 0.09 210 / 0.2), 0 2px 6px -2px oklch(0.35 0.09 210 / 0.12)",
-        "teal-lg": "0 10px 30px -4px oklch(0.35 0.09 210 / 0.25), 0 4px 12px -4px oklch(0.35 0.09 210 / 0.15)",
+        "red-sm": "0 1px 3px 0 oklch(0.25 0.1 18 / 0.15), 0 1px 2px -1px oklch(0.25 0.1 18 / 0.1)",
+        "red-md": "0 4px 16px -2px oklch(0.25 0.1 18 / 0.2), 0 2px 6px -2px oklch(0.25 0.1 18 / 0.12)",
+        "red-lg": "0 10px 30px -4px oklch(0.25 0.1 18 / 0.25), 0 4px 12px -4px oklch(0.25 0.1 18 / 0.15)",
       },
     },
   },
