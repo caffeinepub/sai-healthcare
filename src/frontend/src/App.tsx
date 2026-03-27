@@ -132,7 +132,7 @@ export default function App() {
           {/* Brand */}
           <a href="#home" className="flex items-center gap-2 flex-shrink-0">
             <span className="text-primary font-bold text-xl tracking-tight">
-              Sai Healthcare
+              <strong>SAI HEALTHCARE</strong>
             </span>
           </a>
 
@@ -234,13 +234,11 @@ export default function App() {
               YOUR HEALTH, OUR COMMITMENT
             </div>
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-normal leading-tight mb-5">
-              Sai Healthcare —
+              <strong>SAI HEALTHCARE</strong> —
               <br />
-              <span className="text-yellow-300">
-                Accurate Tests, Healthy Lives
-              </span>
+              <span className="text-yellow-300">जिथे आरोग्य सुरू होते</span>
               <br />
-              Nashik's Trusted Lab
+              Where Your Health Journey Begins
             </h1>
             <p className="text-white/85 text-base md:text-lg mb-3 leading-relaxed">
               All Types of Blood – Urine – Sputum Tests Available Here
@@ -292,15 +290,15 @@ export default function App() {
             </h2>
             <div className="w-16 h-1 bg-primary mx-auto mb-5 rounded-full" />
             <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Sai Healthcare is a trusted pathology laboratory in Nashik,
-              committed to providing accurate and affordable diagnostic services
-              to every family in the region.
+              <strong>SAI HEALTHCARE</strong> is a trusted pathology laboratory
+              in Nashik, committed to providing accurate and affordable
+              diagnostic services to every family in the region.
             </p>
           </div>
 
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-foreground mb-4">
-              Why Choose Sai Healthcare?
+              Why Choose <strong>SAI HEALTHCARE</strong>?
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Located at Shop No.1, Rutik Arcade, Konark Nagar, Nashik — we
@@ -763,7 +761,7 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() =>
-                    openWhatsApp("नमस्कार! Sai Healthcare बद्दल माहिती हवी आहे.")
+                    openWhatsApp("नमस्कार! SAI HEALTHCARE बद्दल माहिती हवी आहे.")
                   }
                   data-ocid="contact.whatsapp.button"
                   className="mt-6 w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-full transition-colors"
@@ -856,7 +854,7 @@ export default function App() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Sai Healthcare Location Map"
+                  title="SAI HEALTHCARE Location Map"
                 />
                 <div className="p-5 border-t border-border">
                   <div className="flex items-start gap-3 mb-4">
@@ -951,7 +949,7 @@ export default function App() {
             <button
               type="button"
               onClick={() =>
-                openWhatsApp("नमस्कार! Sai Healthcare बद्दल माहिती हवी आहे.")
+                openWhatsApp("नमस्कार! SAI HEALTHCARE बद्दल माहिती हवी आहे.")
               }
               className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors mb-3"
             >
@@ -967,8 +965,8 @@ export default function App() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-white/15 text-center text-white/45 text-xs">
-          © {new Date().getFullYear()} Sai Healthcare. All rights reserved. |
-          Built with ❤️ using{" "}
+          © {new Date().getFullYear()} <strong>SAI HEALTHCARE</strong>. All
+          rights reserved. | Built with ❤️ using{" "}
           <a
             href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(typeof window !== "undefined" ? window.location.hostname : "")}`}
             target="_blank"
@@ -984,7 +982,7 @@ export default function App() {
       <button
         type="button"
         onClick={() =>
-          openWhatsApp("नमस्कार! Sai Healthcare बद्दल माहिती हवी आहे.")
+          openWhatsApp("नमस्कार! SAI HEALTHCARE बद्दल माहिती हवी आहे.")
         }
         data-ocid="whatsapp.floating.button"
         aria-label="Chat on WhatsApp"
