@@ -169,9 +169,6 @@ export default function App() {
             </div>
             <span className="text-foreground font-extrabold text-lg tracking-tight">
               <strong>SAI HEALTHCARE</strong>
-              <span className="block text-xs text-gray-500 font-normal">
-                साई हेल्थकेअर
-              </span>
             </span>
           </a>
 
@@ -323,9 +320,6 @@ export default function App() {
               </div>
               <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
                 <strong className="text-primary">SAI HEALTHCARE</strong>
-                <span className="block text-xl sm:text-2xl text-primary font-semibold">
-                  साई हेल्थकेअर
-                </span>
                 <br />
                 <span className="text-gray-700 text-2xl sm:text-3xl md:text-4xl">
                   जिथे आरोग्य सुरू होते
@@ -395,9 +389,6 @@ export default function App() {
             <div className="hero-card rounded-2xl p-8 text-white shadow-xl">
               <h2 className="text-xl font-bold mb-1">
                 <strong>SAI HEALTHCARE</strong>
-                <span className="block text-white/80 text-sm font-normal">
-                  साई हेल्थकेअर
-                </span>
               </h2>
               <p className="text-white/70 text-sm italic mb-6">
                 Nashik's Trusted Pathology Lab
@@ -781,11 +772,7 @@ export default function App() {
               About Us
             </span>
             <h2 className="section-heading text-2xl md:text-3xl mt-1 mb-4">
-              का निवडावे <strong>SAI HEALTHCARE</strong>{" "}
-              <span className="font-normal text-gray-500 text-lg">
-                | साई हेल्थकेअर
-              </span>
-              ?
+              Why Choose <strong>SAI HEALTHCARE</strong>?
             </h2>
             <p className="text-gray-500 text-sm max-w-2xl mx-auto">
               <strong>SAI HEALTHCARE</strong> is a trusted pathology laboratory
@@ -1060,9 +1047,6 @@ export default function App() {
               </div>
               <span className="font-extrabold text-base">
                 <strong>SAI HEALTHCARE</strong>
-                <span className="text-gray-400 text-xs font-normal block">
-                  साई हेल्थकेअर
-                </span>
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
@@ -1130,8 +1114,8 @@ export default function App() {
         </div>
 
         <div className="mt-10 pt-6 border-t border-gray-800 text-center text-gray-500 text-xs">
-          © {new Date().getFullYear()} <strong>SAI HEALTHCARE</strong> (साई
-          हेल्थकेअर). All rights reserved. | Built with ❤️ using{" "}
+          © {new Date().getFullYear()} <strong>SAI HEALTHCARE</strong>. All
+          rights reserved. | Built with ❤️ using{" "}
           <a
             href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(typeof window !== "undefined" ? window.location.hostname : "")}`}
             target="_blank"
