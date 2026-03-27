@@ -7,6 +7,8 @@ import { Textarea } from "@/components/ui/textarea";
 import {
   Award,
   CheckCircle,
+  ChevronLeft,
+  ChevronRight,
   Clock,
   FlaskConical,
   Home,
@@ -19,7 +21,7 @@ import {
   Star,
   X,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const PHONE = "919356710760";
 const WA_BASE = `https://wa.me/${PHONE}`;
@@ -101,6 +103,51 @@ const whyFeatures = [
 ];
 
 export default function App() {
+  const [bannerIndex, setBannerIndex] = useState(0);
+  const bannerSlides = [
+    {
+      src: "/assets/generated/banner1.dim_1200x450.jpg",
+      badge: "🩺 Health Packages",
+      title: "Advance Health Package",
+      subtitle: "CBC, Sugar, Thyroid, Lipid, LFT, KFT + more",
+      offer: "SAVE ₹3501",
+      price: "Only ₹1499/-",
+      cta: "Book Now on WhatsApp",
+    },
+    {
+      src: "/assets/generated/banner2.dim_1200x450.jpg",
+      badge: "🔬 Lab Tests",
+      title: "Basic Health Package",
+      subtitle: "CBC, Blood Sugar, Urine Routine + more",
+      offer: "SAVE ₹2001",
+      price: "Only ₹999/-",
+      cta: "Book Now on WhatsApp",
+    },
+    {
+      src: "/assets/generated/banner3.dim_1200x450.jpg",
+      badge: "🏠 Home Collection",
+      title: "घरपोच नमुना संकलन",
+      subtitle: "आरामात घरी बसून रक्त तपासणी करा",
+      offer: "FREE Home Visit",
+      price: "Available 7AM–10PM",
+      cta: "Call / WhatsApp",
+    },
+    {
+      src: "/assets/generated/banner4.dim_1200x450.jpg",
+      badge: "✅ Trusted Lab",
+      title: "100% Accurate Reports",
+      subtitle: "Same Day Reports | ISO Quality Standards",
+      offer: "ALL DAYS OPEN",
+      price: "7:00 AM – 10:00 PM",
+      cta: "Get Directions",
+    },
+  ];
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setBannerIndex((prev) => (prev + 1) % bannerSlides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const [colName, setColName] = useState("");
@@ -126,7 +173,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-white" id="home">
+    <div className="min-h-screen bg-white pb-20" id="home">
       {/* ── TOP INFO BAR ── */}
       <div className="topbar text-white text-xs py-2 px-4 hidden sm:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -308,6 +355,109 @@ export default function App() {
               Open All Days
             </span>
           </div>
+        </div>
+      </div>
+
+      {/* ── IMAGE BANNER CAROUSEL ── */}
+      <div
+        className="relative w-full overflow-hidden bg-gray-100"
+        style={{ height: "clamp(260px, 55vw, 620px)" }}
+      >
+        {/* Slides container */}
+        <div
+          className="flex h-full transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${bannerIndex * 100}%)` }}
+        >
+          {bannerSlides.map((slide, i) => (
+            <div
+              key={slide.src}
+              className="relative w-full h-full flex-shrink-0"
+              style={{ minWidth: "100%" }}
+            >
+              <img
+                src={slide.src}
+                alt={`SAI HEALTHCARE Banner ${i + 1}`}
+                className="w-full h-full object-cover"
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-transparent" />
+              {/* Offer content */}
+              <div className="absolute bottom-6 left-5 md:left-12 z-10 max-w-[55%] flex flex-col gap-2">
+                <span
+                  className="inline-block text-white text-xs font-semibold px-3 py-1 rounded-full w-fit"
+                  style={{ background: "#00984A" }}
+                >
+                  {slide.badge}
+                </span>
+                <h2 className="text-white font-bold text-lg md:text-2xl leading-tight drop-shadow">
+                  {slide.title}
+                </h2>
+                <p className="text-white/80 text-xs md:text-sm leading-snug">
+                  {slide.subtitle}
+                </p>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span
+                    className="text-white text-xs font-bold px-3 py-1 rounded-full"
+                    style={{ background: "#FF6B00" }}
+                  >
+                    {slide.offer}
+                  </span>
+                  <span className="text-white font-semibold text-sm md:text-base">
+                    {slide.price}
+                  </span>
+                </div>
+                <a
+                  href="https://wa.me/919356710760"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block text-white text-xs font-semibold px-4 py-1.5 rounded-full w-fit mt-1 transition-opacity hover:opacity-90"
+                  style={{ background: "#00984A" }}
+                >
+                  {slide.cta}
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* Left Arrow */}
+        <button
+          type="button"
+          onClick={() =>
+            setBannerIndex(
+              (prev) => (prev - 1 + bannerSlides.length) % bannerSlides.length,
+            )
+          }
+          className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/70 hover:bg-white/90 flex items-center justify-center shadow transition-colors z-10"
+          aria-label="Previous banner"
+        >
+          <ChevronLeft className="w-5 h-5 text-gray-700" />
+        </button>
+        {/* Right Arrow */}
+        <button
+          type="button"
+          onClick={() =>
+            setBannerIndex((prev) => (prev + 1) % bannerSlides.length)
+          }
+          className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/70 hover:bg-white/90 flex items-center justify-center shadow transition-colors z-10"
+          aria-label="Next banner"
+        >
+          <ChevronRight className="w-5 h-5 text-gray-700" />
+        </button>
+        {/* Dot indicators */}
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          {bannerSlides.map((slide2, i) => (
+            <button
+              key={slide2.src}
+              type="button"
+              onClick={() => setBannerIndex(i)}
+              className="w-2.5 h-2.5 rounded-full transition-all duration-300"
+              style={{
+                background:
+                  i === bannerIndex ? "#00984A" : "rgba(255,255,255,0.7)",
+              }}
+              aria-label={`Go to banner ${i + 1}`}
+            />
+          ))}
         </div>
       </div>
 
@@ -1151,7 +1301,7 @@ export default function App() {
         }
         data-ocid="whatsapp.floating.button"
         aria-label="Chat on WhatsApp"
-        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110"
+        className="fixed bottom-20 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110"
       >
         <svg
           role="img"
@@ -1165,6 +1315,30 @@ export default function App() {
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
       </button>
+
+      {/* ── STICKY BOOK HOME VISIT BAR ── */}
+      <div
+        data-ocid="home_visit.bar"
+        className="fixed bottom-0 left-0 right-0 z-40 flex items-center justify-between px-4 py-3 shadow-2xl"
+        style={{ backgroundColor: "#00984A" }}
+      >
+        <div className="flex flex-col">
+          <span className="text-white font-bold text-base leading-tight">
+            घरी येऊन टेस्ट करा!
+          </span>
+          <span className="text-white/80 text-xs">Book a Home Visit Now</span>
+        </div>
+        <button
+          type="button"
+          data-ocid="home_visit.primary_button"
+          onClick={() =>
+            openWhatsApp("नमस्कार! मला घरी येऊन टेस्ट करायची आहे. कृपया माहिती द्या.")
+          }
+          className="flex items-center gap-2 bg-white text-green-700 font-bold text-sm px-5 py-2.5 rounded-full shadow-md hover:bg-orange-50 hover:text-orange-600 transition-all active:scale-95"
+        >
+          📞 Book Now
+        </button>
+      </div>
     </div>
   );
 }
