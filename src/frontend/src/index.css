@@ -1,13 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
 @font-face {
   font-family: "Plus Jakarta Sans";
   src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
   font-weight: 200 700;
-  font-display: swap;
-}
-@font-face {
-  font-family: "DM Serif Display";
-  src: url("/assets/fonts/DMSerifDisplay.woff2") format("woff2");
-  font-weight: 400;
   font-display: swap;
 }
 
@@ -17,28 +13,32 @@
 
 @layer base {
   :root {
-    /* Clean White Medical / Metropolis-style Teal-Green Palette */
+    /* Metropolis India Green Palette */
     --background: 1 0 0;
-    --foreground: 0.15 0.01 250;
+    --foreground: 0.15 0.01 145;
     --card: 1 0 0;
-    --card-foreground: 0.15 0.01 250;
+    --card-foreground: 0.15 0.01 145;
     --popover: 1 0 0;
-    --popover-foreground: 0.15 0.01 250;
-    --primary: 0.52 0.155 175;
+    --popover-foreground: 0.15 0.01 145;
+    /* #00984A → oklch(0.56 0.165 145) */
+    --primary: 0.56 0.165 145;
     --primary-foreground: 1 0 0;
-    --primary-dark: 0.4 0.135 175;
-    --primary-light: 0.67 0.13 175;
-    --secondary: 0.97 0.005 175;
-    --secondary-foreground: 0.52 0.155 175;
-    --muted: 0.96 0.003 210;
-    --muted-foreground: 0.5 0.015 210;
-    --accent: 0.94 0.02 80;
-    --accent-foreground: 0.3 0.12 80;
+    /* #007A3A → oklch(0.46 0.14 145) */
+    --primary-dark: 0.46 0.14 145;
+    /* lighter shade for hover tints */
+    --primary-light: 0.72 0.13 145;
+    /* #E8F5EE tint → oklch(0.96 0.03 145) */
+    --secondary: 0.96 0.03 145;
+    --secondary-foreground: 0.56 0.165 145;
+    --muted: 0.97 0.005 145;
+    --muted-foreground: 0.5 0.01 145;
+    --accent: 0.65 0.22 40;
+    --accent-foreground: 1 0 0;
     --destructive: 0.53 0.22 25;
     --destructive-foreground: 1 0 0;
-    --border: 0.92 0.005 210;
-    --input: 0.9 0.005 210;
-    --ring: 0.52 0.155 175;
+    --border: 0.92 0.005 145;
+    --input: 0.9 0.005 145;
+    --ring: 0.56 0.165 145;
     --radius: 0.5rem;
   }
 
@@ -52,40 +52,83 @@
 
   body {
     @apply bg-white text-foreground antialiased;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Inter", "Plus Jakarta Sans", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Poppins", "Plus Jakarta Sans", sans-serif;
   }
 }
 
 @layer components {
+  .offer-badge {
+    background-color: #ff6b00;
+    color: white;
+  }
+
   .topbar {
     background: linear-gradient(
       90deg,
-      oklch(0.4 0.135 175) 0%,
-      oklch(0.35 0.12 175) 100%
+      oklch(0.46 0.14 145) 0%,
+      oklch(0.4 0.13 145) 100%
     );
   }
 
   .hero-card {
     background: linear-gradient(
       135deg,
-      oklch(0.52 0.155 175) 0%,
-      oklch(0.38 0.14 175) 100%
+      oklch(0.56 0.165 145) 0%,
+      oklch(0.42 0.145 145) 100%
     );
   }
 
   .pkg-advance-header {
     background: linear-gradient(
       135deg,
-      oklch(0.52 0.155 175) 0%,
-      oklch(0.38 0.14 175) 100%
+      oklch(0.56 0.165 145) 0%,
+      oklch(0.42 0.145 145) 100%
     );
   }
 
   .pkg-basic-header {
     background: linear-gradient(
       135deg,
-      oklch(0.45 0.14 195) 0%,
-      oklch(0.35 0.12 195) 100%
+      oklch(0.5 0.155 155) 0%,
+      oklch(0.38 0.13 155) 100%
     );
+  }
+
+  /* Section heading with green underline accent */
+  .section-heading {
+    font-family: "Poppins", sans-serif;
+    @apply font-bold text-gray-900;
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-heading::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 3px;
+    background-color: #00984a;
+    border-radius: 2px;
+    margin: 10px auto 0;
+  }
+
+  /* Pill button base styles */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-3 rounded-full transition-colors text-sm uppercase tracking-wide shadow-sm;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-primary text-primary font-semibold px-6 py-3 rounded-full hover:bg-primary hover:text-white transition-colors text-sm uppercase tracking-wide;
+    font-family: "Poppins", sans-serif;
   }
 }

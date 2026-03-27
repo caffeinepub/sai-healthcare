@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Award,
@@ -180,7 +181,7 @@ export default function App() {
                 key={l.href}
                 href={l.href}
                 data-ocid={`nav.${l.label.toLowerCase().replace(/\s+/g, "_")}.link`}
-                className="text-gray-600 hover:text-primary px-3 py-2 text-xs font-semibold tracking-wide transition-colors rounded-md hover:bg-primary/5"
+                className="text-gray-600 hover:text-primary px-3 py-2 text-xs font-heading font-semibold tracking-widest uppercase transition-colors rounded-md hover:bg-primary/5"
               >
                 {l.label}
               </a>
@@ -317,7 +318,7 @@ export default function App() {
                 <Award className="w-3.5 h-3.5" />
                 NABL CERTIFIED PATHOLOGY LAB · NASHIK
               </div>
-              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-normal text-gray-900 leading-tight mb-4">
+              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
                 <strong className="text-primary">SAI HEALTHCARE</strong>
                 <br />
                 <span className="text-gray-700 text-2xl sm:text-3xl md:text-4xl">
@@ -338,14 +339,14 @@ export default function App() {
                 <a
                   href="#packages"
                   data-ocid="hero.packages.primary_button"
-                  className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold px-6 py-3 rounded-full transition-colors shadow-md text-sm"
+                  className="btn-primary shadow-md"
                 >
                   View Health Packages
                 </a>
                 <a
                   href="#collection"
                   data-ocid="hero.collection.secondary_button"
-                  className="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary font-bold px-6 py-3 rounded-full hover:bg-primary/5 transition-colors text-sm"
+                  className="btn-outline"
                 >
                   <Home className="w-4 h-4" />
                   Book Home Collection
@@ -439,13 +440,13 @@ export default function App() {
       </section>
 
       {/* ── HEALTH PACKAGES ── */}
-      <section id="packages" className="py-16 px-4 bg-gray-50">
+      <section id="packages" className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
               Best Value
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-1 mb-2">
+            <h2 className="section-heading text-2xl md:text-3xl mt-1 mb-4">
               Health Packages
             </h2>
             <p className="text-gray-500 text-sm">
@@ -469,7 +470,7 @@ export default function App() {
                       अ‍ॅडव्हान्स हेल्थ चेकअप | संपूर्ण आरोग्य तपासणी
                     </p>
                   </div>
-                  <span className="bg-amber-400 text-amber-900 text-xs font-extrabold px-2.5 py-1 rounded-full whitespace-nowrap ml-2">
+                  <span className="offer-badge text-xs font-extrabold px-2.5 py-1 rounded-full whitespace-nowrap ml-2">
                     SAVE ₹3501
                   </span>
                 </div>
@@ -529,7 +530,7 @@ export default function App() {
                       बेसिक हेल्थ चेकअप | मूलभूत आरोग्य तपासणी
                     </p>
                   </div>
-                  <span className="bg-amber-400 text-amber-900 text-xs font-extrabold px-2.5 py-1 rounded-full whitespace-nowrap ml-2">
+                  <span className="offer-badge text-xs font-extrabold px-2.5 py-1 rounded-full whitespace-nowrap ml-2">
                     SAVE ₹2001
                   </span>
                 </div>
@@ -578,13 +579,13 @@ export default function App() {
       </section>
 
       {/* ── ESSENTIAL TESTS ── */}
-      <section id="tests" className="py-16 px-4 bg-white">
+      <section id="tests" className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
               Offer Prices
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-1 mb-1">
+            <h2 className="section-heading text-2xl md:text-3xl mt-1 mb-4">
               Essential Blood Tests
             </h2>
             <p className="text-gray-500 text-sm">
@@ -612,7 +613,7 @@ export default function App() {
                         {test.mr}
                       </p>
                     </div>
-                    <span className="bg-green-100 text-green-700 text-xs font-extrabold px-2 py-0.5 rounded-full ml-2 whitespace-nowrap">
+                    <span className="offer-badge text-xs font-extrabold px-2 py-0.5 rounded-full ml-2 whitespace-nowrap">
                       {savePct}% OFF
                     </span>
                   </div>
@@ -652,7 +653,7 @@ export default function App() {
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
               Doorstep Service
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-1 mb-1">
+            <h2 className="section-heading text-2xl md:text-3xl mt-1 mb-4">
               Book Home Collection
             </h2>
             <p className="text-gray-500 text-sm">
@@ -724,9 +725,10 @@ export default function App() {
                   </Label>
                   <Input
                     id="colTest"
+                    type="text"
                     value={colTest}
                     onChange={(e) => setColTest(e.target.value)}
-                    placeholder="कोणती तपासणी / पॅकेज"
+                    placeholder="तपासणी / पॅकेजचे नाव लिहा"
                     required
                     className="mt-1"
                     data-ocid="collection.test.input"
@@ -769,7 +771,7 @@ export default function App() {
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
               About Us
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-1 mb-2">
+            <h2 className="section-heading text-2xl md:text-3xl mt-1 mb-4">
               Why Choose <strong>SAI HEALTHCARE</strong>?
             </h2>
             <p className="text-gray-500 text-sm max-w-2xl mx-auto">
@@ -839,7 +841,7 @@ export default function App() {
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
               Get In Touch
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-1">
+            <h2 className="section-heading text-2xl md:text-3xl mt-1 mb-4">
               Contact Us
             </h2>
           </div>

@@ -5,9 +5,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Plus Jakarta Sans", "sans-serif"],
-        display: ["DM Serif Display", "serif"],
-        body: ["Plus Jakarta Sans", "sans-serif"],
+        sans: ["Inter", "Plus Jakarta Sans", "sans-serif"],
+        heading: ["Poppins", "Plus Jakarta Sans", "sans-serif"],
+        display: ["Poppins", "Plus Jakarta Sans", "sans-serif"],
+        body: ["Inter", "Plus Jakarta Sans", "sans-serif"],
       },
       colors: {
         background: "oklch(var(--background) / <alpha-value>)",
