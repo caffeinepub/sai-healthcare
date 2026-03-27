@@ -46,7 +46,7 @@ const essentialTests = [
 ];
 
 const advanceTests = [
-  { name: "Iron Studies", desc: "लोहाची पातळी व अॅनिमिया तपासणी" },
+  { name: "Iron Studies", desc: "लोहाची पातळी व ॲनिमिया तपासणी" },
   { name: "LFT (Liver Function Test)", desc: "यकृताचे कार्य तपासते" },
   { name: "Lipid Profile", desc: "कोलेस्टेरॉल व हृदयाचा धोका" },
   { name: "Thyroid Profile", desc: "थायरॉईड संप्रेरकांची पातळी" },
@@ -130,20 +130,10 @@ export default function App() {
       <header className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           {/* Brand */}
-          <a href="#home" className="flex items-center gap-3 flex-shrink-0">
-            <img
-              src="/assets/uploads/img-20251117-wa0006-019d2faf-9e01-772c-8183-c74a0b1099a0-1.jpg"
-              alt="Sai Healthcare"
-              className="h-12 w-auto object-contain rounded"
-            />
-            <div className="leading-tight border-l-4 border-primary pl-3">
-              <div className="font-bold text-lg text-primary tracking-wide">
-                SAI HEALTHCARE
-              </div>
-              <div className="text-xs text-muted-foreground font-medium tracking-widest">
-                PATHOLOGY LAB | NASHIK
-              </div>
-            </div>
+          <a href="#home" className="flex items-center gap-2 flex-shrink-0">
+            <span className="text-primary font-bold text-xl tracking-tight">
+              Sai Healthcare
+            </span>
           </a>
 
           {/* Desktop Nav */}
@@ -215,7 +205,7 @@ export default function App() {
         className="relative overflow-hidden"
         aria-label="Hero"
         style={{
-          background: "linear-gradient(135deg, #2563eb 0%, #1e40af 100%)",
+          background: "linear-gradient(135deg, #16a34a 0%, #15803d 100%)",
           minHeight: "85vh",
         }}
       >
@@ -241,7 +231,7 @@ export default function App() {
           {/* Text */}
           <div className="flex-1 text-white text-center md:text-left">
             <div className="inline-block bg-white/20 text-white text-xs font-semibold px-4 py-1.5 rounded-full mb-5 tracking-widest">
-              NASHIK&apos;S TRUSTED PATHOLOGY LAB
+              YOUR HEALTH, OUR COMMITMENT
             </div>
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-normal leading-tight mb-5">
               Trust Sai Healthcare:
@@ -288,41 +278,11 @@ export default function App() {
               </span>
             </div>
           </div>
-
-          {/* Logo Card */}
-          <div className="relative flex-shrink-0">
-            <div
-              className="absolute inset-0 rounded-3xl blur-2xl opacity-30 scale-105"
-              style={{ background: "white" }}
-            />
-            <div
-              className="relative bg-white rounded-3xl shadow-2xl p-6 flex flex-col items-center justify-center gap-4"
-              style={{
-                width: "280px",
-                minHeight: "280px",
-                border: "3px solid rgba(255,255,255,0.4)",
-              }}
-            >
-              <img
-                src="/assets/uploads/img-20251117-wa0006-019d2faf-9e01-772c-8183-c74a0b1099a0-1.jpg"
-                alt="Sai Healthcare Logo"
-                className="w-full h-auto object-contain rounded-xl"
-              />
-              <div className="text-center">
-                <p className="text-primary font-bold text-sm tracking-wide">
-                  SAI HEALTHCARE
-                </p>
-                <p className="text-muted-foreground text-xs">
-                  Pathology Lab | Nashik
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* ── ABOUT US ── */}
-      <section id="about" className="py-20 px-4 bg-blue-50">
+      <section id="about" className="py-20 px-4 bg-green-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <h2 className="font-display text-3xl md:text-4xl font-normal text-primary mb-3">
@@ -391,7 +351,7 @@ export default function App() {
       </section>
 
       {/* ── HEALTH PACKAGES ── */}
-      <section id="packages" className="py-20 px-4 bg-orange-50">
+      <section id="packages" className="py-20 px-4 bg-amber-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="font-display text-3xl md:text-4xl font-normal text-primary mb-3">
@@ -412,7 +372,7 @@ export default function App() {
               <CardHeader
                 className="pb-4"
                 style={{
-                  background: "linear-gradient(135deg, #2563eb, #1e40af)",
+                  background: "linear-gradient(135deg, #16a34a, #15803d)",
                 }}
               >
                 <div className="flex justify-between items-start">
@@ -537,7 +497,7 @@ export default function App() {
       </section>
 
       {/* ── TESTS + BOOKING SPLIT ── */}
-      <section id="tests" className="py-20 px-4 bg-sky-50">
+      <section id="tests" className="py-20 px-4 bg-lime-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <h2 className="font-display text-3xl md:text-4xl font-normal text-primary mb-3">
@@ -628,7 +588,7 @@ export default function App() {
                 <CardHeader
                   className="pb-4"
                   style={{
-                    background: "linear-gradient(135deg, #2563eb, #1e40af)",
+                    background: "linear-gradient(135deg, #16a34a, #15803d)",
                   }}
                 >
                   <CardTitle className="text-white text-xl font-bold">
@@ -741,7 +701,7 @@ export default function App() {
       </section>
 
       {/* ── CONTACT + MAP ── */}
-      <section id="contact" className="py-20 px-4 bg-blue-50">
+      <section id="contact" className="py-20 px-4 bg-green-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <h2 className="font-display text-3xl md:text-4xl font-normal text-primary mb-3">
@@ -929,21 +889,12 @@ export default function App() {
       <footer
         className="text-white py-14 px-4"
         style={{
-          background: "linear-gradient(135deg, #1e3a8a 0%, #1e1b4b 100%)",
+          background: "linear-gradient(135deg, #14532d 0%, #052e16 100%)",
         }}
       >
         <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <img
-              src="/assets/uploads/img-20251117-wa0006-019d2faf-9e01-772c-8183-c74a0b1099a0-1.jpg"
-              alt="Sai Healthcare"
-              className="h-14 w-auto object-contain rounded mb-3 bg-white/10 p-1"
-            />
-            <h3 className="font-bold text-xl mb-2">SAI HEALTHCARE</h3>
-            <p className="text-white/60 text-xs tracking-widest mb-3">
-              PATHOLOGY LAB | NASHIK
-            </p>
             <p className="text-white/70 text-sm leading-relaxed">
               Your trusted pathology laboratory in Nashik — accurate results,
               affordable prices.

@@ -17,28 +17,28 @@
 
 @layer base {
   :root {
-    /* Fresh Teal-Green Healthcare Palette */
-    --background: 0.99 0.004 220;
-    --foreground: 0.12 0.02 220;
+    /* Vibrant Emerald-Green Healthcare Palette */
+    --background: 0.99 0.004 145;
+    --foreground: 0.12 0.02 145;
     --card: 1 0 0;
-    --card-foreground: 0.12 0.02 220;
+    --card-foreground: 0.12 0.02 145;
     --popover: 1 0 0;
-    --popover-foreground: 0.12 0.02 220;
-    --primary: 0.52 0.14 178;
+    --popover-foreground: 0.12 0.02 145;
+    --primary: 0.5 0.17 145;
     --primary-foreground: 1 0 0;
-    --primary-dark: 0.38 0.12 178;
-    --primary-light: 0.65 0.12 178;
-    --secondary: 0.97 0.012 178;
-    --secondary-foreground: 0.52 0.14 178;
-    --muted: 0.95 0.008 178;
-    --muted-foreground: 0.5 0.02 178;
-    --accent: 0.96 0.015 90;
-    --accent-foreground: 0.3 0.1 90;
+    --primary-dark: 0.36 0.15 145;
+    --primary-light: 0.63 0.15 145;
+    --secondary: 0.97 0.012 145;
+    --secondary-foreground: 0.5 0.17 145;
+    --muted: 0.95 0.008 145;
+    --muted-foreground: 0.5 0.02 145;
+    --accent: 0.95 0.016 80;
+    --accent-foreground: 0.3 0.12 80;
     --destructive: 0.53 0.22 25;
     --destructive-foreground: 1 0 0;
-    --border: 0.88 0.014 178;
-    --input: 0.86 0.016 178;
-    --ring: 0.52 0.14 178;
+    --border: 0.88 0.014 145;
+    --input: 0.86 0.016 145;
+    --ring: 0.5 0.17 145;
     --radius: 0.5rem;
   }
 
