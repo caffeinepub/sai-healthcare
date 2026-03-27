@@ -1,16 +1,13 @@
 @font-face {
-  font-family: "Playfair Display";
-  src: url("/assets/fonts/PlayfairDisplay-Variable.woff2") format("woff2");
-  font-weight: 400 800;
-  font-style: normal;
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 200 700;
   font-display: swap;
 }
-
 @font-face {
-  font-family: "Plus Jakarta Sans";
-  src: url("/assets/fonts/PlusJakartaSans-Variable.woff2") format("woff2");
-  font-weight: 200 800;
-  font-style: normal;
+  font-family: "DM Serif Display";
+  src: url("/assets/fonts/DMSerifDisplay.woff2") format("woff2");
+  font-weight: 400;
   font-display: swap;
 }
 
@@ -20,26 +17,28 @@
 
 @layer base {
   :root {
-    --background: 0.98 0.005 30;
-    --foreground: 0.15 0.03 30;
+    /* Fresh Teal-Green Healthcare Palette */
+    --background: 0.99 0.004 220;
+    --foreground: 0.12 0.02 220;
     --card: 1 0 0;
-    --card-foreground: 0.15 0.03 30;
+    --card-foreground: 0.12 0.02 220;
     --popover: 1 0 0;
-    --popover-foreground: 0.15 0.03 30;
-    --primary: 0.35 0.12 18;
+    --popover-foreground: 0.12 0.02 220;
+    --primary: 0.52 0.14 178;
     --primary-foreground: 1 0 0;
-    --primary-dark: 0.25 0.1 18;
-    --secondary: 0.95 0.015 30;
-    --secondary-foreground: 0.25 0.1 18;
-    --muted: 0.96 0.01 30;
-    --muted-foreground: 0.5 0.04 30;
-    --accent: 0.7 0.15 50;
-    --accent-foreground: 0.15 0.03 30;
-    --destructive: 0.53 0.22 30;
+    --primary-dark: 0.38 0.12 178;
+    --primary-light: 0.65 0.12 178;
+    --secondary: 0.97 0.012 178;
+    --secondary-foreground: 0.52 0.14 178;
+    --muted: 0.95 0.008 178;
+    --muted-foreground: 0.5 0.02 178;
+    --accent: 0.96 0.015 90;
+    --accent-foreground: 0.3 0.1 90;
+    --destructive: 0.53 0.22 25;
     --destructive-foreground: 1 0 0;
-    --border: 0.9 0.015 30;
-    --input: 0.9 0.015 30;
-    --ring: 0.35 0.12 18;
+    --border: 0.88 0.014 178;
+    --input: 0.86 0.016 178;
+    --ring: 0.52 0.14 178;
     --radius: 0.5rem;
   }
 
@@ -52,15 +51,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-body antialiased;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-display;
+    @apply bg-background text-foreground antialiased;
+    font-family: "Plus Jakarta Sans", sans-serif;
   }
 }

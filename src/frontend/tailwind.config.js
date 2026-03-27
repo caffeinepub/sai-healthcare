@@ -5,7 +5,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ["Playfair Display", "serif"],
+        sans: ["Plus Jakarta Sans", "sans-serif"],
+        display: ["DM Serif Display", "serif"],
         body: ["Plus Jakarta Sans", "sans-serif"],
       },
       colors: {
@@ -23,6 +24,7 @@ export default {
           DEFAULT: "oklch(var(--primary) / <alpha-value>)",
           foreground: "oklch(var(--primary-foreground) / <alpha-value>)",
           dark: "oklch(var(--primary-dark) / <alpha-value>)",
+          light: "oklch(var(--primary-light) / <alpha-value>)",
         },
         secondary: {
           DEFAULT: "oklch(var(--secondary) / <alpha-value>)",
@@ -50,9 +52,9 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        "red-sm": "0 1px 3px 0 oklch(0.25 0.1 18 / 0.15), 0 1px 2px -1px oklch(0.25 0.1 18 / 0.1)",
-        "red-md": "0 4px 16px -2px oklch(0.25 0.1 18 / 0.2), 0 2px 6px -2px oklch(0.25 0.1 18 / 0.12)",
-        "red-lg": "0 10px 30px -4px oklch(0.25 0.1 18 / 0.25), 0 4px 12px -4px oklch(0.25 0.1 18 / 0.15)",
+        card: "0 4px 24px 0 oklch(0.52 0.14 178 / 0.10)",
+        glow: "0 0 32px 0 oklch(0.52 0.14 178 / 0.25)",
+        "card-hover": "0 6px 24px 0 oklch(0 0 0 / 0.12)",
       },
     },
   },
