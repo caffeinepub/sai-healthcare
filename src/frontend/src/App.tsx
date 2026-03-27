@@ -849,6 +849,19 @@ export default function App() {
         </section>
 
         {/* Services */}
+
+        {/* उपलब्ध सुविधा Banner */}
+        <section className="py-6 sm:py-8 bg-background">
+          <div className="container mx-auto px-4">
+            <img
+              src="/assets/generated/sai-healthcare-banner-5x2.5ft.dim_1500x750.jpg"
+              alt="उपलब्ध सुविधा - Sai Healthcare Available Services"
+              className="w-full rounded-xl shadow-lg object-cover"
+              data-ocid="services.banner"
+            />
+          </div>
+        </section>
+
         <section
           id="services"
           className="py-12 sm:py-16 md:py-20"
