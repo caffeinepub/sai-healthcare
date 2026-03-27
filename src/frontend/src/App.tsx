@@ -234,11 +234,13 @@ export default function App() {
               YOUR HEALTH, OUR COMMITMENT
             </div>
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-normal leading-tight mb-5">
-              Trust Sai Healthcare:
+              Sai Healthcare —
               <br />
-              <span className="text-yellow-300">Your Path to Wellness</span>
+              <span className="text-yellow-300">
+                Accurate Tests, Healthy Lives
+              </span>
               <br />
-              in Nashik
+              Nashik's Trusted Lab
             </h1>
             <p className="text-white/85 text-base md:text-lg mb-3 leading-relaxed">
               All Types of Blood – Urine – Sputum Tests Available Here
