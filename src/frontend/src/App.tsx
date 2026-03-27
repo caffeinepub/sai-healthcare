@@ -473,7 +473,7 @@ export default function App() {
               </div>
               <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
                 <strong className="text-primary">SAI HEALTHCARE</strong>
-                <span className="block text-xl sm:text-2xl text-primary font-semibold">
+                <span className="block text-sm text-primary font-normal">
                   साई हेल्थकेअर
                 </span>
                 <br />
@@ -932,7 +932,7 @@ export default function App() {
             </span>
             <h2 className="section-heading text-2xl md:text-3xl mt-1 mb-4">
               का निवडावे <strong>SAI HEALTHCARE</strong>{" "}
-              <span className="font-normal text-gray-500 text-lg">
+              <span className="font-normal text-gray-500 text-sm">
                 | साई हेल्थकेअर
               </span>
               ?
