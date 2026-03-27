@@ -4,8 +4,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
+  Award,
   CheckCircle,
   Clock,
+  FlaskConical,
   Home,
   MapPin,
   Menu,
@@ -100,14 +102,12 @@ const whyFeatures = [
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Home Collection Form
   const [colName, setColName] = useState("");
   const [colPhone, setColPhone] = useState("");
   const [colAddress, setColAddress] = useState("");
   const [colTest, setColTest] = useState("");
   const [colDate, setColDate] = useState("");
 
-  // Inquiry Form
   const [inqName, setInqName] = useState("");
   const [inqPhone, setInqPhone] = useState("");
   const [inqMessage, setInqMessage] = useState("");
@@ -125,20 +125,54 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen" id="home">
-      {/* ── STICKY HEADER ── */}
-      <header className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
+    <div className="min-h-screen bg-white" id="home">
+      {/* ── TOP INFO BAR ── */}
+      <div className="topbar text-white text-xs py-2 px-4 hidden sm:block">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <a
+              href="tel:+919356710760"
+              className="flex items-center gap-1.5 hover:text-white/80"
+            >
+              <Phone className="w-3 h-3" />
+              9356710760
+            </a>
+            <span className="flex items-center gap-1.5">
+              <Clock className="w-3 h-3" />
+              7:00 AM – 10:00 PM, All Days
+            </span>
+            <span className="flex items-center gap-1.5">
+              <MapPin className="w-3 h-3" />
+              Konark Nagar, Nashik
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() =>
+              openWhatsApp("नमस्कार! SAI HEALTHCARE बद्दल माहिती हवी आहे.")
+            }
+            className="flex items-center gap-1.5 bg-green-500 hover:bg-green-400 text-white text-xs font-semibold px-3 py-1 rounded-full transition-colors"
+          >
+            <MessageCircle className="w-3 h-3" />
+            WhatsApp Us
+          </button>
+        </div>
+      </div>
+
+      {/* ── STICKY NAVBAR ── */}
+      <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-          {/* Brand */}
           <a href="#home" className="flex items-center gap-2 flex-shrink-0">
-            <span className="text-primary font-bold text-xl tracking-tight">
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+              <FlaskConical className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-foreground font-extrabold text-lg tracking-tight">
               <strong>SAI HEALTHCARE</strong>
             </span>
           </a>
 
-          {/* Desktop Nav */}
           <nav
-            className="hidden lg:flex items-center gap-1"
+            className="hidden lg:flex items-center gap-0.5"
             aria-label="Main navigation"
           >
             {navLinks.map((l) => (
@@ -146,23 +180,32 @@ export default function App() {
                 key={l.href}
                 href={l.href}
                 data-ocid={`nav.${l.label.toLowerCase().replace(/\s+/g, "_")}.link`}
-                className="text-foreground hover:text-primary px-3 py-2 text-xs font-semibold tracking-wide transition-colors"
+                className="text-gray-600 hover:text-primary px-3 py-2 text-xs font-semibold tracking-wide transition-colors rounded-md hover:bg-primary/5"
               >
                 {l.label}
               </a>
             ))}
+          </nav>
+
+          <div className="hidden lg:flex items-center gap-2">
+            <a
+              href="tel:+919356710760"
+              className="flex items-center gap-2 text-primary font-bold text-sm"
+            >
+              <Phone className="w-4 h-4" />
+              9356710760
+            </a>
             <a
               href="#collection"
               data-ocid="nav.book_test.button"
-              className="ml-3 bg-primary hover:bg-primary-dark text-white text-xs font-bold px-5 py-2.5 rounded-full transition-colors whitespace-nowrap"
+              className="ml-2 bg-primary hover:bg-primary-dark text-white text-xs font-bold px-5 py-2.5 rounded-full transition-colors whitespace-nowrap"
             >
               BOOK TEST NOW
             </a>
-          </nav>
+          </div>
 
-          {/* Mobile Hamburger */}
           <button
-            className="lg:hidden text-foreground p-2"
+            className="lg:hidden text-gray-600 p-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
             type="button"
@@ -176,22 +219,27 @@ export default function App() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {menuOpen && (
-          <div className="lg:hidden bg-white border-t border-border px-4 pb-4">
+          <div className="lg:hidden bg-white border-t border-gray-100 px-4 pb-4">
             {navLinks.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setMenuOpen(false)}
-                className="block py-3 border-b border-border text-sm font-semibold text-foreground hover:text-primary"
+                className="block py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-primary"
               >
                 {l.label}
               </a>
             ))}
             <a
+              href="tel:+919356710760"
+              className="flex items-center gap-2 mt-4 text-primary font-bold"
+            >
+              <Phone className="w-4 h-4" /> 9356710760
+            </a>
+            <a
               href="#collection"
-              className="mt-4 block text-center bg-primary hover:bg-primary-dark text-white font-bold py-3 rounded-full text-sm"
+              className="mt-3 block text-center bg-primary hover:bg-primary-dark text-white font-bold py-3 rounded-full text-sm"
               data-ocid="nav.mobile_book.link"
             >
               BOOK TEST NOW
@@ -200,165 +248,207 @@ export default function App() {
         )}
       </header>
 
-      {/* ── HERO ── */}
-      <section
-        className="relative overflow-hidden"
-        aria-label="Hero"
-        style={{
-          background: "linear-gradient(135deg, #16a34a 0%, #15803d 100%)",
-          minHeight: "85vh",
-        }}
-      >
-        {/* Decorative pattern */}
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 20%, white 1px, transparent 1px), radial-gradient(circle at 80% 80%, white 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-        <div
-          className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10"
-          style={{ background: "radial-gradient(circle, white, transparent)" }}
-        />
-        <div
-          className="absolute bottom-0 left-0 w-64 h-64 rounded-full opacity-5"
-          style={{ background: "radial-gradient(circle, white, transparent)" }}
-        />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 md:py-28 flex flex-col md:flex-row items-center gap-12">
-          {/* Text */}
-          <div className="flex-1 text-white text-center md:text-left">
-            <div className="inline-block bg-white/20 text-white text-xs font-semibold px-4 py-1.5 rounded-full mb-5 tracking-widest">
-              YOUR HEALTH, OUR COMMITMENT
-            </div>
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-normal leading-tight mb-5">
-              <strong>SAI HEALTHCARE</strong> —
-              <br />
-              <span className="text-yellow-300">जिथे आरोग्य सुरू होते</span>
-              <br />
-              Where Your Health Journey Begins
-            </h1>
-            <p className="text-white/85 text-base md:text-lg mb-3 leading-relaxed">
-              All Types of Blood – Urine – Sputum Tests Available Here
-            </p>
-            <p className="text-yellow-300 font-semibold text-base mb-8">
-              ✓ Free Home Collection Available
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-8">
-              <a
-                href="#packages"
-                data-ocid="hero.packages.primary_button"
-                className="inline-flex items-center justify-center gap-2 bg-white text-primary font-bold px-7 py-3.5 rounded-full hover:bg-gray-100 transition-colors shadow-lg"
-              >
-                View Health Packages
-              </a>
-              <a
-                href="#collection"
-                data-ocid="hero.collection.secondary_button"
-                className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white font-bold px-7 py-3.5 rounded-full hover:bg-white/10 transition-colors"
-              >
-                <Home className="w-4 h-4" />
-                Book Home Collection
-              </a>
-            </div>
-            <div className="flex flex-wrap gap-5 text-white/80 text-sm justify-center md:justify-start">
-              <a
-                href={`tel:+${PHONE}`}
-                className="flex items-center gap-2 font-semibold text-yellow-300 hover:text-yellow-200"
-              >
-                <Phone className="w-4 h-4" /> 9356710760
-              </a>
-              <span className="flex items-center gap-2">
-                <Clock className="w-4 h-4" /> 7:00 AM – 10:00 PM, All Days
-              </span>
-              <span className="flex items-center gap-2">
-                <MapPin className="w-4 h-4" /> Konark Nagar, Nashik
-              </span>
-            </div>
+      {/* ── QUICK ACTIONS ROW ── */}
+      <div className="bg-white border-b border-gray-100 py-3 px-4 overflow-x-auto">
+        <div className="max-w-7xl mx-auto flex items-center gap-2 sm:gap-4 min-w-max sm:min-w-0 sm:justify-center">
+          <a
+            href="#contact"
+            data-ocid="quickaction.lab.link"
+            className="flex flex-col items-center gap-1 px-4 py-2 rounded-xl hover:bg-gray-50 transition-colors text-center"
+          >
+            <MapPin className="w-5 h-5 text-primary" />
+            <span className="text-xs font-semibold text-gray-700 whitespace-nowrap">
+              Find Our Lab
+            </span>
+          </a>
+          <div className="w-px h-10 bg-gray-200" />
+          <a
+            href="#collection"
+            data-ocid="quickaction.collection.link"
+            className="flex flex-col items-center gap-1 px-4 py-2 rounded-xl hover:bg-gray-50 transition-colors text-center"
+          >
+            <Home className="w-5 h-5 text-primary" />
+            <span className="text-xs font-semibold text-gray-700 whitespace-nowrap">
+              Home Collection
+            </span>
+          </a>
+          <div className="w-px h-10 bg-gray-200" />
+          <a
+            href="tel:+919356710760"
+            data-ocid="quickaction.call.link"
+            className="flex flex-col items-center gap-1 px-4 py-2 rounded-xl hover:bg-gray-50 transition-colors text-center"
+          >
+            <Phone className="w-5 h-5 text-primary" />
+            <span className="text-xs font-semibold text-gray-700 whitespace-nowrap">
+              Call Us
+            </span>
+          </a>
+          <div className="w-px h-10 bg-gray-200" />
+          <button
+            type="button"
+            onClick={() =>
+              openWhatsApp("नमस्कार! SAI HEALTHCARE बद्दल माहिती हवी आहे.")
+            }
+            data-ocid="quickaction.whatsapp.button"
+            className="flex flex-col items-center gap-1 px-4 py-2 rounded-xl hover:bg-gray-50 transition-colors text-center"
+          >
+            <MessageCircle className="w-5 h-5 text-green-600" />
+            <span className="text-xs font-semibold text-gray-700 whitespace-nowrap">
+              WhatsApp
+            </span>
+          </button>
+          <div className="w-px h-10 bg-gray-200" />
+          <div className="flex flex-col items-center gap-1 px-4 py-2 text-center">
+            <Clock className="w-5 h-5 text-amber-500" />
+            <span className="text-xs font-semibold text-gray-700 whitespace-nowrap">
+              Open All Days
+            </span>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ── ABOUT US ── */}
-      <section id="about" className="py-20 px-4 bg-green-50">
+      {/* ── HERO ── */}
+      <section className="bg-white py-12 md:py-20 px-4" aria-label="Hero">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
-            <h2 className="font-display text-3xl md:text-4xl font-normal text-primary mb-3">
-              About Us
-            </h2>
-            <div className="w-16 h-1 bg-primary mx-auto mb-5 rounded-full" />
-            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              <strong>SAI HEALTHCARE</strong> is a trusted pathology laboratory
-              in Nashik, committed to providing accurate and affordable
-              diagnostic services to every family in the region.
-            </p>
-          </div>
-
-          <div className="mb-16">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Why Choose <strong>SAI HEALTHCARE</strong>?
-            </h3>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Located at Shop No.1, Rutik Arcade, Konark Nagar, Nashik — we
-              serve patients with modern lab equipment, trained technicians, and
-              prompt report delivery. Whether you need a routine blood test or a
-              comprehensive health package, we make quality healthcare
-              accessible and affordable.
-            </p>
-            <ul className="space-y-3">
-              {[
-                "All types of blood, urine & sputum tests",
-                "Free home collection service",
-                "Reports via WhatsApp — fast & convenient",
-                "Open 7 AM to 10 PM, all 365 days",
-                "Affordable prices with no hidden charges",
-              ].map((item) => (
-                <li
-                  key={item}
-                  className="flex items-center gap-3 text-sm text-foreground"
-                >
-                  <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Why Choose 3-col */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {whyFeatures.map((f, i) => (
-              <div
-                key={f.title}
-                data-ocid={`about.feature.item.${i + 1}`}
-                className="text-center p-8 rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg transition-all bg-white"
-              >
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto mb-5">
-                  {f.icon}
-                </div>
-                <h4 className="font-bold text-lg text-foreground mb-1">
-                  {f.title}
-                </h4>
-                <p className="text-primary text-sm italic mb-3">{f.mr}</p>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {f.desc}
-                </p>
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            {/* Left: text */}
+            <div>
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-semibold px-4 py-1.5 rounded-full mb-5 tracking-wide">
+                <Award className="w-3.5 h-3.5" />
+                NABL CERTIFIED PATHOLOGY LAB · NASHIK
               </div>
-            ))}
+              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-normal text-gray-900 leading-tight mb-4">
+                <strong className="text-primary">SAI HEALTHCARE</strong>
+                <br />
+                <span className="text-gray-700 text-2xl sm:text-3xl md:text-4xl">
+                  जिथे आरोग्य सुरू होते
+                </span>
+              </h1>
+              <p className="text-gray-500 text-base italic mb-2">
+                Where Your Health Journey Begins
+              </p>
+              <p className="text-gray-600 text-sm mb-6 leading-relaxed">
+                All Types of Blood – Urine – Sputum Tests Available Here.
+                <br />
+                <span className="text-primary font-semibold">
+                  ✓ Free Home Collection Available
+                </span>
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 mb-8">
+                <a
+                  href="#packages"
+                  data-ocid="hero.packages.primary_button"
+                  className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold px-6 py-3 rounded-full transition-colors shadow-md text-sm"
+                >
+                  View Health Packages
+                </a>
+                <a
+                  href="#collection"
+                  data-ocid="hero.collection.secondary_button"
+                  className="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary font-bold px-6 py-3 rounded-full hover:bg-primary/5 transition-colors text-sm"
+                >
+                  <Home className="w-4 h-4" />
+                  Book Home Collection
+                </a>
+              </div>
+              {/* Trust Badges */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {[
+                  {
+                    icon: <Shield className="w-5 h-5" />,
+                    label: "Certified Lab",
+                  },
+                  {
+                    icon: <Home className="w-5 h-5" />,
+                    label: "Free Home Collection",
+                  },
+                  {
+                    icon: <CheckCircle className="w-5 h-5" />,
+                    label: "Accurate Reports",
+                  },
+                  {
+                    icon: <Clock className="w-5 h-5" />,
+                    label: "365 Days Open",
+                  },
+                ].map((b) => (
+                  <div
+                    key={b.label}
+                    className="flex flex-col items-center gap-1.5 p-3 bg-gray-50 rounded-xl border border-gray-100 text-center"
+                  >
+                    <span className="text-primary">{b.icon}</span>
+                    <span className="text-xs font-semibold text-gray-700 leading-tight">
+                      {b.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: teal gradient info card */}
+            <div className="hero-card rounded-2xl p-8 text-white shadow-xl">
+              <h2 className="text-xl font-bold mb-1">
+                <strong>SAI HEALTHCARE</strong>
+              </h2>
+              <p className="text-white/70 text-sm italic mb-6">
+                Nashik's Trusted Pathology Lab
+              </p>
+              <div className="space-y-4 mb-6">
+                <div className="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-3">
+                  <Phone className="w-5 h-5 flex-shrink-0" />
+                  <div>
+                    <p className="text-xs text-white/70">Call / WhatsApp</p>
+                    <a href="tel:+919356710760" className="font-bold text-base">
+                      9356710760
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-3">
+                  <Clock className="w-5 h-5 flex-shrink-0" />
+                  <div>
+                    <p className="text-xs text-white/70">Working Hours</p>
+                    <p className="font-bold text-sm">
+                      7:00 AM – 10:00 PM, All Days
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-3">
+                  <MapPin className="w-5 h-5 flex-shrink-0" />
+                  <div>
+                    <p className="text-xs text-white/70">Location</p>
+                    <p className="font-bold text-sm">
+                      शॉप क्र.१, रुतिक आर्केड, कोनार्क नगर, नाशिक
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() =>
+                  openWhatsApp(
+                    "नमस्कार! SAI HEALTHCARE मध्ये Test Book करायची आहे.",
+                  )
+                }
+                className="w-full bg-white text-primary font-bold py-3 rounded-full hover:bg-white/90 transition-colors flex items-center justify-center gap-2 text-sm"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Book Test on WhatsApp
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── HEALTH PACKAGES ── */}
-      <section id="packages" className="py-20 px-4 bg-amber-50">
+      <section id="packages" className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
-            <h2 className="font-display text-3xl md:text-4xl font-normal text-primary mb-3">
+            <span className="text-xs font-bold text-primary uppercase tracking-widest">
+              Best Value
+            </span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-1 mb-2">
               Health Packages
             </h2>
-            <div className="w-16 h-1 bg-primary mx-auto mb-5 rounded-full" />
-            <p className="text-muted-foreground">
+            <p className="text-gray-500 text-sm">
               Comprehensive health checkups at unbeatable prices
             </p>
           </div>
@@ -366,51 +456,45 @@ export default function App() {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Advance Package */}
             <Card
-              className="overflow-hidden border-2 border-primary shadow-lg"
+              className="overflow-hidden border-0 shadow-lg"
               data-ocid="packages.advance.card"
             >
-              <CardHeader
-                className="pb-4"
-                style={{
-                  background: "linear-gradient(135deg, #16a34a, #15803d)",
-                }}
-              >
-                <div className="flex justify-between items-start">
+              <div className="pkg-advance-header p-6 text-white">
+                <div className="flex items-start justify-between mb-4">
                   <div>
-                    <CardTitle className="text-white text-xl font-bold">
+                    <h3 className="text-xl font-extrabold">
                       Advance Health Checkup
-                    </CardTitle>
-                    <p className="text-white/80 text-sm italic mt-1">
+                    </h3>
+                    <p className="text-white/75 text-sm italic mt-0.5">
                       अ‍ॅडव्हान्स हेल्थ चेकअप | संपूर्ण आरोग्य तपासणी
                     </p>
                   </div>
-                </div>
-                <div className="mt-4 flex items-center gap-3">
-                  <span className="text-white/60 line-through text-sm">
-                    MRP ₹5000/-
+                  <span className="bg-amber-400 text-amber-900 text-xs font-extrabold px-2.5 py-1 rounded-full whitespace-nowrap ml-2">
+                    SAVE ₹3501
                   </span>
-                  <span className="text-white text-3xl font-bold">₹1499/-</span>
                 </div>
-                <div className="bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full inline-block mt-2">
-                  SAVE ₹3501/-
+                <div className="flex items-end gap-3">
+                  <span className="text-4xl font-extrabold">₹1499</span>
+                  <div className="pb-1">
+                    <span className="text-white/60 line-through text-sm block">
+                      MRP ₹5000
+                    </span>
+                    <span className="text-amber-300 text-xs font-bold">
+                      {advanceTests.length} Tests Included
+                    </span>
+                  </div>
                 </div>
-              </CardHeader>
-              <CardContent className="pt-5">
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">
-                  Tests Included ({advanceTests.length}):
-                </p>
+              </div>
+              <CardContent className="pt-5 pb-6">
                 <ul className="space-y-2 mb-6">
                   {advanceTests.map((t) => (
-                    <li
-                      key={t.name}
-                      className="flex items-start gap-2 text-sm text-foreground"
-                    >
-                      <CheckCircle className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-0.5" />
+                    <li key={t.name} className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                       <div>
-                        <span className="font-medium">{t.name}</span>
-                        <p className="text-xs text-muted-foreground italic">
-                          {t.desc}
-                        </p>
+                        <span className="font-semibold text-gray-800">
+                          {t.name}
+                        </span>
+                        <p className="text-xs text-gray-500 italic">{t.desc}</p>
                       </div>
                     </li>
                   ))}
@@ -421,7 +505,7 @@ export default function App() {
                       "नमस्कार! मला Advance Health Checkup Package (₹1499/-) Book करायचे आहे. कृपया मदत करा.",
                     )
                   }
-                  className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full gap-2"
+                  className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-full gap-2"
                   data-ocid="packages.advance.primary_button"
                 >
                   <MessageCircle className="w-4 h-4" />
@@ -432,48 +516,45 @@ export default function App() {
 
             {/* Basic Package */}
             <Card
-              className="overflow-hidden border-2 border-border shadow-lg"
+              className="overflow-hidden border-0 shadow-lg"
               data-ocid="packages.basic.card"
             >
-              <CardHeader className="pb-4 bg-muted">
-                <div className="flex justify-between items-start">
+              <div className="pkg-basic-header p-6 text-white">
+                <div className="flex items-start justify-between mb-4">
                   <div>
-                    <CardTitle className="text-primary text-xl font-bold">
+                    <h3 className="text-xl font-extrabold">
                       Basic Health Checkup
-                    </CardTitle>
-                    <p className="text-muted-foreground text-sm italic mt-1">
+                    </h3>
+                    <p className="text-white/75 text-sm italic mt-0.5">
                       बेसिक हेल्थ चेकअप | मूलभूत आरोग्य तपासणी
                     </p>
                   </div>
-                </div>
-                <div className="mt-4 flex items-center gap-3">
-                  <span className="text-muted-foreground line-through text-sm">
-                    MRP ₹3000/-
-                  </span>
-                  <span className="text-primary text-3xl font-bold">
-                    ₹999/-
+                  <span className="bg-amber-400 text-amber-900 text-xs font-extrabold px-2.5 py-1 rounded-full whitespace-nowrap ml-2">
+                    SAVE ₹2001
                   </span>
                 </div>
-                <div className="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full inline-block mt-2">
-                  SAVE ₹2001/-
+                <div className="flex items-end gap-3">
+                  <span className="text-4xl font-extrabold">₹999</span>
+                  <div className="pb-1">
+                    <span className="text-white/60 line-through text-sm block">
+                      MRP ₹3000
+                    </span>
+                    <span className="text-amber-300 text-xs font-bold">
+                      {basicTests.length} Tests Included
+                    </span>
+                  </div>
                 </div>
-              </CardHeader>
-              <CardContent className="pt-5">
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">
-                  Tests Included ({basicTests.length}):
-                </p>
+              </div>
+              <CardContent className="pt-5 pb-6">
                 <ul className="space-y-2 mb-6">
                   {basicTests.map((t) => (
-                    <li
-                      key={t.name}
-                      className="flex items-start gap-2 text-sm text-foreground"
-                    >
-                      <CheckCircle className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-0.5" />
+                    <li key={t.name} className="flex items-start gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                       <div>
-                        <span className="font-medium">{t.name}</span>
-                        <p className="text-xs text-muted-foreground italic">
-                          {t.desc}
-                        </p>
+                        <span className="font-semibold text-gray-800">
+                          {t.name}
+                        </span>
+                        <p className="text-xs text-gray-500 italic">{t.desc}</p>
                       </div>
                     </li>
                   ))}
@@ -484,7 +565,7 @@ export default function App() {
                       "नमस्कार! मला Basic Health Checkup Package (₹999/-) Book करायचे आहे. कृपया मदत करा.",
                     )
                   }
-                  className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full gap-2"
+                  className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-full gap-2"
                   data-ocid="packages.basic.primary_button"
                 >
                   <MessageCircle className="w-4 h-4" />
@@ -496,234 +577,291 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── TESTS + BOOKING SPLIT ── */}
-      <section id="tests" className="py-20 px-4 bg-lime-50">
+      {/* ── ESSENTIAL TESTS ── */}
+      <section id="tests" className="py-16 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
-            <h2 className="font-display text-3xl md:text-4xl font-normal text-primary mb-3">
+          <div className="text-center mb-10">
+            <span className="text-xs font-bold text-primary uppercase tracking-widest">
+              Offer Prices
+            </span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-1 mb-1">
               Essential Blood Tests
             </h2>
-            <div className="w-16 h-1 bg-primary mx-auto mb-5 rounded-full" />
-            <p className="text-muted-foreground">
-              Individual tests at offer prices — with Marathi names
+            <p className="text-gray-500 text-sm">
+              आवश्यक रक्त तपासणी — Individual tests at special prices
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-5 gap-10">
-            {/* Pricing Table */}
-            <div className="lg:col-span-3" id="test-menu">
-              <div className="rounded-2xl border border-border overflow-hidden shadow-lg">
-                <div className="bg-primary px-6 py-4">
-                  <h3 className="text-white font-bold text-lg">
-                    Essential Blood Test Pricing
-                  </h3>
-                  <p className="text-white/70 text-sm">
-                    आवश्यक रक्त तपासणी किमती
-                  </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {essentialTests.map((test, i) => {
+              const savePct = Math.round(
+                ((test.mrp - test.offer) / test.mrp) * 100,
+              );
+              return (
+                <div
+                  key={test.en}
+                  data-ocid={`tests.row.item.${i + 1}`}
+                  className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col"
+                >
+                  <div className="flex items-start justify-between mb-2">
+                    <div className="flex-1">
+                      <p className="font-bold text-gray-900 text-sm leading-tight">
+                        {test.en}
+                      </p>
+                      <p className="text-primary text-xs italic mt-0.5">
+                        {test.mr}
+                      </p>
+                    </div>
+                    <span className="bg-green-100 text-green-700 text-xs font-extrabold px-2 py-0.5 rounded-full ml-2 whitespace-nowrap">
+                      {savePct}% OFF
+                    </span>
+                  </div>
+                  <div className="mt-auto">
+                    <div className="flex items-baseline gap-2 mb-3">
+                      <span className="text-primary font-extrabold text-xl">
+                        ₹{test.offer}
+                      </span>
+                      <span className="text-gray-400 line-through text-xs">
+                        ₹{test.mrp}
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        openWhatsApp(
+                          `नमस्कार! मला ${test.en} Test Book करायचे आहे. Offer Price: ₹${test.offer}/-`,
+                        )
+                      }
+                      data-ocid={`tests.book.button.${i + 1}`}
+                      className="w-full bg-primary/10 hover:bg-primary hover:text-white text-primary text-xs font-bold py-2 rounded-full transition-colors"
+                    >
+                      Book Now
+                    </button>
+                  </div>
                 </div>
-                <table className="w-full">
-                  <thead>
-                    <tr className="bg-muted border-b border-border">
-                      <th className="text-left px-5 py-3 text-xs font-bold text-muted-foreground uppercase tracking-wide">
-                        Test Name
-                      </th>
-                      <th className="text-center px-3 py-3 text-xs font-bold text-muted-foreground uppercase tracking-wide">
-                        MRP
-                      </th>
-                      <th className="text-center px-3 py-3 text-xs font-bold text-primary uppercase tracking-wide">
-                        Offer
-                      </th>
-                      <th className="px-3 py-3" />
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {essentialTests.map((test, i) => (
-                      <tr
-                        key={test.en}
-                        data-ocid={`tests.row.item.${i + 1}`}
-                        className={i % 2 === 0 ? "bg-white" : "bg-secondary/50"}
-                      >
-                        <td className="px-5 py-3">
-                          <div className="font-medium text-sm text-foreground">
-                            {test.en}
-                          </div>
-                          <div className="text-xs text-muted-foreground italic">
-                            {test.mr}
-                          </div>
-                        </td>
-                        <td className="px-3 py-3 text-center">
-                          <span className="text-muted-foreground line-through text-xs">
-                            ₹{test.mrp}
-                          </span>
-                        </td>
-                        <td className="px-3 py-3 text-center">
-                          <span className="text-primary font-bold text-sm">
-                            ₹{test.offer}
-                          </span>
-                        </td>
-                        <td className="px-3 py-3">
-                          <button
-                            type="button"
-                            onClick={() =>
-                              openWhatsApp(
-                                `नमस्कार! मला ${test.en} Test Book करायचे आहे. Offer Price: ₹${test.offer}/-`,
-                              )
-                            }
-                            data-ocid={`tests.book.button.${i + 1}`}
-                            className="bg-primary/10 hover:bg-primary text-primary hover:text-white text-xs font-semibold px-3 py-1.5 rounded-full transition-colors whitespace-nowrap"
-                          >
-                            Book
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── HOME COLLECTION BOOKING ── */}
+      <section id="collection" className="py-16 px-4 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-xs font-bold text-primary uppercase tracking-widest">
+              Doorstep Service
+            </span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-1 mb-1">
+              Book Home Collection
+            </h2>
+            <p className="text-gray-500 text-sm">
+              घरपोच नमुना संकलन — We come to you, free of charge
+            </p>
+          </div>
+
+          <Card className="overflow-hidden border-0 shadow-xl">
+            <div className="pkg-advance-header px-6 py-5 flex items-center gap-3">
+              <Home className="w-6 h-6 text-white" />
+              <div>
+                <CardTitle className="text-white text-lg font-extrabold">
+                  Home Collection Booking
+                </CardTitle>
+                <p className="text-white/75 text-sm">घरपोच संकलन बुकिंग</p>
               </div>
             </div>
+            <CardContent className="p-6">
+              <form
+                onSubmit={handleCollection}
+                className="grid sm:grid-cols-2 gap-4"
+              >
+                <div>
+                  <Label htmlFor="colName" className="text-sm font-semibold">
+                    Patient Name *
+                  </Label>
+                  <Input
+                    id="colName"
+                    value={colName}
+                    onChange={(e) => setColName(e.target.value)}
+                    placeholder="आपले पूर्ण नाव"
+                    required
+                    className="mt-1"
+                    data-ocid="collection.name.input"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="colPhone" className="text-sm font-semibold">
+                    Phone Number *
+                  </Label>
+                  <Input
+                    id="colPhone"
+                    type="tel"
+                    value={colPhone}
+                    onChange={(e) => setColPhone(e.target.value)}
+                    placeholder="मोबाईल नंबर"
+                    required
+                    className="mt-1"
+                    data-ocid="collection.phone.input"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <Label htmlFor="colAddress" className="text-sm font-semibold">
+                    Address *
+                  </Label>
+                  <Textarea
+                    id="colAddress"
+                    value={colAddress}
+                    onChange={(e) => setColAddress(e.target.value)}
+                    placeholder="घराचा पूर्ण पत्ता"
+                    required
+                    className="mt-1 min-h-[72px]"
+                    data-ocid="collection.address.textarea"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="colTest" className="text-sm font-semibold">
+                    Test / Package *
+                  </Label>
+                  <Input
+                    id="colTest"
+                    value={colTest}
+                    onChange={(e) => setColTest(e.target.value)}
+                    placeholder="कोणती तपासणी / पॅकेज"
+                    required
+                    className="mt-1"
+                    data-ocid="collection.test.input"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="colDate" className="text-sm font-semibold">
+                    Preferred Date *
+                  </Label>
+                  <Input
+                    id="colDate"
+                    type="date"
+                    value={colDate}
+                    onChange={(e) => setColDate(e.target.value)}
+                    required
+                    className="mt-1"
+                    data-ocid="collection.date.input"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <Button
+                    type="submit"
+                    className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-full gap-2 py-3"
+                    data-ocid="collection.submit.button"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    Send Booking via WhatsApp
+                  </Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
 
-            {/* Home Collection Form */}
-            <div className="lg:col-span-2" id="collection">
-              <Card className="border-2 border-primary/20 shadow-lg sticky top-24">
-                <CardHeader
-                  className="pb-4"
-                  style={{
-                    background: "linear-gradient(135deg, #16a34a, #15803d)",
-                  }}
+      {/* ── ABOUT / WHY CHOOSE US ── */}
+      <section id="about" className="py-16 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-xs font-bold text-primary uppercase tracking-widest">
+              About Us
+            </span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-1 mb-2">
+              Why Choose <strong>SAI HEALTHCARE</strong>?
+            </h2>
+            <p className="text-gray-500 text-sm max-w-2xl mx-auto">
+              <strong>SAI HEALTHCARE</strong> is a trusted pathology laboratory
+              in Nashik, committed to providing accurate and affordable
+              diagnostic services to every family in the region.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-10 mb-12">
+            <div>
+              <p className="text-gray-600 leading-relaxed mb-4 text-sm">
+                Located at Shop No.1, Rutik Arcade, Konark Nagar, Nashik — we
+                serve patients with modern lab equipment, trained technicians,
+                and prompt report delivery. Whether you need a routine blood
+                test or a comprehensive health package, we make quality
+                healthcare accessible and affordable.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "All types of blood, urine & sputum tests",
+                  "Free home collection service",
+                  "Reports via WhatsApp — fast & convenient",
+                  "Open 7 AM to 10 PM, all 365 days",
+                  "Affordable prices with no hidden charges",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-3 text-sm text-gray-700"
+                  >
+                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="grid grid-cols-1 gap-4">
+              {whyFeatures.map((f, i) => (
+                <div
+                  key={f.title}
+                  data-ocid={`about.feature.item.${i + 1}`}
+                  className="flex items-start gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100"
                 >
-                  <CardTitle className="text-white text-xl font-bold">
-                    Home Collection Booking
-                  </CardTitle>
-                  <p className="text-white/80 text-sm">घरपोच संकलन बुकिंग</p>
-                </CardHeader>
-                <CardContent className="pt-5">
-                  <form onSubmit={handleCollection} className="space-y-4">
-                    <div>
-                      <Label
-                        htmlFor="colName"
-                        className="text-sm font-semibold"
-                      >
-                        Patient Name *
-                      </Label>
-                      <Input
-                        id="colName"
-                        value={colName}
-                        onChange={(e) => setColName(e.target.value)}
-                        placeholder="आपले पूर्ण नाव"
-                        required
-                        className="mt-1"
-                        data-ocid="collection.name.input"
-                      />
-                    </div>
-                    <div>
-                      <Label
-                        htmlFor="colPhone"
-                        className="text-sm font-semibold"
-                      >
-                        Phone Number *
-                      </Label>
-                      <Input
-                        id="colPhone"
-                        type="tel"
-                        value={colPhone}
-                        onChange={(e) => setColPhone(e.target.value)}
-                        placeholder="मोबाईल नंबर"
-                        required
-                        className="mt-1"
-                        data-ocid="collection.phone.input"
-                      />
-                    </div>
-                    <div>
-                      <Label
-                        htmlFor="colAddress"
-                        className="text-sm font-semibold"
-                      >
-                        Address *
-                      </Label>
-                      <Textarea
-                        id="colAddress"
-                        value={colAddress}
-                        onChange={(e) => setColAddress(e.target.value)}
-                        placeholder="घराचा पूर्ण पत्ता"
-                        required
-                        className="mt-1 min-h-[72px]"
-                        data-ocid="collection.address.textarea"
-                      />
-                    </div>
-                    <div>
-                      <Label
-                        htmlFor="colTest"
-                        className="text-sm font-semibold"
-                      >
-                        Test / Package *
-                      </Label>
-                      <Input
-                        id="colTest"
-                        value={colTest}
-                        onChange={(e) => setColTest(e.target.value)}
-                        placeholder="कोणती तपासणी / पॅकेज"
-                        required
-                        className="mt-1"
-                        data-ocid="collection.test.input"
-                      />
-                    </div>
-                    <div>
-                      <Label
-                        htmlFor="colDate"
-                        className="text-sm font-semibold"
-                      >
-                        Preferred Date *
-                      </Label>
-                      <Input
-                        id="colDate"
-                        type="date"
-                        value={colDate}
-                        onChange={(e) => setColDate(e.target.value)}
-                        required
-                        className="mt-1"
-                        data-ocid="collection.date.input"
-                      />
-                    </div>
-                    <Button
-                      type="submit"
-                      className="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full gap-2"
-                      data-ocid="collection.submit.button"
-                    >
-                      <MessageCircle className="w-4 h-4" />
-                      Send Booking via WhatsApp
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary flex-shrink-0">
+                    {f.icon}
+                  </div>
+                  <div>
+                    <h4 className="font-extrabold text-gray-900 text-sm">
+                      {f.title}
+                    </h4>
+                    <p className="text-primary text-xs italic mb-1">{f.mr}</p>
+                    <p className="text-gray-500 text-xs leading-relaxed">
+                      {f.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* ── CONTACT + MAP ── */}
-      <section id="contact" className="py-20 px-4 bg-green-50">
+      <section id="contact" className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
-            <h2 className="font-display text-3xl md:text-4xl font-normal text-primary mb-3">
+          <div className="text-center mb-10">
+            <span className="text-xs font-bold text-primary uppercase tracking-widest">
+              Get In Touch
+            </span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mt-1">
               Contact Us
             </h2>
-            <div className="w-16 h-1 bg-primary mx-auto mb-5 rounded-full" />
           </div>
 
           <div className="grid lg:grid-cols-2 gap-10">
-            {/* Contact Info + Inquiry */}
-            <div className="space-y-8">
-              <Card className="p-6 shadow-lg">
-                <h3 className="font-bold text-xl text-foreground mb-5">
-                  Get In Touch
-                </h3>
-                <div className="space-y-4">
+            <div className="space-y-6">
+              {/* Contact info card */}
+              <Card className="border-0 shadow-md overflow-hidden">
+                <div className="pkg-advance-header px-6 py-4">
+                  <CardTitle className="text-white font-extrabold">
+                    Get In Touch
+                  </CardTitle>
+                </div>
+                <CardContent className="p-6 space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary flex-shrink-0">
                       <Phone className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground">Phone</p>
+                      <p className="font-semibold text-gray-900 text-sm">
+                        Phone
+                      </p>
                       <a
                         href="tel:+919356710760"
                         className="text-primary font-bold text-lg hover:underline"
@@ -737,11 +875,13 @@ export default function App() {
                       <MapPin className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground">Address</p>
-                      <p className="text-muted-foreground text-sm">
+                      <p className="font-semibold text-gray-900 text-sm">
+                        Address
+                      </p>
+                      <p className="text-gray-600 text-sm">
                         Shop No.1, Rutik Arcade, Konark Nagar, Nashik
                       </p>
-                      <p className="text-muted-foreground text-sm italic">
+                      <p className="text-gray-500 text-xs italic">
                         शॉप क्र.१, रुतिक आर्केड, कोनार्क नगर, नाशिक
                       </p>
                     </div>
@@ -751,159 +891,170 @@ export default function App() {
                       <Clock className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground">Hours</p>
-                      <p className="text-muted-foreground text-sm">
+                      <p className="font-semibold text-gray-900 text-sm">
+                        Hours
+                      </p>
+                      <p className="text-gray-600 text-sm">
                         7:00 AM – 10:00 PM, All Days (सर्व दिवस)
                       </p>
                     </div>
                   </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={() =>
-                    openWhatsApp("नमस्कार! SAI HEALTHCARE बद्दल माहिती हवी आहे.")
-                  }
-                  data-ocid="contact.whatsapp.button"
-                  className="mt-6 w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-full transition-colors"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  WhatsApp Us
-                </button>
-              </Card>
-
-              {/* Inquiry Form */}
-              <Card className="p-6 shadow-lg">
-                <h3 className="font-bold text-xl text-foreground mb-5">
-                  Send an Inquiry
-                </h3>
-                <form onSubmit={handleInquiry} className="space-y-4">
-                  <div>
-                    <Label htmlFor="inqName" className="text-sm font-semibold">
-                      Your Name *
-                    </Label>
-                    <Input
-                      id="inqName"
-                      value={inqName}
-                      onChange={(e) => setInqName(e.target.value)}
-                      placeholder="आपले नाव"
-                      required
-                      className="mt-1"
-                      data-ocid="inquiry.name.input"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="inqPhone" className="text-sm font-semibold">
-                      Phone Number *
-                    </Label>
-                    <Input
-                      id="inqPhone"
-                      type="tel"
-                      value={inqPhone}
-                      onChange={(e) => setInqPhone(e.target.value)}
-                      placeholder="मोबाईल नंबर"
-                      required
-                      className="mt-1"
-                      data-ocid="inquiry.phone.input"
-                    />
-                  </div>
-                  <div>
-                    <Label
-                      htmlFor="inqMessage"
-                      className="text-sm font-semibold"
-                    >
-                      Message
-                    </Label>
-                    <Textarea
-                      id="inqMessage"
-                      value={inqMessage}
-                      onChange={(e) => setInqMessage(e.target.value)}
-                      placeholder="आपला संदेश लिहा"
-                      className="mt-1 min-h-[90px]"
-                      data-ocid="inquiry.message.textarea"
-                    />
-                  </div>
-                  <Button
-                    type="submit"
-                    className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-full gap-2"
-                    data-ocid="inquiry.submit.button"
+                  <button
+                    type="button"
+                    onClick={() =>
+                      openWhatsApp("नमस्कार! SAI HEALTHCARE बद्दल माहिती हवी आहे.")
+                    }
+                    data-ocid="contact.whatsapp.button"
+                    className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-full transition-colors text-sm"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    Send Inquiry via WhatsApp
-                  </Button>
-                </form>
+                    WhatsApp Us
+                  </button>
+                </CardContent>
+              </Card>
+
+              {/* Inquiry form */}
+              <Card className="border-0 shadow-md overflow-hidden">
+                <div className="bg-gray-800 px-6 py-4">
+                  <CardTitle className="text-white font-extrabold">
+                    Send an Inquiry
+                  </CardTitle>
+                </div>
+                <CardContent className="p-6">
+                  <form onSubmit={handleInquiry} className="space-y-4">
+                    <div>
+                      <Label
+                        htmlFor="inqName"
+                        className="text-sm font-semibold"
+                      >
+                        Your Name *
+                      </Label>
+                      <Input
+                        id="inqName"
+                        value={inqName}
+                        onChange={(e) => setInqName(e.target.value)}
+                        placeholder="आपले नाव"
+                        required
+                        className="mt-1"
+                        data-ocid="inquiry.name.input"
+                      />
+                    </div>
+                    <div>
+                      <Label
+                        htmlFor="inqPhone"
+                        className="text-sm font-semibold"
+                      >
+                        Phone Number *
+                      </Label>
+                      <Input
+                        id="inqPhone"
+                        type="tel"
+                        value={inqPhone}
+                        onChange={(e) => setInqPhone(e.target.value)}
+                        placeholder="मोबाईल नंबर"
+                        required
+                        className="mt-1"
+                        data-ocid="inquiry.phone.input"
+                      />
+                    </div>
+                    <div>
+                      <Label
+                        htmlFor="inqMessage"
+                        className="text-sm font-semibold"
+                      >
+                        Message
+                      </Label>
+                      <Textarea
+                        id="inqMessage"
+                        value={inqMessage}
+                        onChange={(e) => setInqMessage(e.target.value)}
+                        placeholder="आपला संदेश लिहा"
+                        className="mt-1 min-h-[90px]"
+                        data-ocid="inquiry.message.textarea"
+                      />
+                    </div>
+                    <Button
+                      type="submit"
+                      className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-full gap-2"
+                      data-ocid="inquiry.submit.button"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                      Send Inquiry via WhatsApp
+                    </Button>
+                  </form>
+                </CardContent>
               </Card>
             </div>
 
-            {/* Google Maps */}
-            <div>
-              <Card
-                className="overflow-hidden shadow-lg h-full"
-                data-ocid="contact.map.card"
-              >
-                <div className="bg-primary px-6 py-4">
-                  <h3 className="text-white font-bold text-lg">
-                    Find Us on Google Maps
-                  </h3>
-                  <p className="text-white/70 text-sm">आमचे ठिकाण शोधा</p>
-                </div>
-                <iframe
-                  src="https://maps.google.com/maps?q=Sai+Healthcare+Konark+Nagar+Nashik&output=embed"
-                  width="100%"
-                  height="380"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="SAI HEALTHCARE Location Map"
-                />
-                <div className="p-5 border-t border-border">
-                  <div className="flex items-start gap-3 mb-4">
-                    <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="font-semibold text-foreground text-sm">
-                        Shop No.1, Rutik Arcade, Konark Nagar, Nashik
-                      </p>
-                      <p className="text-muted-foreground text-xs italic">
-                        शॉप क्र.१, रुतिक आर्केड, कोनार्क नगर, नाशिक
-                      </p>
-                    </div>
+            {/* Map */}
+            <Card
+              className="overflow-hidden border-0 shadow-md"
+              data-ocid="contact.map.card"
+            >
+              <div className="pkg-advance-header px-6 py-4">
+                <CardTitle className="text-white font-extrabold">
+                  Find Us on Google Maps
+                </CardTitle>
+                <p className="text-white/70 text-sm">आमचे ठिकाण शोधा</p>
+              </div>
+              <iframe
+                src="https://maps.google.com/maps?q=Sai+Healthcare+Konark+Nagar+Nashik&output=embed"
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="SAI HEALTHCARE Location Map"
+              />
+              <div className="p-5 border-t border-gray-100">
+                <div className="flex items-start gap-3 mb-4">
+                  <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-gray-900 text-sm">
+                      Shop No.1, Rutik Arcade, Konark Nagar, Nashik
+                    </p>
+                    <p className="text-gray-500 text-xs italic">
+                      शॉप क्र.१, रुतिक आर्केड, कोनार्क नगर, नाशिक
+                    </p>
                   </div>
-                  <a
-                    href="https://maps.app.goo.gl/uQ8MajFENCPZtdBz6"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-ocid="contact.directions.button"
-                    className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-3 rounded-full transition-colors text-sm w-full"
-                  >
-                    <Navigation className="w-4 h-4" />
-                    Get Directions
-                  </a>
                 </div>
-              </Card>
-            </div>
+                <a
+                  href="https://maps.app.goo.gl/uQ8MajFENCPZtdBz6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-ocid="contact.directions.button"
+                  className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-3 rounded-full transition-colors text-sm w-full"
+                >
+                  <Navigation className="w-4 h-4" />
+                  Get Directions
+                </a>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
 
       {/* ── FOOTER ── */}
-      <footer
-        className="text-white py-14 px-4"
-        style={{
-          background: "linear-gradient(135deg, #14532d 0%, #052e16 100%)",
-        }}
-      >
+      <footer className="bg-gray-900 text-white py-12 px-4">
         <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand */}
           <div>
-            <p className="text-white/70 text-sm leading-relaxed">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <FlaskConical className="w-5 h-5 text-white" />
+              </div>
+              <span className="font-extrabold text-base">
+                <strong>SAI HEALTHCARE</strong>
+              </span>
+            </div>
+            <p className="text-gray-400 text-sm leading-relaxed">
               Your trusted pathology laboratory in Nashik — accurate results,
               affordable prices.
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-base mb-4 text-white/90">
+            <h4 className="font-extrabold text-sm mb-4 text-white">
               Quick Links
             </h4>
             <ul className="space-y-2">
@@ -911,7 +1062,7 @@ export default function App() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="text-white/65 hover:text-white text-sm transition-colors"
+                    className="text-gray-400 hover:text-white text-sm transition-colors"
                   >
                     {l.label}
                   </a>
@@ -920,16 +1071,14 @@ export default function App() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h4 className="font-bold text-base mb-4 text-white/90">Contact</h4>
-            <ul className="space-y-3 text-sm text-white/70">
+            <h4 className="font-extrabold text-sm mb-4 text-white">Contact</h4>
+            <ul className="space-y-3 text-sm text-gray-400">
               <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-white/50" />
-                9356710760
+                <Phone className="w-4 h-4" /> 9356710760
               </li>
               <li className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-white/50 mt-0.5" />
+                <MapPin className="w-4 h-4 mt-0.5" />
                 <span>
                   Shop No.1, Rutik Arcade,
                   <br />
@@ -937,26 +1086,24 @@ export default function App() {
                 </span>
               </li>
               <li className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-white/50" />
-                7:00 AM – 10:00 PM, All Days
+                <Clock className="w-4 h-4" /> 7:00 AM – 10:00 PM, All Days
               </li>
             </ul>
           </div>
 
-          {/* Social */}
           <div>
-            <h4 className="font-bold text-base mb-4 text-white/90">Connect</h4>
+            <h4 className="font-extrabold text-sm mb-4 text-white">Connect</h4>
             <button
               type="button"
               onClick={() =>
                 openWhatsApp("नमस्कार! SAI HEALTHCARE बद्दल माहिती हवी आहे.")
               }
-              className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors mb-3"
+              className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors mb-4"
             >
               <MessageCircle className="w-4 h-4" />
               WhatsApp Us
             </button>
-            <p className="text-white/50 text-xs">
+            <p className="text-gray-500 text-xs">
               सर्व दिवस उपलब्ध
               <br />
               Available All Days
@@ -964,14 +1111,14 @@ export default function App() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-white/15 text-center text-white/45 text-xs">
+        <div className="mt-10 pt-6 border-t border-gray-800 text-center text-gray-500 text-xs">
           © {new Date().getFullYear()} <strong>SAI HEALTHCARE</strong>. All
           rights reserved. | Built with ❤️ using{" "}
           <a
             href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(typeof window !== "undefined" ? window.location.hostname : "")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/65 hover:text-white underline"
+            className="text-gray-400 hover:text-white underline"
           >
             caffeine.ai
           </a>
