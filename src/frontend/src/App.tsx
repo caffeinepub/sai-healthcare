@@ -46,25 +46,25 @@ const essentialTests = [
 ];
 
 const advanceTests = [
-  { name: "Iron Studies", desc: "Checks iron levels & anaemia" },
-  { name: "LFT (Liver Function Test)", desc: "Assesses liver health" },
-  { name: "Lipid Profile", desc: "Cholesterol & heart risk" },
-  { name: "Thyroid Profile", desc: "Thyroid hormone levels" },
-  { name: "Kidney Profile", desc: "Kidney function check" },
-  { name: "CBC-(28)", desc: "Complete blood count" },
-  { name: "HbA1c", desc: "3-month blood sugar average" },
-  { name: "25 OH Vitamin D", desc: "Vitamin D deficiency check" },
-  { name: "Vitamin B12", desc: "Nerve & energy vitamin" },
-  { name: "Serum Electrolyte Profile", desc: "Sodium, potassium balance" },
+  { name: "Iron Studies", desc: "लोहाची पातळी व अॅनिमिया तपासणी" },
+  { name: "LFT (Liver Function Test)", desc: "यकृताचे कार्य तपासते" },
+  { name: "Lipid Profile", desc: "कोलेस्टेरॉल व हृदयाचा धोका" },
+  { name: "Thyroid Profile", desc: "थायरॉईड संप्रेरकांची पातळी" },
+  { name: "Kidney Profile", desc: "मूत्रपिंडाचे कार्य तपासते" },
+  { name: "CBC-(28)", desc: "संपूर्ण रक्त तपासणी" },
+  { name: "HbA1c", desc: "३ महिन्यांची रक्तशर्करा सरासरी" },
+  { name: "25 OH Vitamin D", desc: "व्हिटॅमिन डी ची कमतरता तपासते" },
+  { name: "Vitamin B12", desc: "मज्जातंतू व ऊर्जेसाठी जीवनसत्त्व" },
+  { name: "Serum Electrolyte Profile", desc: "सोडियम, पोटॅशियम संतुलन" },
 ];
 
 const basicTests = [
-  { name: "TSH", desc: "Thyroid stimulating hormone" },
-  { name: "CBC-(28)", desc: "Complete blood count" },
-  { name: "Sugar Fasting", desc: "Diabetes screening" },
-  { name: "Kidney Profile", desc: "Kidney function check" },
-  { name: "Lipid Profile", desc: "Cholesterol levels" },
-  { name: "LFT (Liver Function Test)", desc: "Liver health assessment" },
+  { name: "TSH", desc: "थायरॉईड उत्तेजक संप्रेरक" },
+  { name: "CBC-(28)", desc: "संपूर्ण रक्त तपासणी" },
+  { name: "Sugar Fasting", desc: "मधुमेह तपासणी" },
+  { name: "Kidney Profile", desc: "मूत्रपिंडाचे कार्य तपासते" },
+  { name: "Lipid Profile", desc: "कोलेस्टेरॉलची पातळी" },
+  { name: "LFT (Liver Function Test)", desc: "यकृताचे आरोग्य मूल्यांकन" },
 ];
 
 const navLinks = [
