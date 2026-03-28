@@ -211,17 +211,35 @@ export default function App() {
       <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <a href="#home" className="flex items-center gap-2 flex-shrink-0">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
               <FlaskConical className="w-5 h-5 text-white" />
             </div>
             <span className="leading-none">
-              <span className="block text-[1.4rem] font-extrabold text-primary leading-none">
+              <span
+                className="block leading-none"
+                style={{
+                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontSize: "1.7rem",
+                  color: "#00984A",
+                  letterSpacing: "0.04em",
+                }}
+              >
                 SAI
               </span>
-              <span className="block text-[0.6rem] font-semibold tracking-widest text-gray-700 uppercase leading-none mt-0.5">
+              <span
+                className="block leading-none mt-0.5"
+                style={{
+                  fontFamily: "'Cinzel', serif",
+                  fontSize: "0.5rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.22em",
+                  color: "#2d3748",
+                  textTransform: "uppercase",
+                }}
+              >
                 HEALTHCARE
               </span>
-              <span className="block text-[0.55rem] text-gray-400 font-normal leading-none mt-0.5">
+              <span className="block text-[0.5rem] text-gray-400 font-normal leading-none mt-0.5">
                 साई हेल्थकेअर
               </span>
             </span>
@@ -1210,17 +1228,35 @@ export default function App() {
         <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
                 <FlaskConical className="w-5 h-5 text-white" />
               </div>
               <span className="leading-none">
-                <span className="block text-[1.4rem] font-extrabold text-primary leading-none">
+                <span
+                  className="block leading-none"
+                  style={{
+                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontSize: "1.7rem",
+                    color: "#00984A",
+                    letterSpacing: "0.04em",
+                  }}
+                >
                   SAI
                 </span>
-                <span className="block text-[0.6rem] font-semibold tracking-widest text-white uppercase leading-none mt-0.5">
+                <span
+                  className="block leading-none mt-0.5"
+                  style={{
+                    fontFamily: "'Cinzel', serif",
+                    fontSize: "0.5rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.22em",
+                    color: "#e2e8f0",
+                    textTransform: "uppercase",
+                  }}
+                >
                   HEALTHCARE
                 </span>
-                <span className="block text-[0.55rem] text-gray-400 font-normal leading-none mt-0.5">
+                <span className="block text-[0.5rem] text-gray-400 font-normal leading-none mt-0.5">
                   साई हेल्थकेअर
                 </span>
               </span>
