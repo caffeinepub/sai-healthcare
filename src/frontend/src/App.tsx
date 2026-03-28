@@ -218,10 +218,11 @@ export default function App() {
               <span
                 className="block leading-none"
                 style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontFamily: "'Montserrat', sans-serif",
                   fontSize: "1.7rem",
+                  fontWeight: 900,
                   color: "#00984A",
-                  letterSpacing: "0.04em",
+                  letterSpacing: "0.06em",
                 }}
               >
                 SAI
@@ -229,10 +230,10 @@ export default function App() {
               <span
                 className="block leading-none mt-0.5"
                 style={{
-                  fontFamily: "'Cinzel', serif",
-                  fontSize: "0.5rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.22em",
+                  fontFamily: "'Raleway', sans-serif",
+                  fontSize: "0.55rem",
+                  fontWeight: 300,
+                  letterSpacing: "0.28em",
                   color: "#2d3748",
                   textTransform: "uppercase",
                 }}
@@ -1235,10 +1236,11 @@ export default function App() {
                 <span
                   className="block leading-none"
                   style={{
-                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontFamily: "'Montserrat', sans-serif",
                     fontSize: "1.7rem",
+                    fontWeight: 900,
                     color: "#00984A",
-                    letterSpacing: "0.04em",
+                    letterSpacing: "0.06em",
                   }}
                 >
                   SAI
@@ -1246,10 +1248,10 @@ export default function App() {
                 <span
                   className="block leading-none mt-0.5"
                   style={{
-                    fontFamily: "'Cinzel', serif",
-                    fontSize: "0.5rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.22em",
+                    fontFamily: "'Raleway', sans-serif",
+                    fontSize: "0.55rem",
+                    fontWeight: 300,
+                    letterSpacing: "0.28em",
                     color: "#e2e8f0",
                     textTransform: "uppercase",
                   }}
