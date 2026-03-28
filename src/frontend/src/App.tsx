@@ -1,3 +1,9 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -17,6 +23,7 @@ import {
   MessageCircle,
   Navigation,
   Phone,
+  Search,
   Shield,
   Star,
   X,
@@ -70,6 +77,44 @@ const basicTests = [
   { name: "Kidney Profile", desc: "मूत्रपिंडाचे कार्य तपासते" },
   { name: "Lipid Profile", desc: "कोलेस्टेरॉलची पातळी" },
   { name: "LFT (Liver Function Test)", desc: "यकृताचे आरोग्य मूल्यांकन" },
+];
+
+const popularTests = [
+  { en: "CBC (Complete Blood Count)", mr: "संपूर्ण रक्त गणना", price: 169 },
+  { en: "Blood Sugar Fasting", mr: "उपाशीपोटी रक्तशर्करा", price: 99 },
+  { en: "HbA1c", mr: "मधुमेह ३ महिन्यांची तपासणी", price: 299 },
+  { en: "Thyroid Profile (TSH)", mr: "थायरॉईड प्रोफाईल", price: 299 },
+  { en: "Lipid Profile", mr: "कोलेस्टेरॉल तपासणी", price: 299 },
+  { en: "Vitamin D", mr: "व्हिटॅमिन डी", price: 699 },
+  { en: "Vitamin B12", mr: "व्हिटॅमिन बी १२", price: 499 },
+  { en: "Kidney Function Test", mr: "मूत्रपिंड कार्य चाचणी", price: 399 },
+];
+
+const faqItems = [
+  {
+    q: "Home Collection available आहे का?",
+    a: "हो! SAI HEALTHCARE मध्ये मोफत Home Collection उपलब्ध आहे. आपण WhatsApp वर 9356710760 ला message करा, आमचे technician आपल्या घरी येतील.",
+  },
+  {
+    q: "Report कधी मिळेल?",
+    a: "बहुतेक tests चे report त्याच दिवशी WhatsApp वर पाठवले जातात. काही special tests साठी 24-48 तास लागू शकतात.",
+  },
+  {
+    q: "Lab कोणत्या वेळी उघडे असते?",
+    a: "SAI HEALTHCARE रोज 7:00 AM ते 10:00 PM उघडे असते — सर्व सण आणि सुट्टीच्या दिवशी सुद्धा.",
+  },
+  {
+    q: "Advance आणि Basic Package मध्ये काय फरक आहे?",
+    a: "Advance Package (₹1499/-) मध्ये 10 tests समाविष्ट आहेत जसे Iron Studies, Lipid Profile, Thyroid, Vitamin D, B12 इत्यादी. Basic Package (₹999/-) मध्ये 6 मुख्य tests आहेत. दोन्ही packages मध्ये Free Home Collection आहे.",
+  },
+  {
+    q: "Test साठी Fasting (उपवास) आवश्यक आहे का?",
+    a: "Blood Sugar Fasting, Lipid Profile सारख्या काही tests साठी 8-12 तास उपवास आवश्यक आहे. इतर tests साठी उपवासाची गरज नाही. Booking च्या वेळी आम्ही आपल्याला सांगू.",
+  },
+  {
+    q: "Payment कसे करायचे?",
+    a: "Cash, UPI (Google Pay, PhonePe, Paytm) सर्व प्रकारचे payment स्वीकारले जातात. Home Collection साठी technician येतात तेव्हा payment करता येते.",
+  },
 ];
 
 const navLinks = [
@@ -157,6 +202,8 @@ export default function App() {
   const [colDate, setColDate] = useState("");
 
   const [inqName, setInqName] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
   const [inqPhone, setInqPhone] = useState("");
   const [inqMessage, setInqMessage] = useState("");
 
@@ -382,6 +429,28 @@ export default function App() {
         </div>
       </div>
 
+      {/* ── STATS BANNER ── */}
+      <div className="py-6 px-4" style={{ backgroundColor: "#00984A" }}>
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {[
+            { num: "500+", en: "Happy Patients", mr: "खूश रुग्ण" },
+            { num: "12+", en: "Tests Available", mr: "चाचण्या उपलब्ध" },
+            { num: "365", en: "Days Open", mr: "दिवस उघडे" },
+            { num: "FREE", en: "Home Collection", mr: "घरपोच संकलन" },
+          ].map((stat) => (
+            <div key={stat.en} className="flex flex-col items-center gap-0.5">
+              <span className="text-white font-extrabold text-3xl md:text-4xl leading-none">
+                {stat.num}
+              </span>
+              <span className="text-white font-semibold text-sm mt-1">
+                {stat.en}
+              </span>
+              <span className="text-white/70 text-xs">{stat.mr}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* ── IMAGE BANNER CAROUSEL ── */}
       <div
         className="relative w-full overflow-hidden bg-gray-100"
@@ -562,6 +631,122 @@ export default function App() {
                     </span>
                   </div>
                 ))}
+              </div>
+
+              {/* ── SEARCH BAR ── */}
+              <div className="mt-6 relative">
+                <p className="text-xs text-gray-500 mb-2 font-semibold">
+                  Test किंवा Package शोधा —{" "}
+                  <span className="text-primary">Search a Test or Package</span>
+                </p>
+                <div className="relative">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                  <input
+                    type="text"
+                    placeholder="CBC, Blood Sugar, Thyroid, Vitamin D..."
+                    value={searchQuery}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value);
+                      setSearchOpen(e.target.value.length > 0);
+                    }}
+                    onFocus={() =>
+                      searchQuery.length > 0 && setSearchOpen(true)
+                    }
+                    onBlur={() => setTimeout(() => setSearchOpen(false), 200)}
+                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 focus:border-primary rounded-xl text-sm outline-none transition-colors"
+                    data-ocid="hero.search.input"
+                  />
+                </div>
+                {searchOpen && (
+                  <div className="absolute z-30 left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden">
+                    {(() => {
+                      const q = searchQuery.toLowerCase();
+                      const results: Array<{
+                        name: string;
+                        mr?: string;
+                        price?: number;
+                      }> = [];
+                      for (const t of essentialTests) {
+                        if (
+                          t.en.toLowerCase().includes(q) ||
+                          t.mr.includes(searchQuery)
+                        ) {
+                          results.push({
+                            name: t.en,
+                            mr: t.mr,
+                            price: t.offer,
+                          });
+                        }
+                      }
+                      for (const t of [...advanceTests, ...basicTests]) {
+                        if (
+                          t.name.toLowerCase().includes(q) ||
+                          t.desc.includes(searchQuery)
+                        ) {
+                          if (!results.find((r) => r.name === t.name)) {
+                            results.push({ name: t.name, mr: t.desc });
+                          }
+                        }
+                      }
+                      for (const t of popularTests) {
+                        if (
+                          t.en.toLowerCase().includes(q) ||
+                          t.mr.includes(searchQuery)
+                        ) {
+                          if (!results.find((r) => r.name === t.en)) {
+                            results.push({
+                              name: t.en,
+                              mr: t.mr,
+                              price: t.price,
+                            });
+                          }
+                        }
+                      }
+                      const shown = results.slice(0, 6);
+                      if (shown.length === 0) {
+                        return (
+                          <div className="px-4 py-3 text-sm text-gray-400 text-center">
+                            कोणतीही चाचणी सापडली नाही / No test found
+                          </div>
+                        );
+                      }
+                      return shown.map((r) => (
+                        <div
+                          key={r.name}
+                          className="flex items-center justify-between px-4 py-2.5 hover:bg-gray-50 border-b border-gray-100 last:border-0"
+                        >
+                          <div>
+                            <p className="text-sm font-semibold text-gray-800">
+                              {r.name}
+                            </p>
+                            {r.mr && (
+                              <p className="text-xs text-gray-400 italic">
+                                {r.mr}
+                              </p>
+                            )}
+                            {r.price && (
+                              <p className="text-xs text-primary font-bold">
+                                ₹{r.price}
+                              </p>
+                            )}
+                          </div>
+                          <button
+                            type="button"
+                            onMouseDown={() =>
+                              openWhatsApp(
+                                `नमस्कार! मला ${r.name} Test Book करायचे आहे.${r.price ? ` Offer Price: ₹${r.price}/-` : ""}`,
+                              )
+                            }
+                            className="ml-3 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full hover:bg-primary-dark transition-colors flex-shrink-0"
+                            data-ocid="hero.search.book.button"
+                          >
+                            Book
+                          </button>
+                        </div>
+                      ));
+                    })()}
+                  </div>
+                )}
               </div>
             </div>
 
@@ -829,6 +1014,62 @@ export default function App() {
         </div>
       </section>
 
+      {/* ── POPULAR TESTS ── */}
+      <section id="popular" className="py-20 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-xs font-bold text-primary uppercase tracking-widest">
+              Most Booked
+            </span>
+            <h2 className="section-heading text-2xl md:text-3xl mt-1 mb-4">
+              Popular Tests
+            </h2>
+            <p className="text-gray-500 text-sm">
+              वारंवार बुक केल्या जाणाऱ्या चाचण्या — Frequently booked tests at offer
+              prices
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {popularTests.map((test, i) => (
+              <div
+                key={test.en}
+                data-ocid={`popular.item.${i + 1}`}
+                className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-start border border-gray-100"
+              >
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center mb-3 flex-shrink-0"
+                  style={{ backgroundColor: "#00984A1A" }}
+                >
+                  <FlaskConical
+                    className="w-5 h-5"
+                    style={{ color: "#00984A" }}
+                  />
+                </div>
+                <p className="font-bold text-gray-900 text-sm leading-tight mb-0.5">
+                  {test.en}
+                </p>
+                <p className="text-xs italic text-gray-500 mb-2">{test.mr}</p>
+                <p className="text-primary font-extrabold text-lg mt-auto mb-3">
+                  ₹{test.price}
+                </p>
+                <button
+                  type="button"
+                  onClick={() =>
+                    openWhatsApp(
+                      `नमस्कार! मला ${test.en} Test Book करायचे आहे. Price: ₹${test.price}/-`,
+                    )
+                  }
+                  data-ocid={`popular.book.button.${i + 1}`}
+                  className="w-full bg-primary/10 hover:bg-primary hover:text-white text-primary text-xs font-bold py-2 rounded-full transition-colors"
+                >
+                  Book Now
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── HOME COLLECTION BOOKING ── */}
       <section id="collection" className="py-16 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
@@ -1018,6 +1259,43 @@ export default function App() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section id="faq" className="py-20 px-4 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-xs font-bold text-primary uppercase tracking-widest">
+              FAQ
+            </span>
+            <h2 className="section-heading text-2xl md:text-3xl mt-1 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-gray-500 text-sm">वारंवार विचारले जाणारे प्रश्न</p>
+          </div>
+          <Accordion
+            type="single"
+            collapsible
+            className="space-y-3"
+            data-ocid="faq.panel"
+          >
+            {faqItems.map((item, i) => (
+              <AccordionItem
+                key={item.q}
+                value={`faq-${i}`}
+                data-ocid={`faq.item.${i + 1}`}
+                className="border border-gray-200 rounded-xl px-5 overflow-hidden shadow-sm"
+              >
+                <AccordionTrigger className="text-left text-sm font-semibold text-gray-800 py-4 hover:no-underline [&>svg]:text-primary [&>svg]:w-5 [&>svg]:h-5">
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm text-gray-600 leading-relaxed pb-4">
+                  {item.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 
