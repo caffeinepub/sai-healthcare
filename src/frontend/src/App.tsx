@@ -214,9 +214,14 @@ export default function App() {
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <FlaskConical className="w-5 h-5 text-white" />
             </div>
-            <span className="text-foreground font-extrabold text-lg tracking-tight">
-              <strong>SAI HEALTHCARE</strong>
-              <span className="block text-xs text-gray-500 font-normal">
+            <span className="leading-none">
+              <span className="block text-[1.4rem] font-extrabold text-primary leading-none">
+                SAI
+              </span>
+              <span className="block text-[0.6rem] font-semibold tracking-widest text-gray-700 uppercase leading-none mt-0.5">
+                HEALTHCARE
+              </span>
+              <span className="block text-[0.55rem] text-gray-400 font-normal leading-none mt-0.5">
                 साई हेल्थकेअर
               </span>
             </span>
@@ -931,7 +936,7 @@ export default function App() {
               About Us
             </span>
             <h2 className="section-heading text-2xl md:text-3xl mt-1 mb-4">
-              का निवडावे <strong>SAI HEALTHCARE</strong>{" "}
+              Why Choose <strong>SAI HEALTHCARE</strong>{" "}
               <span className="font-normal text-gray-500 text-sm">
                 | साई हेल्थकेअर
               </span>
@@ -1208,9 +1213,14 @@ export default function App() {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <FlaskConical className="w-5 h-5 text-white" />
               </div>
-              <span className="font-extrabold text-base">
-                <strong>SAI HEALTHCARE</strong>
-                <span className="text-gray-400 text-xs font-normal block">
+              <span className="leading-none">
+                <span className="block text-[1.4rem] font-extrabold text-primary leading-none">
+                  SAI
+                </span>
+                <span className="block text-[0.6rem] font-semibold tracking-widest text-white uppercase leading-none mt-0.5">
+                  HEALTHCARE
+                </span>
+                <span className="block text-[0.55rem] text-gray-400 font-normal leading-none mt-0.5">
                   साई हेल्थकेअर
                 </span>
               </span>
