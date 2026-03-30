@@ -55,6 +55,12 @@ const essentialTests = [
   { en: "Calcium", mr: "कॅल्शियम", mrp: 160, offer: 99 },
   { en: "Uric Acid", mr: "युरिक अ‍ॅसिड", mrp: 220, offer: 99 },
   { en: "Urea", mr: "युरिया", mrp: 165, offer: 99 },
+  {
+    en: "Blood Sugar Fasting & Post Prandial",
+    mr: "उपाशीपोटी व जेवणानंतर रक्तशर्करा",
+    mrp: 140,
+    offer: 99,
+  },
 ];
 
 const advanceTests = [
@@ -81,7 +87,12 @@ const basicTests = [
 
 const popularTests = [
   { en: "CBC (Complete Blood Count)", mr: "संपूर्ण रक्त गणना", price: 169 },
-  { en: "Blood Sugar Fasting", mr: "उपाशीपोटी रक्तशर्करा", price: 99 },
+  {
+    en: "Blood Sugar Fasting & Post Prandial",
+    mr: "उपाशीपोटी व जेवणानंतर रक्तशर्करा",
+    mrp: 140,
+    price: 99,
+  },
   { en: "HbA1c", mr: "मधुमेह ३ महिन्यांची तपासणी", price: 299 },
   { en: "Thyroid Profile (TSH)", mr: "थायरॉईड प्रोफाईल", price: 299 },
   { en: "Lipid Profile", mr: "कोलेस्टेरॉल तपासणी", price: 299 },
@@ -105,7 +116,7 @@ const faqItems = [
   },
   {
     q: "Advance आणि Basic Package मध्ये काय फरक आहे?",
-    a: "Advance Package (₹1499/-) मध्ये 10 tests समाविष्ट आहेत जसे Iron Studies, Lipid Profile, Thyroid, Vitamin D, B12 इत्यादी. Basic Package (₹999/-) मध्ये 6 मुख्य tests आहेत. दोन्ही packages मध्ये Free Home Collection आहे.",
+    a: "Advance Package (₹1499/-) मध्ये 80+ tests समाविष्ट आहेत जसे Iron Studies, Lipid Profile, Thyroid, Vitamin D, B12 इत्यादी. Basic Package (₹999/-) मध्ये 60+ मुख्य tests आहेत. दोन्ही packages मध्ये Free Home Collection आहे.",
   },
   {
     q: "Test साठी Fasting (उपवास) आवश्यक आहे का?",
@@ -257,40 +268,12 @@ export default function App() {
       {/* ── STICKY NAVBAR ── */}
       <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-          <a href="#home" className="flex items-center gap-2 flex-shrink-0">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-              <FlaskConical className="w-5 h-5 text-white" />
-            </div>
-            <span className="leading-none">
-              <span
-                className="block leading-none"
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontSize: "1.7rem",
-                  fontWeight: 900,
-                  color: "#00984A",
-                  letterSpacing: "0.06em",
-                }}
-              >
-                SAI
-              </span>
-              <span
-                className="block leading-none mt-0.5"
-                style={{
-                  fontFamily: "'Raleway', sans-serif",
-                  fontSize: "0.55rem",
-                  fontWeight: 300,
-                  letterSpacing: "0.28em",
-                  color: "#2d3748",
-                  textTransform: "uppercase",
-                }}
-              >
-                HEALTHCARE
-              </span>
-              <span className="block text-[0.5rem] text-gray-400 font-normal leading-none mt-0.5">
-                साई हेल्थकेअर
-              </span>
-            </span>
+          <a href="#home" className="flex items-center flex-shrink-0">
+            <img
+              src="/assets/generated/sai-healthcare-logo-transparent.dim_600x200.png"
+              alt="SAI HEALTHCARE Logo"
+              className="h-12 w-auto object-contain"
+            />
           </a>
 
           <nav
@@ -433,8 +416,8 @@ export default function App() {
       <div className="py-6 px-4" style={{ backgroundColor: "#00984A" }}>
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { num: "500+", en: "Happy Patients", mr: "खूश रुग्ण" },
-            { num: "12+", en: "Tests Available", mr: "चाचण्या उपलब्ध" },
+            { num: "5000+", en: "Happy Patients", mr: "खूश रुग्ण" },
+            { num: "120+", en: "Tests Available", mr: "चाचण्या उपलब्ध" },
             { num: "365", en: "Days Open", mr: "दिवस उघडे" },
             { num: "FREE", en: "Home Collection", mr: "घरपोच संकलन" },
           ].map((stat) => (
@@ -849,7 +832,7 @@ export default function App() {
                       MRP ₹5000
                     </span>
                     <span className="text-amber-300 text-xs font-bold">
-                      {advanceTests.length} Tests Included
+                      80+ Tests Included
                     </span>
                   </div>
                 </div>
@@ -909,7 +892,7 @@ export default function App() {
                       MRP ₹3000
                     </span>
                     <span className="text-amber-300 text-xs font-bold">
-                      {basicTests.length} Tests Included
+                      60+ Tests Included
                     </span>
                   </div>
                 </div>
@@ -1049,9 +1032,16 @@ export default function App() {
                   {test.en}
                 </p>
                 <p className="text-xs italic text-gray-500 mb-2">{test.mr}</p>
-                <p className="text-primary font-extrabold text-lg mt-auto mb-3">
-                  ₹{test.price}
-                </p>
+                <div className="flex items-baseline gap-2 mt-auto mb-3">
+                  <span className="text-primary font-extrabold text-lg">
+                    ₹{test.price}
+                  </span>
+                  {test.mrp && (
+                    <span className="text-gray-400 line-through text-xs">
+                      ₹{test.mrp}
+                    </span>
+                  )}
+                </div>
                 <button
                   type="button"
                   onClick={() =>
@@ -1506,40 +1496,12 @@ export default function App() {
       <footer className="bg-gray-900 text-white py-12 px-4">
         <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                <FlaskConical className="w-5 h-5 text-white" />
-              </div>
-              <span className="leading-none">
-                <span
-                  className="block leading-none"
-                  style={{
-                    fontFamily: "'Montserrat', sans-serif",
-                    fontSize: "1.7rem",
-                    fontWeight: 900,
-                    color: "#00984A",
-                    letterSpacing: "0.06em",
-                  }}
-                >
-                  SAI
-                </span>
-                <span
-                  className="block leading-none mt-0.5"
-                  style={{
-                    fontFamily: "'Raleway', sans-serif",
-                    fontSize: "0.55rem",
-                    fontWeight: 300,
-                    letterSpacing: "0.28em",
-                    color: "#e2e8f0",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  HEALTHCARE
-                </span>
-                <span className="block text-[0.5rem] text-gray-400 font-normal leading-none mt-0.5">
-                  साई हेल्थकेअर
-                </span>
-              </span>
+            <div className="mb-3">
+              <img
+                src="/assets/generated/sai-healthcare-logo-transparent.dim_600x200.png"
+                alt="SAI HEALTHCARE Logo"
+                className="h-14 w-auto object-contain brightness-0 invert"
+              />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Your trusted pathology laboratory in Nashik — accurate results,
