@@ -257,7 +257,7 @@ export default function App() {
             onClick={() =>
               openWhatsApp("नमस्कार! SAI HEALTHCARE बद्दल माहिती हवी आहे.")
             }
-            className="flex items-center gap-1.5 bg-green-500 hover:bg-green-400 text-white text-xs font-semibold px-3 py-1 rounded-full transition-colors"
+            className="flex items-center gap-1.5 btn-yellow text-xs font-semibold px-3 py-1 rounded-full transition-colors"
           >
             <MessageCircle className="w-3 h-3" />
             WhatsApp Us
@@ -303,7 +303,7 @@ export default function App() {
             <a
               href="#collection"
               data-ocid="nav.book_test.button"
-              className="ml-2 bg-primary hover:bg-primary-dark text-white text-xs font-bold px-5 py-2.5 rounded-full transition-colors whitespace-nowrap"
+              className="ml-2 btn-yellow text-xs font-bold px-5 py-2.5 rounded-full transition-colors whitespace-nowrap"
             >
               BOOK TEST NOW
             </a>
@@ -344,7 +344,7 @@ export default function App() {
             </a>
             <a
               href="#collection"
-              className="mt-3 block text-center bg-primary hover:bg-primary-dark text-white font-bold py-3 rounded-full text-sm"
+              className="mt-3 block text-center btn-yellow font-bold py-3 rounded-full text-sm"
               data-ocid="nav.mobile_book.link"
             >
               BOOK TEST NOW
@@ -397,7 +397,7 @@ export default function App() {
             data-ocid="quickaction.whatsapp.button"
             className="flex flex-col items-center gap-1 px-4 py-2 rounded-xl hover:bg-gray-50 transition-colors text-center"
           >
-            <MessageCircle className="w-5 h-5 text-green-600" />
+            <MessageCircle className="w-5 h-5 text-blue-600" />
             <span className="text-xs font-semibold text-gray-700 whitespace-nowrap">
               WhatsApp
             </span>
@@ -413,7 +413,7 @@ export default function App() {
       </div>
 
       {/* ── STATS BANNER ── */}
-      <div className="py-6 px-4" style={{ backgroundColor: "#00984A" }}>
+      <div className="py-6 px-4" style={{ backgroundColor: "#1D63FF" }}>
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
             { num: "5000+", en: "Happy Patients", mr: "खूश रुग्ण" },
@@ -461,7 +461,7 @@ export default function App() {
               <div className="absolute bottom-6 left-5 md:left-12 z-10 max-w-[55%] flex flex-col gap-2">
                 <span
                   className="inline-block text-white text-xs font-semibold px-3 py-1 rounded-full w-fit"
-                  style={{ background: "#00984A" }}
+                  style={{ background: "#1D63FF" }}
                 >
                   {slide.badge}
                 </span>
@@ -473,8 +473,8 @@ export default function App() {
                 </p>
                 <div className="flex items-center gap-2 flex-wrap">
                   <span
-                    className="text-white text-xs font-bold px-3 py-1 rounded-full"
-                    style={{ background: "#FF6B00" }}
+                    className="text-blue-900 text-xs font-bold px-3 py-1 rounded-full"
+                    style={{ background: "#FFCE32" }}
                   >
                     {slide.offer}
                   </span>
@@ -486,8 +486,7 @@ export default function App() {
                   href="https://wa.me/919356710760"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block text-white text-xs font-semibold px-4 py-1.5 rounded-full w-fit mt-1 transition-opacity hover:opacity-90"
-                  style={{ background: "#00984A" }}
+                  className="inline-block text-xs font-semibold px-4 py-1.5 rounded-full w-fit mt-1 transition-opacity hover:opacity-90 btn-yellow"
                 >
                   {slide.cta}
                 </a>
@@ -529,7 +528,7 @@ export default function App() {
               className="w-2.5 h-2.5 rounded-full transition-all duration-300"
               style={{
                 background:
-                  i === bannerIndex ? "#00984A" : "rgba(255,255,255,0.7)",
+                  i === bannerIndex ? "#1D63FF" : "rgba(255,255,255,0.7)",
               }}
               aria-label={`Go to banner ${i + 1}`}
             />
@@ -720,7 +719,7 @@ export default function App() {
                                 `नमस्कार! मला ${r.name} Test Book करायचे आहे.${r.price ? ` Offer Price: ₹${r.price}/-` : ""}`,
                               )
                             }
-                            className="ml-3 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full hover:bg-primary-dark transition-colors flex-shrink-0"
+                            className="ml-3 btn-yellow text-xs font-bold px-3 py-1.5 rounded-full transition-colors flex-shrink-0"
                             data-ocid="hero.search.book.button"
                           >
                             Book
@@ -780,7 +779,7 @@ export default function App() {
                     "नमस्कार! SAI HEALTHCARE मध्ये Test Book करायची आहे.",
                   )
                 }
-                className="w-full bg-white text-primary font-bold py-3 rounded-full hover:bg-white/90 transition-colors flex items-center justify-center gap-2 text-sm"
+                className="w-full btn-yellow font-bold py-3 rounded-full transition-colors flex items-center justify-center gap-2 text-sm"
               >
                 <MessageCircle className="w-4 h-4" />
                 Book Test on WhatsApp
@@ -791,7 +790,7 @@ export default function App() {
       </section>
 
       {/* ── HEALTH PACKAGES ── */}
-      <section id="packages" className="py-20 px-4 bg-gray-50">
+      <section id="packages" className="py-20 px-4 bg-[#EEF3FF]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
@@ -831,7 +830,7 @@ export default function App() {
                     <span className="text-white/60 line-through text-sm block">
                       MRP ₹5000
                     </span>
-                    <span className="text-amber-300 text-xs font-bold">
+                    <span className="text-yellow-300 text-xs font-bold">
                       80+ Tests Included
                     </span>
                   </div>
@@ -857,7 +856,7 @@ export default function App() {
                       "नमस्कार! मला Advance Health Checkup Package (₹1499/-) Book करायचे आहे. कृपया मदत करा.",
                     )
                   }
-                  className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-full gap-2"
+                  className="w-full btn-yellow font-bold rounded-full gap-2"
                   data-ocid="packages.advance.primary_button"
                 >
                   <MessageCircle className="w-4 h-4" />
@@ -891,7 +890,7 @@ export default function App() {
                     <span className="text-white/60 line-through text-sm block">
                       MRP ₹3000
                     </span>
-                    <span className="text-amber-300 text-xs font-bold">
+                    <span className="text-yellow-300 text-xs font-bold">
                       60+ Tests Included
                     </span>
                   </div>
@@ -917,7 +916,7 @@ export default function App() {
                       "नमस्कार! मला Basic Health Checkup Package (₹999/-) Book करायचे आहे. कृपया मदत करा.",
                     )
                   }
-                  className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-full gap-2"
+                  className="w-full btn-yellow font-bold rounded-full gap-2"
                   data-ocid="packages.basic.primary_button"
                 >
                   <MessageCircle className="w-4 h-4" />
@@ -985,7 +984,7 @@ export default function App() {
                         )
                       }
                       data-ocid={`tests.book.button.${i + 1}`}
-                      className="w-full bg-primary/10 hover:bg-primary hover:text-white text-primary text-xs font-bold py-2 rounded-full transition-colors"
+                      className="w-full btn-yellow text-xs font-bold py-2 rounded-full transition-colors"
                     >
                       Book Now
                     </button>
@@ -998,7 +997,7 @@ export default function App() {
       </section>
 
       {/* ── POPULAR TESTS ── */}
-      <section id="popular" className="py-20 px-4 bg-gray-50">
+      <section id="popular" className="py-20 px-4 bg-[#EEF3FF]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
@@ -1021,11 +1020,11 @@ export default function App() {
               >
                 <div
                   className="w-10 h-10 rounded-full flex items-center justify-center mb-3 flex-shrink-0"
-                  style={{ backgroundColor: "#00984A1A" }}
+                  style={{ backgroundColor: "#1D63FF1A" }}
                 >
                   <FlaskConical
                     className="w-5 h-5"
-                    style={{ color: "#00984A" }}
+                    style={{ color: "#1D63FF" }}
                   />
                 </div>
                 <p className="font-bold text-gray-900 text-sm leading-tight mb-0.5">
@@ -1050,7 +1049,7 @@ export default function App() {
                     )
                   }
                   data-ocid={`popular.book.button.${i + 1}`}
-                  className="w-full bg-primary/10 hover:bg-primary hover:text-white text-primary text-xs font-bold py-2 rounded-full transition-colors"
+                  className="w-full btn-yellow text-xs font-bold py-2 rounded-full transition-colors"
                 >
                   Book Now
                 </button>
@@ -1061,7 +1060,7 @@ export default function App() {
       </section>
 
       {/* ── HOME COLLECTION BOOKING ── */}
-      <section id="collection" className="py-16 px-4 bg-gray-50">
+      <section id="collection" className="py-16 px-4 bg-[#EEF3FF]">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
@@ -1165,7 +1164,7 @@ export default function App() {
                 <div className="sm:col-span-2">
                   <Button
                     type="submit"
-                    className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-full gap-2 py-3"
+                    className="w-full btn-yellow font-bold rounded-full gap-2 py-3"
                     data-ocid="collection.submit.button"
                   >
                     <MessageCircle className="w-4 h-4" />
@@ -1290,7 +1289,7 @@ export default function App() {
       </section>
 
       {/* ── CONTACT + MAP ── */}
-      <section id="contact" className="py-16 px-4 bg-gray-50">
+      <section id="contact" className="py-16 px-4 bg-[#EEF3FF]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
@@ -1362,7 +1361,7 @@ export default function App() {
                       openWhatsApp("नमस्कार! SAI HEALTHCARE बद्दल माहिती हवी आहे.")
                     }
                     data-ocid="contact.whatsapp.button"
-                    className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-full transition-colors text-sm"
+                    className="w-full flex items-center justify-center gap-2 btn-yellow font-bold py-3 rounded-full transition-colors text-sm"
                   >
                     <MessageCircle className="w-4 h-4" />
                     WhatsApp Us
@@ -1432,7 +1431,7 @@ export default function App() {
                     </div>
                     <Button
                       type="submit"
-                      className="w-full bg-primary hover:bg-primary-dark text-white font-bold rounded-full gap-2"
+                      className="w-full btn-yellow font-bold rounded-full gap-2"
                       data-ocid="inquiry.submit.button"
                     >
                       <MessageCircle className="w-4 h-4" />
@@ -1481,7 +1480,7 @@ export default function App() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-ocid="contact.directions.button"
-                  className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-3 rounded-full transition-colors text-sm w-full"
+                  className="flex items-center justify-center gap-2 btn-yellow font-bold py-3 rounded-full transition-colors text-sm w-full"
                 >
                   <Navigation className="w-4 h-4" />
                   Get Directions
@@ -1493,7 +1492,10 @@ export default function App() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="bg-gray-900 text-white py-12 px-4">
+      <footer
+        className="text-white py-12 px-4"
+        style={{ backgroundColor: "#1D3A66" }}
+      >
         <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <div className="mb-3">
@@ -1554,7 +1556,7 @@ export default function App() {
               onClick={() =>
                 openWhatsApp("नमस्कार! SAI HEALTHCARE बद्दल माहिती हवी आहे.")
               }
-              className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors mb-4"
+              className="flex items-center gap-2 btn-yellow text-sm font-semibold px-5 py-2.5 rounded-full transition-colors mb-4"
             >
               <MessageCircle className="w-4 h-4" />
               WhatsApp Us
@@ -1589,7 +1591,7 @@ export default function App() {
         }
         data-ocid="whatsapp.floating.button"
         aria-label="Chat on WhatsApp"
-        className="fixed bottom-20 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110"
+        className="fixed bottom-20 right-6 z-50 bg-primary hover:bg-primary-dark text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110"
       >
         <svg
           role="img"
@@ -1608,7 +1610,7 @@ export default function App() {
       <div
         data-ocid="home_visit.bar"
         className="fixed bottom-0 left-0 right-0 z-40 flex items-center justify-between px-4 py-3 shadow-2xl"
-        style={{ backgroundColor: "#00984A" }}
+        style={{ backgroundColor: "#1D63FF" }}
       >
         <div className="flex flex-col">
           <span className="text-white/80 text-xs leading-tight">
@@ -1624,7 +1626,7 @@ export default function App() {
           onClick={() =>
             openWhatsApp("नमस्कार! मला घरी येऊन टेस्ट करायची आहे. कृपया माहिती द्या.")
           }
-          className="flex items-center gap-2 bg-white text-green-700 font-bold text-sm px-5 py-2.5 rounded-full shadow-md hover:bg-orange-50 hover:text-orange-600 transition-all active:scale-95"
+          className="flex items-center gap-2 bg-yellow-400 text-blue-900 font-bold text-sm px-5 py-2.5 rounded-full shadow-md hover:bg-yellow-300 transition-all active:scale-95"
         >
           📞 Book Now
         </button>
