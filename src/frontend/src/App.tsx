@@ -413,7 +413,7 @@ export default function App() {
       </div>
 
       {/* ── STATS BANNER ── */}
-      <div className="py-6 px-4" style={{ backgroundColor: "#1D63FF" }}>
+      <div className="py-6 px-4" style={{ backgroundColor: "#00984A" }}>
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
             { num: "5000+", en: "Happy Patients", mr: "खूश रुग्ण" },
@@ -461,7 +461,7 @@ export default function App() {
               <div className="absolute bottom-6 left-5 md:left-12 z-10 max-w-[55%] flex flex-col gap-2">
                 <span
                   className="inline-block text-white text-xs font-semibold px-3 py-1 rounded-full w-fit"
-                  style={{ background: "#1D63FF" }}
+                  style={{ background: "#00984A" }}
                 >
                   {slide.badge}
                 </span>
@@ -528,7 +528,7 @@ export default function App() {
               className="w-2.5 h-2.5 rounded-full transition-all duration-300"
               style={{
                 background:
-                  i === bannerIndex ? "#1D63FF" : "rgba(255,255,255,0.7)",
+                  i === bannerIndex ? "#00984A" : "rgba(255,255,255,0.7)",
               }}
               aria-label={`Go to banner ${i + 1}`}
             />
@@ -1020,11 +1020,11 @@ export default function App() {
               >
                 <div
                   className="w-10 h-10 rounded-full flex items-center justify-center mb-3 flex-shrink-0"
-                  style={{ backgroundColor: "#1D63FF1A" }}
+                  style={{ backgroundColor: "#00984A1A" }}
                 >
                   <FlaskConical
                     className="w-5 h-5"
-                    style={{ color: "#1D63FF" }}
+                    style={{ color: "#00984A" }}
                   />
                 </div>
                 <p className="font-bold text-gray-900 text-sm leading-tight mb-0.5">
@@ -1610,7 +1610,7 @@ export default function App() {
       <div
         data-ocid="home_visit.bar"
         className="fixed bottom-0 left-0 right-0 z-40 flex items-center justify-between px-4 py-3 shadow-2xl"
-        style={{ backgroundColor: "#1D63FF" }}
+        style={{ backgroundColor: "#00984A" }}
       >
         <div className="flex flex-col">
           <span className="text-white/80 text-xs leading-tight">

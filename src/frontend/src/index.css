@@ -13,33 +13,33 @@
 
 @layer base {
   :root {
-    /* Prussian Blue + Yellow Palette */
+    /* Metropolis Green Palette */
     --background: 1 0 0;
-    --foreground: 0.15 0.01 264;
+    --foreground: 0.15 0.01 145;
     --card: 1 0 0;
-    --card-foreground: 0.15 0.01 264;
+    --card-foreground: 0.15 0.01 145;
     --popover: 1 0 0;
-    --popover-foreground: 0.15 0.01 264;
-    /* #1D63FF → oklch(0.49 0.22 264) */
-    --primary: 0.49 0.22 264;
+    --popover-foreground: 0.15 0.01 145;
+    /* #00984A → oklch(0.56 0.17 155) */
+    --primary: 0.56 0.17 155;
     --primary-foreground: 1 0 0;
-    /* darker blue for hover */
-    --primary-dark: 0.4 0.2 264;
-    /* lighter blue tint */
-    --primary-light: 0.68 0.14 264;
-    /* light blue tint bg */
-    --secondary: 0.95 0.04 264;
-    --secondary-foreground: 0.49 0.22 264;
-    --muted: 0.97 0.005 264;
-    --muted-foreground: 0.5 0.01 264;
-    /* #FFCE32 yellow accent → oklch(0.87 0.18 86) */
-    --accent: 0.87 0.18 86;
-    --accent-foreground: 0.15 0.01 264;
+    /* darker green for hover */
+    --primary-dark: 0.46 0.15 155;
+    /* lighter green tint */
+    --primary-light: 0.72 0.12 155;
+    /* light green tint bg */
+    --secondary: 0.96 0.03 155;
+    --secondary-foreground: 0.56 0.17 155;
+    --muted: 0.97 0.005 155;
+    --muted-foreground: 0.5 0.01 155;
+    /* Orange accent → oklch(0.68 0.19 38) */
+    --accent: 0.68 0.19 38;
+    --accent-foreground: 1 0 0;
     --destructive: 0.53 0.22 25;
     --destructive-foreground: 1 0 0;
-    --border: 0.92 0.005 264;
-    --input: 0.9 0.005 264;
-    --ring: 0.49 0.22 264;
+    --border: 0.92 0.005 155;
+    --input: 0.9 0.005 155;
+    --ring: 0.56 0.17 155;
     --radius: 0.5rem;
   }
 
@@ -67,45 +67,45 @@
 }
 
 @layer components {
-  /* Yellow badge for offer/discount (40% accent) */
+  /* Orange badge for offer/discount */
   .offer-badge {
-    background-color: #ffce32;
-    color: #1d2d50;
+    background-color: #ff6b00;
+    color: #ffffff;
   }
 
   .topbar {
     background: linear-gradient(
       90deg,
-      oklch(0.4 0.2 264) 0%,
-      oklch(0.35 0.18 264) 100%
+      oklch(0.46 0.15 155) 0%,
+      oklch(0.4 0.14 155) 100%
     );
   }
 
   .hero-card {
     background: linear-gradient(
       135deg,
-      oklch(0.49 0.22 264) 0%,
-      oklch(0.38 0.2 264) 100%
+      oklch(0.56 0.17 155) 0%,
+      oklch(0.44 0.15 155) 100%
     );
   }
 
   .pkg-advance-header {
     background: linear-gradient(
       135deg,
-      oklch(0.49 0.22 264) 0%,
-      oklch(0.38 0.2 264) 100%
+      oklch(0.56 0.17 155) 0%,
+      oklch(0.44 0.15 155) 100%
     );
   }
 
   .pkg-basic-header {
     background: linear-gradient(
       135deg,
-      oklch(0.44 0.2 274) 0%,
-      oklch(0.34 0.18 274) 100%
+      oklch(0.5 0.15 165) 0%,
+      oklch(0.4 0.13 165) 100%
     );
   }
 
-  /* Section heading with blue underline accent */
+  /* Section heading with green underline accent */
   .section-heading {
     font-family: "Poppins", sans-serif;
     @apply font-bold text-gray-900;
@@ -118,45 +118,45 @@
     display: block;
     width: 56px;
     height: 3px;
-    background-color: #1d63ff;
+    background-color: #00984a;
     border-radius: 2px;
     margin: 10px auto 0;
   }
 
-  /* Primary CTA button — Yellow (40% rule) */
+  /* Primary CTA button — Green */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 font-semibold px-6 py-3 rounded-full transition-colors text-sm uppercase tracking-wide shadow-sm;
-    background-color: #ffce32;
-    color: #1d2d50;
+    background-color: #00984a;
+    color: #ffffff;
     font-family: "Poppins", sans-serif;
   }
 
   .btn-primary:hover {
-    background-color: #f5c310;
+    background-color: #007a3a;
   }
 
-  /* Outline button — Blue border (60% rule) */
+  /* Outline button — Green border */
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2 border-2 border-primary text-primary font-semibold px-6 py-3 rounded-full transition-colors text-sm uppercase tracking-wide;
     font-family: "Poppins", sans-serif;
   }
 
   .btn-outline:hover {
-    background-color: #ffce32;
-    border-color: #ffce32;
-    color: #1d2d50;
+    background-color: #00984a;
+    border-color: #00984a;
+    color: #ffffff;
   }
 
-  /* Yellow CTA utility class */
+  /* Green CTA utility class (replaces btn-yellow) */
   .btn-yellow {
-    background-color: #ffce32;
-    color: #1d2d50;
+    background-color: #00984a;
+    color: #ffffff;
     font-weight: 700;
     border-radius: 9999px;
     transition: background-color 0.15s;
   }
 
   .btn-yellow:hover {
-    background-color: #f5c310;
+    background-color: #007a3a;
   }
 }
