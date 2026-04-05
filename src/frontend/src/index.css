@@ -13,14 +13,14 @@
 
 @layer base {
   :root {
-    /* Metropolis Green Palette */
+    /* Metropolis Green + Orange Palette (60:40 ratio) */
     --background: 1 0 0;
     --foreground: 0.15 0.01 145;
     --card: 1 0 0;
     --card-foreground: 0.15 0.01 145;
     --popover: 1 0 0;
     --popover-foreground: 0.15 0.01 145;
-    /* #00984A → oklch(0.56 0.17 155) */
+    /* #00984A → oklch(0.56 0.17 155) — PRIMARY GREEN (60%) */
     --primary: 0.56 0.17 155;
     --primary-foreground: 1 0 0;
     /* darker green for hover */
@@ -32,7 +32,7 @@
     --secondary-foreground: 0.56 0.17 155;
     --muted: 0.97 0.005 155;
     --muted-foreground: 0.5 0.01 155;
-    /* Orange accent → oklch(0.68 0.19 38) */
+    /* #00984A Green accent (replaces orange) — PRIMARY GREEN */
     --accent: 0.68 0.19 38;
     --accent-foreground: 1 0 0;
     --destructive: 0.53 0.22 25;
@@ -67,12 +67,13 @@
 }
 
 @layer components {
-  /* Orange badge for offer/discount */
+  /* Green badge for offer/discount */
   .offer-badge {
-    background-color: #ff6b00;
+    background-color: #00984a;
     color: #ffffff;
   }
 
+  /* Topbar — GREEN (60%) */
   .topbar {
     background: linear-gradient(
       90deg,
@@ -81,6 +82,7 @@
     );
   }
 
+  /* Hero card — GREEN (60%) */
   .hero-card {
     background: linear-gradient(
       135deg,
@@ -89,6 +91,7 @@
     );
   }
 
+  /* Package headers — GREEN (60%) */
   .pkg-advance-header {
     background: linear-gradient(
       135deg,
@@ -105,7 +108,7 @@
     );
   }
 
-  /* Section heading with green underline accent */
+  /* Section heading with green underline (60% green structural) */
   .section-heading {
     font-family: "Poppins", sans-serif;
     @apply font-bold text-gray-900;
@@ -123,7 +126,7 @@
     margin: 10px auto 0;
   }
 
-  /* Primary CTA button — Green */
+  /* Primary CTA button — GREEN */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 font-semibold px-6 py-3 rounded-full transition-colors text-sm uppercase tracking-wide shadow-sm;
     background-color: #00984a;
@@ -132,10 +135,10 @@
   }
 
   .btn-primary:hover {
-    background-color: #007a3a;
+    background-color: #007a3d;
   }
 
-  /* Outline button — Green border */
+  /* Outline button — Green border (60%) */
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2 border-2 border-primary text-primary font-semibold px-6 py-3 rounded-full transition-colors text-sm uppercase tracking-wide;
     font-family: "Poppins", sans-serif;
@@ -147,7 +150,7 @@
     color: #ffffff;
   }
 
-  /* Green CTA utility class (replaces btn-yellow) */
+  /* CTA utility class — GREEN */
   .btn-yellow {
     background-color: #00984a;
     color: #ffffff;
@@ -157,6 +160,6 @@
   }
 
   .btn-yellow:hover {
-    background-color: #007a3a;
+    background-color: #007a3d;
   }
 }

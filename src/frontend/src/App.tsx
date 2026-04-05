@@ -473,8 +473,8 @@ export default function App() {
                 </p>
                 <div className="flex items-center gap-2 flex-wrap">
                   <span
-                    className="text-blue-900 text-xs font-bold px-3 py-1 rounded-full"
-                    style={{ background: "#FFCE32" }}
+                    className="text-white text-xs font-bold px-3 py-1 rounded-full"
+                    style={{ background: "#007a3d" }}
                   >
                     {slide.offer}
                   </span>
@@ -1626,7 +1626,7 @@ export default function App() {
           onClick={() =>
             openWhatsApp("नमस्कार! मला घरी येऊन टेस्ट करायची आहे. कृपया माहिती द्या.")
           }
-          className="flex items-center gap-2 bg-yellow-400 text-blue-900 font-bold text-sm px-5 py-2.5 rounded-full shadow-md hover:bg-yellow-300 transition-all active:scale-95"
+          className="flex items-center gap-2 bg-[#00984a] text-white font-bold text-sm px-5 py-2.5 rounded-full shadow-md hover:bg-[#007a3d] transition-all active:scale-95"
         >
           📞 Book Now
         </button>
