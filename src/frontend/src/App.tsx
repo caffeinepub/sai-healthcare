@@ -354,7 +354,10 @@ export default function App() {
       </header>
 
       {/* ── QUICK ACTIONS ROW ── */}
-      <div className="bg-white border-b border-gray-100 py-3 px-4 overflow-x-auto">
+      <div
+        className="border-b border-gray-100 py-3 px-4 overflow-x-auto"
+        style={{ background: "#EDF7F0" }}
+      >
         <div className="max-w-7xl mx-auto flex items-center gap-2 sm:gap-4 min-w-max sm:min-w-0 sm:justify-center">
           <a
             href="#contact"
@@ -413,7 +416,12 @@ export default function App() {
       </div>
 
       {/* ── STATS BANNER ── */}
-      <div className="py-6 px-4" style={{ backgroundColor: "#00984A" }}>
+      <div
+        className="py-6 px-4"
+        style={{
+          background: "linear-gradient(90deg, #FF6B00 0%, #e05a00 100%)",
+        }}
+      >
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
             { num: "5000+", en: "Happy Patients", mr: "खूश रुग्ण" },
@@ -461,7 +469,7 @@ export default function App() {
               <div className="absolute bottom-6 left-5 md:left-12 z-10 max-w-[55%] flex flex-col gap-2">
                 <span
                   className="inline-block text-white text-xs font-semibold px-3 py-1 rounded-full w-fit"
-                  style={{ background: "#00984A" }}
+                  style={{ background: "#FF6B00" }}
                 >
                   {slide.badge}
                 </span>
@@ -537,7 +545,11 @@ export default function App() {
       </div>
 
       {/* ── HERO ── */}
-      <section className="bg-white py-12 md:py-20 px-4" aria-label="Hero">
+      <section
+        className="py-12 md:py-20 px-4"
+        style={{ background: "#EDF7F0" }}
+        aria-label="Hero"
+      >
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             {/* Left: text */}
@@ -790,7 +802,11 @@ export default function App() {
       </section>
 
       {/* ── HEALTH PACKAGES ── */}
-      <section id="packages" className="py-20 px-4 bg-[#EEF3FF]">
+      <section
+        id="packages"
+        className="py-20 px-4"
+        style={{ background: "#FFF3EB" }}
+      >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
@@ -929,7 +945,11 @@ export default function App() {
       </section>
 
       {/* ── ESSENTIAL TESTS ── */}
-      <section id="tests" className="py-20 px-4 bg-white">
+      <section
+        id="tests"
+        className="py-20 px-4"
+        style={{ background: "#EDF7F0" }}
+      >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
@@ -997,7 +1017,11 @@ export default function App() {
       </section>
 
       {/* ── POPULAR TESTS ── */}
-      <section id="popular" className="py-20 px-4 bg-[#EEF3FF]">
+      <section
+        id="popular"
+        className="py-20 px-4"
+        style={{ background: "#FFF3EB" }}
+      >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
@@ -1020,11 +1044,11 @@ export default function App() {
               >
                 <div
                   className="w-10 h-10 rounded-full flex items-center justify-center mb-3 flex-shrink-0"
-                  style={{ backgroundColor: "#00984A1A" }}
+                  style={{ backgroundColor: "#FF6B001A" }}
                 >
                   <FlaskConical
                     className="w-5 h-5"
-                    style={{ color: "#00984A" }}
+                    style={{ color: "#FF6B00" }}
                   />
                 </div>
                 <p className="font-bold text-gray-900 text-sm leading-tight mb-0.5">
@@ -1060,7 +1084,11 @@ export default function App() {
       </section>
 
       {/* ── HOME COLLECTION BOOKING ── */}
-      <section id="collection" className="py-16 px-4 bg-[#EEF3FF]">
+      <section
+        id="collection"
+        className="py-16 px-4"
+        style={{ background: "#EDF7F0" }}
+      >
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
@@ -1178,7 +1206,11 @@ export default function App() {
       </section>
 
       {/* ── ABOUT / WHY CHOOSE US ── */}
-      <section id="about" className="py-16 px-4 bg-white">
+      <section
+        id="about"
+        className="py-16 px-4"
+        style={{ background: "#FFF3EB" }}
+      >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
@@ -1252,7 +1284,11 @@ export default function App() {
       </section>
 
       {/* ── FAQ ── */}
-      <section id="faq" className="py-20 px-4 bg-white">
+      <section
+        id="faq"
+        className="py-20 px-4"
+        style={{ background: "#EDF7F0" }}
+      >
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
@@ -1289,7 +1325,11 @@ export default function App() {
       </section>
 
       {/* ── CONTACT + MAP ── */}
-      <section id="contact" className="py-16 px-4 bg-[#EEF3FF]">
+      <section
+        id="contact"
+        className="py-16 px-4"
+        style={{ background: "#FFF3EB" }}
+      >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-xs font-bold text-primary uppercase tracking-widest">
@@ -1371,7 +1411,7 @@ export default function App() {
 
               {/* Inquiry form */}
               <Card className="border-0 shadow-md overflow-hidden">
-                <div className="bg-gray-800 px-6 py-4">
+                <div className="px-6 py-4" style={{ background: "#FF6B00" }}>
                   <CardTitle className="text-white font-extrabold">
                     Send an Inquiry
                   </CardTitle>
@@ -1494,7 +1534,7 @@ export default function App() {
       {/* ── FOOTER ── */}
       <footer
         className="text-white py-12 px-4"
-        style={{ backgroundColor: "#1D3A66" }}
+        style={{ backgroundColor: "#00984A" }}
       >
         <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
@@ -1610,7 +1650,7 @@ export default function App() {
       <div
         data-ocid="home_visit.bar"
         className="fixed bottom-0 left-0 right-0 z-40 flex items-center justify-between px-4 py-3 shadow-2xl"
-        style={{ backgroundColor: "#00984A" }}
+        style={{ backgroundColor: "#FF6B00" }}
       >
         <div className="flex flex-col">
           <span className="text-white/80 text-xs leading-tight">

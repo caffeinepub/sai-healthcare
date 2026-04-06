@@ -13,26 +13,23 @@
 
 @layer base {
   :root {
-    /* Metropolis Green + Orange Palette (60:40 ratio) */
+    /* Metropolis Green #00984A + Orange #FF6B00 — 50:50 ratio */
     --background: 1 0 0;
     --foreground: 0.15 0.01 145;
     --card: 1 0 0;
     --card-foreground: 0.15 0.01 145;
     --popover: 1 0 0;
     --popover-foreground: 0.15 0.01 145;
-    /* #00984A → oklch(0.56 0.17 155) — PRIMARY GREEN (60%) */
+    /* PRIMARY = Green #00984A */
     --primary: 0.56 0.17 155;
     --primary-foreground: 1 0 0;
-    /* darker green for hover */
     --primary-dark: 0.46 0.15 155;
-    /* lighter green tint */
     --primary-light: 0.72 0.12 155;
-    /* light green tint bg */
     --secondary: 0.96 0.03 155;
     --secondary-foreground: 0.56 0.17 155;
     --muted: 0.97 0.005 155;
     --muted-foreground: 0.5 0.01 155;
-    /* #00984A Green accent (replaces orange) — PRIMARY GREEN */
+    /* ACCENT = Orange #FF6B00 */
     --accent: 0.68 0.19 38;
     --accent-foreground: 1 0 0;
     --destructive: 0.53 0.22 25;
@@ -67,48 +64,27 @@
 }
 
 @layer components {
-  /* Green badge for offer/discount */
-  .offer-badge {
-    background-color: #00984a;
-    color: #ffffff;
-  }
-
-  /* Topbar — GREEN (60%) */
+  /* Topbar — GREEN #00984A */
   .topbar {
-    background: linear-gradient(
-      90deg,
-      oklch(0.46 0.15 155) 0%,
-      oklch(0.4 0.14 155) 100%
-    );
+    background: linear-gradient(90deg, #007a3d 0%, #00984a 100%);
   }
 
-  /* Hero card — GREEN (60%) */
+  /* Hero card — ORANGE #FF6B00 (50% orange) */
   .hero-card {
-    background: linear-gradient(
-      135deg,
-      oklch(0.56 0.17 155) 0%,
-      oklch(0.44 0.15 155) 100%
-    );
+    background: linear-gradient(135deg, #ff6b00 0%, #e05a00 100%);
   }
 
-  /* Package headers — GREEN (60%) */
+  /* Package headers — GREEN (50%) */
   .pkg-advance-header {
-    background: linear-gradient(
-      135deg,
-      oklch(0.56 0.17 155) 0%,
-      oklch(0.44 0.15 155) 100%
-    );
+    background: linear-gradient(135deg, #00984a 0%, #007a3d 100%);
   }
 
+  /* Basic package header — ORANGE (50%) */
   .pkg-basic-header {
-    background: linear-gradient(
-      135deg,
-      oklch(0.5 0.15 165) 0%,
-      oklch(0.4 0.13 165) 100%
-    );
+    background: linear-gradient(135deg, #ff6b00 0%, #e05a00 100%);
   }
 
-  /* Section heading with green underline (60% green structural) */
+  /* Section heading with alternating underline */
   .section-heading {
     font-family: "Poppins", sans-serif;
     @apply font-bold text-gray-900;
@@ -121,7 +97,7 @@
     display: block;
     width: 56px;
     height: 3px;
-    background-color: #00984a;
+    background: linear-gradient(90deg, #00984a 50%, #ff6b00 50%);
     border-radius: 2px;
     margin: 10px auto 0;
   }
@@ -138,7 +114,7 @@
     background-color: #007a3d;
   }
 
-  /* Outline button — Green border (60%) */
+  /* Outline button — Green border */
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2 border-2 border-primary text-primary font-semibold px-6 py-3 rounded-full transition-colors text-sm uppercase tracking-wide;
     font-family: "Poppins", sans-serif;
@@ -150,9 +126,9 @@
     color: #ffffff;
   }
 
-  /* CTA utility class — GREEN */
+  /* Orange CTA button — ORANGE (50%) */
   .btn-yellow {
-    background-color: #00984a;
+    background-color: #ff6b00;
     color: #ffffff;
     font-weight: 700;
     border-radius: 9999px;
@@ -160,6 +136,18 @@
   }
 
   .btn-yellow:hover {
-    background-color: #007a3d;
+    background-color: #e05a00;
+  }
+
+  /* Offer badge — ORANGE */
+  .offer-badge {
+    background-color: #ff6b00;
+    color: #ffffff;
+  }
+
+  /* Green badge */
+  .green-badge {
+    background-color: #00984a;
+    color: #ffffff;
   }
 }
